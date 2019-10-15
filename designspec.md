@@ -142,6 +142,8 @@ If the Google sign in process fails, the error message “We were unable to get 
 
 ![About us page for Bonito](wireframes/screen-24.png)
 
-The “About Us” page will have pictures, names, and roles of the project team members, as well as a paragraph description of the project and the problem it solves.
+The “About Us” page will have pictures, names, and roles of the project team members, as well as a paragraph description of the project and the problem it solves:
+
+"Thanks to easily accessible online cookbooks, home cooks from all around the country are able to quickly and efficiently explore recipes for foods that they've never tried before. However, a consequence of all of these different recipes online is that cooks will see an interesting recipe for a meal from a different culture, but that recipe will contain obscure and hard to obtain ingredients. This barrier might be a big enough of an annoyance to deter amatuer chefs from creating and experiencing other cultural cuisines. As of now, there is no direct solution that fixes this issue of uncertainty. That's where Bonito comes in. Bonito provides a crowd-sourced space for fellow home-cooks to share where they sourced hard-to-find ingredients."
 
 Clicking the “Back to home” link will take users to the “Find ingredients” / home page.
