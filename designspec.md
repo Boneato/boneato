@@ -27,7 +27,7 @@ Clicking the “Sign Out” link will sign the user out, and the “Signed in as
 
 The site index, or home page, will also be the primary search page:
 
-![Search/homepage of Bonito](https://via.placeholder.com/1000x750)
+![Search/homepage of Bonito](wireframes/screen-1.png)
 
 Users click into the large text input field and type the name of the ingredient they are looking for. The blinking type indicator on the left, where the first character will be typed. Once the first character is inputted, the placeholder text “BONITO” will disappear. The question mark character will always follow immediately after the last character typed in the input field. The text in the search field will scroll to the left if the query exceeds the length of the input field, just as it would with a default text input field. The text will begin scrolling before reaching the search icon, such that the icon will never be covered with text. Users can press the Backspace key to delete a character, all the way back to an empty search query.
 
@@ -77,11 +77,18 @@ Once the the form has been submitted, this confirmation message will appear. The
 Once the user clicks one of the search results, they will be taken to that ingredient’s page. Clicking the “Search for another ingredient” link will take the user back to the “Find ingredients” page.
 
 Locations will be listed in order of most “Confirmed”. Each location entry has the following features:
-“Confirmed” and “Didn’t Find” buttons - If users are signed in, they can click either “Confirmed” or “Didn’t Find” for each location. Clicking the button will increase the count displayed on the button. Other users will see these counts increase in real time.
-Numbered location name - the number is the order in the list, displayed in order. The name is the name of the location.
-Address - this is the location’s address. All address data is standardized using Google’s mapping algorithms. Write here about how location data from Google will be used.
-Submission info - follows the format “Reported by [User Name] on [Date Reported]”.
-Alert - if the 5 most recent voters reported that they “Didn’t Find” the ingredient at the location, this alert will appear at the top of the location entry, “The 5 most recent voters reported that they didn’t find this ingredient here.”
+- “Confirmed” and “Didn’t Find” buttons - If users are signed in, they can click either “Confirmed” or “Didn’t Find” for each location. Clicking the button will increase the count displayed on the button. Other users will see these counts increase in real time.
+
+- Numbered location name - the number is the order in the list, displayed in order. The name is the name of the location.
+- Address - this is the location’s address. All address data is standardized using Google’s mapping algorithms.
+The location data fetched from a map can be converted from geographic coordinates into human-readable address through Leaflet. Leaflet Control Geocoder plugin in Leaflet can be used for both geocoding and reverse geocoding, and supports MapBox and Google as well. 
+- Submission info - follows the format “Reported by [User Name] on [Date Reported]”.
+- Alert - if the 5 most recent voters reported that they “Didn’t Find” the ingredient at the location, this alert will appear at the top of the location entry, “The 5 most recent voters reported that they didn’t find this ingredient here.”
+
+All locations will also be marked on a map on the right side of the page. 
+Leaflet can be used to displayed marked points. By getting location information (latitude & longitude) from our database, locations will be marked on the map. Leaflet also has Layer Groups where several layers for different locations can be grouped to one same map.
+
+
 
 All locations will also be marked on a map on the right side of the page. Write here about how Google Maps will be embedded, and how the address data will be fed to the map and displayed.
 
@@ -126,9 +133,7 @@ Once the user clicks the “Submit” button, the modal will close, and a new lo
 
 ![Bonito google authentication page](https://via.placeholder.com/1000x750)
 
-### TODO
-
-Sign in will be conducted using Google’s single sign-on. Write here about how this will be implemented AND what user data from Google we will be using (such as name, email address, etc.)
+Sign in will be conducted using Google’s single sign-on. Leaflet Control Geocoder plugin can be used for reverse geocoding. When there is an error message indicating nothing was found or that a geocoding error occurred, the addresses will be considered invalid and in that way, the addresses cannot be submitted. 
 
 Users can click the “Log in with Google” button, after which they will be prompted through Google’s account sign in process. Once they have completed the sign in process they, will return to the Bonito site to continue.
 
