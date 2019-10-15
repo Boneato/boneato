@@ -88,10 +88,6 @@ The location data fetched from a map can be converted from geographic coordinate
 All locations will also be marked on a map on the right side of the page. 
 Leaflet can be used to displayed marked points. By getting location information (latitude & longitude) from our database, locations will be marked on the map. Leaflet also has Layer Groups where several layers for different locations can be grouped to one same map.
 
-
-
-All locations will also be marked on a map on the right side of the page. Leaflet can be used to displayed marked points. By getting location information (latitude & longitude) from our database, locations will be marked on the map. Leaflet also has Layer Groups where several layers for different locations can be grouped to one same map.
-
 ![Page of a specific ingredient, login prompt when voting](wireframes/screen-14.png)
 
 If a user attempts to vote “Confirmed” or “Didn’t Find” for an entry before first signing in, an error message will appear: “Please sign in with Google to share whether you found this ingredient here.” Clicking the “sign in with Google” link will take the user to the Sign In page.
