@@ -15,3 +15,5 @@
 ## Report a new location
 
 ## About page
+
+## Data & Architecture (ingredient data, user data, etc)
