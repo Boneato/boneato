@@ -1,3 +1,5 @@
+_All group members present: Lauren, Laura, Brian, Anthony, Cate_
+
 # Requirements
 
 ## Universal componenents (navbar, page layout, design guidelines, etc.)
