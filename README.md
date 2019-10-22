@@ -5,7 +5,7 @@
 - Chief Technology Officers (CTOs): Brian Uyeda and Cate Lyu
 - Chief Design Officer (CDO): Laura Freeman
 - Chief Executive Officer (CEO): Anthony Nguyen
-- Project Manager (PM): Anthony Nguyen
+- Project Manager (PM): Lauren Smith
 
 ## Mission Statement
 Bonito promotes cultural diversity through sharing culinary knowledge and experience.
