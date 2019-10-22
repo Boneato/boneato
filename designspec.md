@@ -118,6 +118,10 @@ Users click the “Submit” button to report a new location for that ingredient
 
 If there are no results, the message “No results found. Please try again” will appear. 
 
+![Page of a specific ingredient, suggesting a new location, populated but no suggestions](wireframes/screen-25.png)
+
+If the location has already been reported for that ingredient, an error message, "This location has already been reported!" will appear to the top right of the input field, and the form will not submit.
+
 ![Page of a specific ingredient, new location suggested](wireframes/screen-21.png)
 
 Once the user clicks the “Submit” button, the modal will close, and a new location entry will be generated and displayed. That location entry will by default have a count of 1 for “Confirmed”. A pin with the new location will be added to the map. Other users may vote whether they found the ingredient at that location.
