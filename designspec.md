@@ -31,7 +31,7 @@ The site index, or home page, will also be the primary search page:
 
 Users click into the large text input field and type the name of the ingredient they are looking for. The blinking type indicator on the left, where the first character will be typed. Once the first character is inputted, the placeholder text “BONITO” will disappear. The question mark character will always follow immediately after the last character typed in the input field. The text in the search field will scroll to the left if the query exceeds the length of the input field, just as it would with a default text input field. The text will begin scrolling before reaching the search icon, such that the icon will never be covered with text. Users can press the Backspace key to delete a character, all the way back to an empty search query.
 
-All search results will be limited to the Greater Seattle Area, and the region cannot be changed.
+All search results will be limited to the Seattle, WA, and the region cannot be changed.
 
 To submit the search query, users can either press the Enter key on their keyboards or click on the search icon on the right side of the input field.
 
@@ -46,8 +46,6 @@ If there are less than 6 search results, all search results will appear.
 ![Full results of search page](wireframes/screen-7.png)
 
 If the user presses the Enter key or clicks the Search icon instead of clicking one of the top 6 results, they will be taken to a search results page. All ingredients matching the user’s query will be listed in alphabetical order. The number of search results will be displayed as “Found [number of results] results for “[search query]” :”
-
-Clicking the “Begin a new search” link will take users back to the “Find ingredients” / home page.
 
 ![No suggestions result](wireframes/screen-8.png)
 
@@ -74,7 +72,7 @@ Once the the form has been submitted, this confirmation message will appear. The
 
 ![Page of a specific ingredient](wireframes/screen-13.png)
 
-Once the user clicks one of the search results, they will be taken to that ingredient’s page. Clicking the “Search for another ingredient” link will take the user back to the “Find ingredients” page.
+Once the user clicks one of the search results, they will be taken to that ingredient’s page. 
 
 Locations will be listed in order of most “Confirmed”. Each location entry has the following features:
 - “Confirmed” and “Didn’t Find” buttons - If users are signed in, they can click either “Confirmed” or “Didn’t Find” for each location. Clicking the button will increase the count displayed on the button. Other users will see these counts increase in real time.
@@ -132,8 +130,6 @@ Sign in will be conducted using Google’s single sign-on. Leaflet Control Geoco
 
 Users can click the “Log in with Google” button, after which they will be prompted through Google’s account sign in process. Once they have completed the sign in process, they will return to the Bonito site to continue.
 
-Clicking the “Back to [Previous Page’s Name]” link will take the user to the page they were previously at.
-
 ![Google auth page, error/re-attempt](wireframes/screen-23.png)
 
 If the Google sign in process fails, the error message “We were unable to get your profile information from Google. Please try again.” will appear below the sign in button.
@@ -146,4 +142,3 @@ The “About Us” page will have pictures, names, and roles of the project team
 
 "Thanks to easily accessible online cookbooks, home cooks from all around the country are able to quickly and efficiently explore recipes for foods that they've never tried before. However, a consequence of all of these different recipes online is that cooks will see an interesting recipe for a meal from a different culture, but that recipe will contain obscure and hard to obtain ingredients. This barrier might be a big enough of an annoyance to deter amatuer chefs from creating and experiencing other cultural cuisines. As of now, there is no direct solution that fixes this issue of uncertainty. That's where Bonito comes in. Bonito provides a crowd-sourced space for fellow home-cooks to share where they sourced hard-to-find ingredients."
 
-Clicking the “Back to home” link will take users to the “Find ingredients” / home page.
