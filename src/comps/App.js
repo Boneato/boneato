@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from '../assets/logo.svg';
 import '../css/App.css';
+import Navbar from './modules/Navbar.js';
+import HomePage from './HomePage';
+import LoginPage from './LoginPage';
+import ResultsPage from './ResultsPage';
+import SpecingPage from './SpecingPage';
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 // renders application with all neccesary components
-function App() {
+export default class App extends Component {
 
   componentDidMount() {
 
@@ -18,5 +24,3 @@ function App() {
 
   }
 }
-
-export default App;

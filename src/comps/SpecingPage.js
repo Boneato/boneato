@@ -5,8 +5,9 @@ import LocationsController from '../cont/LocationsController';
 import firebase from 'firebase';
 require('firebase/firestore');
 
+// renders the SpecingPage for a specific ingredient
 export class SpecingPage extends Component {
-    // takes in ingredientID
+    // takes in valid ingredientID
     constructor(props) {
 
     }
