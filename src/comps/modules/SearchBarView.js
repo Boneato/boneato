@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch } from 'react-instantsearch-dom';
-import AlgoliaController from '../../cont/AlgoliaController';
-import ResultsView from './ResultsView';
+import SearchResultsView from './SearchResultsView';
 
 const searchClient = algoliasearch(
   'YourApplicationID',
@@ -13,9 +12,21 @@ export class SearchBarView extends Component {
     constructor(props) {
 
     }
+    
+    // The SearchController:
+    // Gets search results from InstantSearch and updates SearchResultsView
+    // If InstantSearch query returns empty, 
+    // run algoliaController to grab list of ingredients and update SearchResultsView
+    componentDidUpdate() {
 
-    // calls AlgoliaController when InstantSearch does not find ingredients in database
-    // AlgoliaController will update ResultsView with list of relevant ingredients.
+    }
+
+    // takes in search input and runs a GET request to NutritionixAPI
+    // returns list of ingredient data, formatted as IngredientModel(s)
+    algoliaController = (searchInput) => {
+
+    }
+
     render() {
 
     }
