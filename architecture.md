@@ -48,6 +48,8 @@ This Component is a database model which stores all location data.
 -   Only the LocationsController communicate with the model. It communicates the following:
     -   The LocationsController can get relevant location information from LocationModel according to the given Location Item id.
     -   The LocationsController can import new location data into LocationModel
+    - Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote.
+        - User ID - underneath the Vote ID is the user's id of who created the vote.
 
 # Views
 
@@ -231,8 +233,10 @@ This controller captures formatted data from the LoginView and communicates back
 
 This controller keeps track of vote count for each location in a specific ingredients page.
 
--   VotingController takes in a batch of location ID(s) from the UpvoteButton and DownvoteButton.
+-   VotingController takes in a batch of location ID(s) from the LocationsList component.
 -   This controller resides on the client-side, it will communicate with Firestore to find the corresponding vote for each given location and update the vote count.
+-   This controller will also verify whether a user can upvote or downvote a location, indicated by the voteID from the
+LocationModel.
 
 ## LocationsController
 
