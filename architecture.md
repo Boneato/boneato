@@ -150,6 +150,7 @@ This component is a view that displays the form allowing users to input necessar
     -   LocationInfo
 -   This view communicates with the IngredientModel, which contains the vote counters used to determine the order in which to display location entries.
     -   The LocationsController can ask the IngredientModel to determine the order in which to display location entries.
+-   If the LocationsController does not return any valid locations, prevents the user from submitting the form.
 
 ### UpvoteButton
 
@@ -245,7 +246,7 @@ This controller keeps track of vote count for each location in a specific ingred
 -   VotingController takes in a batch of location ID(s) from the LocationsList component.
 -   This controller resides on the client-side, it will communicate with Firestore to find the corresponding vote for each given location and update the vote count.
 -   This controller will also verify whether a user can upvote or downvote a location, indicated by the voteID from the
-LocationModel.
+    LocationModel.
 
 ## LocationsController
 
