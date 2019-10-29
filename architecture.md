@@ -204,51 +204,58 @@ This component is a view that that contains a bio for a team member and a photo 
 ## AlgoliaController (Firestore → AlgoliaSearchAPI)
 
 This controller communicates with the AlgoliaSearchAPI to determine when to query the NutritionixAPI.
-This controller resides on the client-side and interacts with server-side APIs
-AlgoliaController communicates with the following models and views:
-AlgoliaController will grab inputted data from the SearchBarView and query the NutritionixAPI.
-AlgoliaController will store data from the NutritionixAPI into the IngredientModel and send it to the ResultsPage.
-SearchController (HomePage → Firestore)
+
+-   This component resides on the client-side and interacts with server-side APIs
+-   AlgoliaController communicates with the following models and views:
+    -   AlgoliaController will grab inputted data from the SearchBarView and query the NutritionixAPI.
+    -   AlgoliaController will store data from the NutritionixAPI into the IngredientModel and send it to the ResultsPage.
+
+## SearchController (HomePage → Firestore)
+
 This controller captures user input from the SearchBarView and sends it to Algolia’s InstantSearch component.
-This controller resides on the client side and is implicit in the SearchBarView.
-LoginController (LoginView → FirebaseAuth)
+
+-   This controller resides on the client side and is implicit in the SearchBarView.
+
+## LoginController (LoginView → FirebaseAuth)
+
 This controller captures formatted data from the LoginView and communicates back and forth with Firestore.
-This controller resides on the client-side.
-LoginController will verify the login information from LoginView is valid and correct with Firestore.
-If the login information is invalid, LoginController will return an error message, indicating login was unsuccessful, to the LoginView.
-If login is successful, the LoginController will redirect the user to the HomePage.
-VotingController
+
+-   This controller resides on the client-side.
+-   LoginController will verify the login information from LoginView is valid and correct with Firestore.
+-   If the login information is invalid, LoginController will return an error message, indicating login was unsuccessful, to the LoginView.
+-   If login is successful, the LoginController will redirect the user to the HomePage.
+
+## VotingController
+
 This controller keeps track of vote count for each location in a specific ingredients page.
-VotingController takes in a batch of location ID(s) from the UpvoteButton and DownvoteButton.
-This controller resides on the client-side, it will communicate with Firestore to find the corresponding vote for each given location and update the vote count.
-LocationsController
+
+-   VotingController takes in a batch of location ID(s) from the UpvoteButton and DownvoteButton.
+-   This controller resides on the client-side, it will communicate with Firestore to find the corresponding vote for each given location and update the vote count.
+
+## LocationsController
+
 The LocationsController will communicate with the OneItemController to grab an ingredient ID and return the attached locations from Firestore.
-The controller resides on the client-side.
-LocationsController queries all location(s) attached to the given ingredient ID and returns the batch of location(s) to the OneItemController.
-OneItemController
+
+-   The controller resides on the client-side.
+-   LocationsController queries all location(s) attached to the given ingredient ID and returns the batch of location(s) to the OneItemController.
+
+## OneItemController
+
 Receives an ingredientID from the ResultsPage. It sends the ingredient ID to the LocationsController and captures the batch of location(s) data.
-Also queries the database (Firestore) for the relevant IngredientModel.
-OneItemController resides on the client-side.
-The controller will send all LocationModel(s) and IngredientModel to the SpecingPage.
-MapsController
+
+-   Also queries the database (Firestore) for the relevant IngredientModel.
+-   OneItemController resides on the client-side.
+-   The controller will send all LocationModel(s) and IngredientModel to the SpecingPage.
+
+## MapsController
+
 This controller interacts with the Google Maps API to display relevant map data for the EmbeddedMap and the NewLocationForm.
-The controller resides on the client-side and interacts with server-side APIs.
-PlacesController
+
+-   The controller resides on the client-side and interacts with server-side APIs.
+
+## PlacesController
+
 This controller interacts with the Google Places API to locate all locations within the Seattle Area.
-The controller interacts with the NewLocationForm to grab user input and display relevant locations (the algorithm is determined by the API).
-Inputted locations not in the Seattle Area will return an error stating that the location can not be submitted.
-ReactRouterController
 
-Updating vote counter
-Submitting location data
-Displaying locations on google maps api
-Querying for ingredient data on NutritionixAPI
-Error Messages
-Home page
-Login page
-Results page
-Specific ingredient page
-About page?
-
-Design spec
-Requirements
+-   The controller interacts with the NewLocationForm to grab user input and display relevant locations (the algorithm is determined by the API).
+-   Inputted locations not in the Seattle Area will return an error stating that the location can not be submitted.
