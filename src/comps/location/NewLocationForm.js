@@ -12,9 +12,16 @@ export class NewLocationForm extends Component {
 
     }
 
+    
+    // create new LocationModel from given location data upon form submit.
+    // Stores LocationModel into Firestore for admin approval.
+    newLocation = (newLocation) => {
+
+    }
     // if PlacesController successfully loads the Google Places API,
     // render form that takes in user input to be submitted
     // through the PlacesController.
+    // If PlacesController returns empty list, disallow submittal of form.
     render() {
         
     }

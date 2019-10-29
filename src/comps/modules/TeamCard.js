@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Modal from '../modules/Modal';
-import MapsController from '../../cont/MapsController';
 
 export class TeamCard extends Component {
     
+    // takes in team member image, first name, and member's role in a list
     constructor(props) {
 
     }

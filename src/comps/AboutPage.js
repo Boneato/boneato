@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import TeamCard from './modules/TeamCard';
 
 export class AboutPage extends Component {
     constructor(props) {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
-import { ReactRouterController } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-export class NavBar extends Component {
+export class Navbar extends Component {
     
     // pre-conditions: application is open, sign-in status recieved as true or false in props
     // post-conditions: passes props to render proper navbar links
