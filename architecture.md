@@ -6,55 +6,64 @@ There are three models stored in Firebase. The three models reside on the server
 
 ### IngredientModel
 
-This Component is a database model which stores all ingredient data including:
+This Component is a database model which stores all ingredient data.
 
--   Ingredient Item id
--   Ingredient Name
--   Short description
--   Location Item id
-    -   Vote counter
-    -   User id (of the person who suggested the location)
-    -   Downvote counter
-    -   Date first reported
--   User data
--   User id
--   User Name
--   LocationModel
--   Location Item id
--   Location Name
-    Address in the Google Places library’s standard
-    Latitude coordinates
-    Longitude coordinates
-    Geocoding for displaying in the map
-    This component is a database model that stores all the necessary data in the Bonito web application. Above are the details for data store.
-    The model resides on the server side.
-    The AlgoliaController, LoginController, OneItemController andcommunicate with the model. They communicate the following:
-    The AlgoliaController can get the relevant Ingredient Item id and their Vote counter from the Firestore
-    Thecan import new ingredient into the Firestore database and generate its own Ingredient Item id.
-    The LoginController can verify user’s login information through FirebaseAuthentication
-    The LoginController can import new user’s name into Firestore and generate its own User id
-    The OneItemController can get relevant ingredient information in the Ingredient Model from the FireStore according to the Ingredient Item id.
-    The LocationsController can get relevant location information in the Location Data from the FireStore according to the Location Item id.
-    The VotingController can update the voting information in Ingredient Model (including: vote counter, downvote counter, User id of the person who suggested the location and Date first reported) in the Firestore database.
-    Thecan import new location data into the Firestore database.
+-   Ingredient data includes the following:
+    -   Ingredient Item id - A unique and non-null id for every ingredient stored in the database
+    -   Ingredient Name - Name of the ingredient
+    -   Short description - Description about the ingredient. When a new one is suggested by the user, the administrator will examine the ingredient by this description.
+    -   Location Item id - Location item id of the reported location associated with the ingredient, with corresponding location information as follows:
+        -   Vote counter - The total number of votes (both upvote and downvote) on the location for this ingredient
+        -   User id - The user id of the person who suggested the location
+        -   Downvote counter - The total number of downvote on the location for this ingredient
+        -   Date first reported - Date that the location for this ingredient was first reported
+    -   The AlgoliaController, OneItemController and VotingController communicate with the model. They communicate the following:
+        -   The AlgoliaController can get the relevant ingredient item id and their vote counter from the IngredientModel
+        -   The OneItemController can import new ingredient into the IngredientModel and generate its own ingredient item id
+        -   The OneItemController can get relevant ingredient information from IngredientModel according to the given Ingredient Item id.
+        -   The VotingController can update the voting information in IngredientModel (including: vote counter, downvote counter, User id and Date first reported).
+
+### UserModel
+
+This Component is a database model which stores all user data.
+
+-   User data is stored as follows:
+    -   User id - A unique and non-null id for every user that has signed in the Bonito application
+    -   User Name - User’s first name
+-   Only the LoginController communicate with the model. It communicates the following:
+    -   The LoginController can verify user’s login information through FirebaseAuthentication
+    -   The LoginController can import new user’s name into UserModel and generate its own User id
+
+### LocationModel
+
+This Component is a database model which stores all location data.
+
+-   Location data is stored as follows:
+    -   Location Item id - A unique and non-null id for every location that has been reported by the users
+    -   Location Name - Name of the store that has been reported
+    -   Address in the Google Places library’s standard - The detailed address for the store, also it has to be in the Google Places library’s standard
+    -   Geocoding - For displaying in the map
+        -   Latitude coordinates
+        -   Longitude coordinates
+-   Only the LocationsController communicate with the model. It communicates the following:
+    -   The LocationsController can get relevant location information from LocationModel according to the given Location Item id.
+    -   The LocationsController can import new location data into LocationModel
 
 # Views
 
 ## NavBar
 
-This component is a view that displays the logo (which is also a link) as well as the NavLinks view as a subcomponent.
+This component is a view that displays the navigation bar of Bonito.
 
+-   The navigation elements in the NavBar include:
+    -   The logo (which is also a link that directs the user to the homepage)
+    -   The “Find Ingredients” link
+    -   The “About” link
+    -   A fourth link that reads either “Sign In” if the user is NOT signed in or “Signed in as \[username\]” if the user IS signed in.
+        -   Links should redirect users to their respective pages
 -   This view resides only on the client
--   Only thecommunicates with this view. It communicates the following:
-    -   The NavLinks can tell theif the user clicked the logo
-
-### NavLinks
-
-This component is a view that displays the links that allow the user to navigate the website. The links include Find Ingredients, About, and a third link that reads either ‘Sign In’ if the user is NOT signed in or their username if the user IS signed in, and will redirect users to the selected page.
-
--   The view resides on the client
--   Only thecommunicates with the view. It communicates the following:
-    -   The NavLinks can tell thewhich link the user clicked
+-   Only the React Router Dom communicates with this view. It communicates the following:
+    -   The NavBar can tell the React Router Dom if the user clicked the logo or any of these links
 
 ## Modal (this component will be reused for all modal instances)
 
