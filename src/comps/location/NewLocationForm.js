@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Modal from './Modal';
+import Modal from '../modules/Modal';
 import PlacesController from '../../cont/PlacesController';
 
 export class NewLocationForm extends Component {
