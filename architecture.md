@@ -40,8 +40,7 @@ This Component is a database model which stores all location data.
 
 -   Location data is stored as follows: - Location Item id - A unique and non-null id for every location that has been reported by the users - Location Name - Name of the store that has been reported - Address in the Google Places library’s standard - The detailed address for the store, also it has to be in the Google Places library’s standard - Geocoding - For displaying in the map - Latitude coordinates - Longitude coordinates
     <<<<<<< HEAD
--   Only the **LocationsController** communicate with the model. It communicates the following: - The **LocationsController** can get relevant location information from **LocationModel** according to the given Location Item id. - The **LocationsController** can import new location data into **LocationModel** - Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote. - User ID - underneath the Vote ID is the user's id of who created the vote.
-    =======
+-   # Only the **LocationsController** communicate with the model. It communicates the following: - The **LocationsController** can get relevant location information from **LocationModel** according to the given Location Item id. - The **LocationsController** can import new location data into **LocationModel** - Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote. - User ID - underneath the Vote ID is the user's id of who created the vote.
 -   The LocationsController communicate with the model. It communicates the following:
     -   The LocationsController can get relevant location information from LocationModel according to the given Location Item id.
     -   The LocationsController can import new location data into LocationModel
@@ -75,27 +74,20 @@ This component is a view that displays a **Modal** that overlays the rest of the
 
 ## HomePage
 
-This component is a view that serves as the homepage of Bonito. It contains the **SearchBarView** and SearchResultsView subcomponents.
+This component is a view that serves as the homepage of Bonito. It contains the **SearchBarView** and **SearchResultsView** subcomponents.
 
 ### SearchBarView
 
-<<<<<<< HEAD
+**SearchBarView** is a view component that takes in text and passes that text to the **SearchController** component.
 
--   Takes in text and passes that text to the **SearchController** component. - Pressing the return key or clicking the magnifying glass view subcomponent within the **SearchBarView** connects the **SearchBarView** to thewhich causes it to display the **ResultsPage** view component.
-    =======
--   Takes in text and passes that text to the SearchController component. - Pressing the return key or clicking the magnifying glass view subcomponent within the SearchBarView connects the SearchBarView to thewhich causes it to display the ResultsPage view component. - If the SearchController returns no results, the SearchBarView will display a link that can be clicked to open up the NewIngredientView component that is a subcategory of Modal components.
-    > > > > > > > 23ccf60fedba70f44c3f358d9a06326c9a00aa04
+-   Pressing the return key or clicking the magnifying glass image link within the **SearchBarView** connects to the **SearchBarView** which causes it to display the **ResultsPage** view component.
+-   If the **SearchController** returns no results, the **SearchBarView** will display a link that can be clicked to open up the **NewIngredientView** component that is a subcategory of **Modal** components.
 
 ### SearchResultsView
 
-SearchResultsView is a view subcomponent that takes in information from the **SearchController** and displays up to six results from the **SearchController** as a clickable list dropping down below the **SearchBarView**.
+**SearchResultsView** is a view subcomponent that takes in information from the **SearchController** and displays up to six results from the **SearchController** as a clickable list dropping down below the **SearchBarView**.
 
-<<<<<<< HEAD
-
--   Clicking one of the results will then connect to theto display the **SpecingPage** view component specifically for the selected ingredient.
--   # If the **SearchController** returns no results, the SearchResultsView will display a link that can be clicked to open up the **NewIngredientView** component that is a subcategory of **Modal** components.
--   Clicking one of the results will then connect to theto display the SpecingPage view component specifically for the selected ingredient.
-    > > > > > > > 23ccf60fedba70f44c3f358d9a06326c9a00aa04
+-   Clicking one of the results will then display the **SpecingPage** view component specifically for the selected ingredient.
 
 #### NewIngredientView
 
