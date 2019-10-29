@@ -1,49 +1,42 @@
 # Models
 
-AlgoliaSearchAPI
-This component is a model that build search experience and visually realize the search suggestion feature
-The model resides on the client side.
-Only the AlgoliaController communicates with the model. It communicates the following:
-The AlgoliaController can provide the AlgoliaSearchAPI with necessary data (relevant Ingredient Name and their Vote counter).
-NutritionixAPI
-This component is a model that provides ingredients names from the Nutritionix library.
-The model resides on the server side.
-Only thecommunicates with the model. It communicates the following:
-Thecan grab new ingredient name from the Nutritionix API.
+## Firebase
 
-## FireStore
+There are three models stored in Firebase. The three models reside on the server side.
 
 ### IngredientModel
 
-Ingredient Item id
-Ingredient Name
-Short description
-Location Item id
-Vote counter
-User id (of the person who suggested the location)
-Downvote counter
-Date first reported
-User data
-User id
-User Name
-LocationModel
-Location Item id
-Location Name
-Address in the Google Places library’s standard
-Latitude coordinates
-Longitude coordinates
-Geocoding for displaying in the map
-This component is a database model that stores all the necessary data in the Bonito web application. Above are the details for data store.
-The model resides on the server side.
-The AlgoliaController, LoginController, OneItemController andcommunicate with the model. They communicate the following:
-The AlgoliaController can get the relevant Ingredient Item id and their Vote counter from the Firestore
-Thecan import new ingredient into the Firestore database and generate its own Ingredient Item id.
-The LoginController can verify user’s login information through FirebaseAuthentication
-The LoginController can import new user’s name into Firestore and generate its own User id
-The OneItemController can get relevant ingredient information in the Ingredient Model from the FireStore according to the Ingredient Item id.
-The LocationsController can get relevant location information in the Location Data from the FireStore according to the Location Item id.
-The VotingController can update the voting information in Ingredient Model (including: vote counter, downvote counter, User id of the person who suggested the location and Date first reported) in the Firestore database.
-Thecan import new location data into the Firestore database.
+This Component is a database model which stores all ingredient data including:
+
+-   Ingredient Item id
+-   Ingredient Name
+-   Short description
+-   Location Item id
+    -   Vote counter
+    -   User id (of the person who suggested the location)
+    -   Downvote counter
+    -   Date first reported
+-   User data
+-   User id
+-   User Name
+-   LocationModel
+-   Location Item id
+-   Location Name
+    Address in the Google Places library’s standard
+    Latitude coordinates
+    Longitude coordinates
+    Geocoding for displaying in the map
+    This component is a database model that stores all the necessary data in the Bonito web application. Above are the details for data store.
+    The model resides on the server side.
+    The AlgoliaController, LoginController, OneItemController andcommunicate with the model. They communicate the following:
+    The AlgoliaController can get the relevant Ingredient Item id and their Vote counter from the Firestore
+    Thecan import new ingredient into the Firestore database and generate its own Ingredient Item id.
+    The LoginController can verify user’s login information through FirebaseAuthentication
+    The LoginController can import new user’s name into Firestore and generate its own User id
+    The OneItemController can get relevant ingredient information in the Ingredient Model from the FireStore according to the Ingredient Item id.
+    The LocationsController can get relevant location information in the Location Data from the FireStore according to the Location Item id.
+    The VotingController can update the voting information in Ingredient Model (including: vote counter, downvote counter, User id of the person who suggested the location and Date first reported) in the Firestore database.
+    Thecan import new location data into the Firestore database.
 
 # Views
 
