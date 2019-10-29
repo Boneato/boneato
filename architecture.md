@@ -129,11 +129,14 @@ This component is a view that displays information about a specifically selected
 
 ### LocationsList
 
-This component displays a list of relevant locations from a given Ingredient ID from the SpecingPage.
-This list will display the following subcomponents for each component: - LocationInfo - UpvoteButton - DownvoteButton
+This component displays a list of relevant locations from a given Ingredient ID from the **SpecingPage**.
 
--   This view will communicate with the VotingController to keep track of vote count for each UpvoteButton and DownvoteButton
--   If user is not signed in (as indicated by the SpecingPage), the LocationsList will prevent user interaction with vote buttons.
+-   This list will display the following subcomponents for each component:
+    -   **LocationInfo**
+    -   **UpvoteButton**
+    -   **DownvoteButton**
+-   This view will communicate with the **VotingController** to keep track of vote count for each **UpvoteButton** and **DownvoteButton**
+-   If user is not signed in (as indicated by the **SpecingPage**), the **LocationsList** will prevent user interaction with vote buttons.
 
 ### NewLocationForm
 
