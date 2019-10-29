@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-//import logo from '../assets/logo.svg';
-import './css/App.css';
-//import { NavLink } from 'react-router-dom';
+import NewIngredientsController from '../../cont/NewIngredientsController';
 
 export class Modal extends Component {
-    
-    // pre-conditions: sign-in status recieved as true or false in props
-    // post-conditions: passes props to render proper navbar links
-    constructor(props) {}
-    
+
+    // pre-conditions: 
+    //      props must be filled with a Header text 
+    //      and DOM elements to fill Modal.
     // post-conditions:
-    //      if user signed in, render "Signed in as 'username'" link
-    //      otherwise render "Sign In" link.
-    render () {
+    //      passes props and renders modal in render function
+    constructor(props) {
+
+    }
+
+    // renders given DOM elements inside of modal
+    render() {
 
     }
 }
-
