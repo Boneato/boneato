@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+require("firebase/firestore");
 
 // pre-conditions: Only used within the LoginPage.
 // post-conditions: 
