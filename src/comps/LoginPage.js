@@ -9,6 +9,8 @@ export class LoginPage extends Component {
 
     // renders login page for sign in
     // if user is signed in, redirects user to homePage
+    // if LoginController determines login credentials are invalid,
+    // render an error message displaying login was unsuccessful.
     render() {
 
     }

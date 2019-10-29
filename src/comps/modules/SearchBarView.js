@@ -27,6 +27,8 @@ export class SearchBarView extends Component {
 
     }
 
+    // if list of ingredients for the SearchResultsView is empty, render link
+    // allowing suggestion of new ingredient. Otherwise render list of suggested ingredients.
     render() {
 
     }
