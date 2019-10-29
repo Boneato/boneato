@@ -38,16 +38,19 @@ This Component is a database model which stores all user data.
 
 This Component is a database model which stores all location data.
 
--   Location data is stored as follows: - Location Item id - A unique and non-null id for every location that has been reported by the users - Location Name - Name of the store that has been reported - Address in the Google Places library’s standard - The detailed address for the store, also it has to be in the Google Places library’s standard - Geocoding - For displaying in the map - Latitude coordinates - Longitude coordinates
-    <<<<<<< HEAD
--   # Only the **LocationsController** communicate with the model. It communicates the following: - The **LocationsController** can get relevant location information from **LocationModel** according to the given Location Item id. - The **LocationsController** can import new location data into **LocationModel** - Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote. - User ID - underneath the Vote ID is the user's id of who created the vote.
--   The LocationsController communicate with the model. It communicates the following:
-    -   The LocationsController can get relevant location information from LocationModel according to the given Location Item id.
-    -   The LocationsController can import new location data into LocationModel
+-   Location data is stored as follows:
+    -   Location Item id - A unique and non-null id for every location that has been reported by the users
+    -   Location Name - Name of the store that has been reported
+    -   Address in the Google Places library’s standard - The detailed address for the store, also it has to be in the Google Places library’s standard
+    -   Geocoding - For displaying in the map
+        -   Latitude coordinates
+        -   Longitude coordinates
+-   The **LocationsController** communicate with the model. It communicates the following:
+    -   The **LocationsController** can get relevant location information from LocationModel according to the given Location Item id.
+    -   The **LocationsController** can import new location data into **LocationModel**
     -   Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote.
         -   User ID - underneath the Vote ID is the user's id of who created the vote.
--   The VotingController will also communicate with the LocationsModel to validate whether a user can vote or downvote a location.
-    > > > > > > > 23ccf60fedba70f44c3f358d9a06326c9a00aa04
+-   The **VotingController** will also communicate with the **LocationsModel** to validate whether a user can vote or downvote a location.
 
 # Views
 
@@ -112,12 +115,16 @@ This component is a view that displays when pressing the return key or clicking 
 
 This component is a view that displays information about a specifically selected ingredient.
 
--   Specific ingredient information includes: - “Ingredient” label - Ingredient name - Text, “Know where to buy this? Report a new location”
-    <<<<<<< HEAD - “Report a new location” is an anchor link which opens a **Modal** with **NewLocationForm** on-click. - Separator line
--   Additionally, if there is one or more location reported, this component will display the following subcomponents: - **LocationsList** - **LocationInfo** - **UpvoteButton** - **DownvoteButton** - **Embedded Map**
-    ======= - “Report a new location” is an anchor link which opens a Modal with NewLocationForm on-click. - If the user is not signed in (indicated by LoginController) prevent user from clicking link. - Separator line
--   Additionally, if there is one or more location reported, this component will display the following subcomponents: - LocationsList - Embedded Map
-    > > > > > > > 23ccf60fedba70f44c3f358d9a06326c9a00aa04
+-   Specific ingredient information includes:
+    -   “Ingredient” label
+    -   Ingredient name
+    -   Text, “Know where to buy this? Report a new location”
+-   “Report a new location” is an anchor link which opens a **Modal** with **NewLocationForm** on-click.
+-   If the user is not signed in (indicated by **LoginController**) prevent user from clicking link.
+-   Separator line
+-   Additionally, if there is one or more location reported, this component will display the following subcomponents:
+    -   **LocationsList**
+    -   **Embedded Map**
 -   If there are no location(s) reported, this component will display the text, “Phooey. There are no known locations yet.”
 
 ### LocationsList
