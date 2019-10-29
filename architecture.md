@@ -46,7 +46,7 @@ This Component is a database model which stores all location data.
         -   Latitude coordinates
         -   Longitude coordinates
 -   The **LocationsController** communicate with the model. It communicates the following:
-    -   The **LocationsController** can get relevant location information from LocationModel according to the given Location Item id.
+    -   The **LocationsController** can get relevant location information from **LocationModel** according to the given Location Item id.
     -   The **LocationsController** can import new location data into **LocationModel**
     -   Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote.
         -   User ID - underneath the Vote ID is the user's id of who created the vote.
