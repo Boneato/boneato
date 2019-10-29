@@ -45,11 +45,20 @@ This Component is a database model which stores all location data.
     -   Geocoding - For displaying in the map
         -   Latitude coordinates
         -   Longitude coordinates
+<<<<<<< HEAD
 -   Only the **LocationsController** communicate with the model. It communicates the following:
     -   The **LocationsController** can get relevant location information from **LocationModel** according to the given Location Item id.
     -   The **LocationsController** can import new location data into **LocationModel**
     -   Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote.
         -   User ID - underneath the Vote ID is the user's id of who created the vote.
+=======
+-   The LocationsController communicate with the model. It communicates the following:
+    -   The LocationsController can get relevant location information from LocationModel according to the given Location Item id.
+    -   The LocationsController can import new location data into LocationModel
+    - Vote ID - a unique id for each vote with a suffix 'U' indicating upvote and 'D' indicating downvote.
+        - User ID - underneath the Vote ID is the user's id of who created the vote.
+-   The VotingController will also communicate with the LocationsModel to validate whether a user can vote or downvote a location.
+>>>>>>> 23ccf60fedba70f44c3f358d9a06326c9a00aa04
 
 # Views
 
@@ -80,15 +89,25 @@ This component is a view that serves as the homepage of Bonito. It contains the 
 
 ### SearchBarView
 
+<<<<<<< HEAD
 -   Takes in text and passes that text to the **SearchController** component.
     -   Pressing the return key or clicking the magnifying glass view subcomponent within the **SearchBarView** connects the **SearchBarView** to thewhich causes it to display the **ResultsPage** view component.
+=======
+-   Takes in text and passes that text to the SearchController component.
+    -   Pressing the return key or clicking the magnifying glass view subcomponent within the SearchBarView connects the SearchBarView to thewhich causes it to display the ResultsPage view component.
+    -   If the SearchController returns no results, the SearchBarView will display a link that can be clicked to open up the NewIngredientView component that is a subcategory of Modal components.
+>>>>>>> 23ccf60fedba70f44c3f358d9a06326c9a00aa04
 
 ### SearchResultsView
 
 SearchResultsView is a view subcomponent that takes in information from the **SearchController** and displays up to six results from the **SearchController** as a clickable list dropping down below the **SearchBarView**.
 
+<<<<<<< HEAD
 -   Clicking one of the results will then connect to theto display the **SpecingPage** view component specifically for the selected ingredient.
 -   If the **SearchController** returns no results, the SearchResultsView will display a link that can be clicked to open up the **NewIngredientView** component that is a subcategory of **Modal** components.
+=======
+-   Clicking one of the results will then connect to theto display the SpecingPage view component specifically for the selected ingredient.
+>>>>>>> 23ccf60fedba70f44c3f358d9a06326c9a00aa04
 
 #### NewIngredientView
 
@@ -117,6 +136,7 @@ This component is a view that displays information about a specifically selected
     -   “Ingredient” label
     -   Ingredient name
     -   Text, “Know where to buy this? Report a new location”
+<<<<<<< HEAD
         -   “Report a new location” is an anchor link which opens a **Modal** with **NewLocationForm** on-click.
     -   Separator line
 -   Additionally, if there is one or more location reported, this component will display the following subcomponents:
@@ -125,8 +145,25 @@ This component is a view that displays information about a specifically selected
         -   **UpvoteButton**
         -   **DownvoteButton**
     -   **Embedded Map**
+=======
+        -   “Report a new location” is an anchor link which opens a Modal with NewLocationForm on-click.
+        -   If the user is not signed in (indicated by LoginController) prevent user from clicking link.
+    -   Separator line
+-   Additionally, if there is one or more location reported, this component will display the following subcomponents:
+    -   LocationsList
+    -   Embedded Map
+>>>>>>> 23ccf60fedba70f44c3f358d9a06326c9a00aa04
 -   If there are no location(s) reported, this component will display the text, “Phooey. There are no known locations yet.”
 
+### LocationsList
+
+This component displays a list of relevant locations from a given Ingredient ID from the SpecingPage.
+This list will display the following subcomponents for each component:
+    -   LocationInfo
+    -   UpvoteButton
+    -   DownvoteButton
+- This view will communicate with the VotingController to keep track of vote count for each UpvoteButton and DownvoteButton
+- If user is not signed in (as indicated by the SpecingPage), the LocationsList will prevent user interaction with vote buttons.
 ### NewLocationForm
 
 This component is a view that displays the form allowing users to input necessary information to report a new ingredient location.
@@ -227,9 +264,17 @@ This controller captures user input from the **SearchBarView** and sends it to A
 This controller captures formatted data from the **LoginPage** and communicates back and forth with Firestore.
 
 -   This controller resides on the client-side.
+<<<<<<< HEAD
 -   **LoginController** will verify the login information from **LoginPage** is valid and correct with Firestore.
 -   If the login information is invalid, **LoginController** will return an error message, indicating login was unsuccessful, to the **LoginPage**.
 -   If login is successful, the **LoginController** will redirect the user to the **HomePage**.
+-   LoginController can also verify if current user is logged in.
+=======
+-   LoginController will verify the login information from LoginView is valid and correct with Firestore.
+-   If the login information is invalid, LoginController will return an error message, indicating login was unsuccessful, to the LoginView.
+-   If login is successful, the LoginController will redirect the user to the HomePage.
+-   LoginController can also verify if current user is logged in.
+>>>>>>> 23ccf60fedba70f44c3f358d9a06326c9a00aa04
 
 ## VotingController
 
@@ -267,3 +312,8 @@ This controller interacts with the Google Places API to locate all locations wit
 
 -   The controller interacts with the **NewLocationForm** to grab user input and display relevant locations (the algorithm is determined by the API).
 -   Inputted locations not in the Seattle Area will return an error stating that the location can not be submitted.
+
+## NewIngredientsController
+
+This controller stores an IngredientModel into the database for an admin to approve.
+The controller interacts with the the SearchBarView.

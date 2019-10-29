@@ -15,6 +15,7 @@ export class NewLocationForm extends Component {
     
     // create new LocationModel from given location data upon form submit.
     // Stores LocationModel into Firestore for admin approval.
+    // When location form is submitted, render Modal to indicate submittal is approved.
     newLocation = (newLocation) => {
 
     }

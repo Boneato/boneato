@@ -14,3 +14,10 @@ export function signUp() {
 export function signOut() {
 
 }
+
+// Takes in userID.
+// Returns true boolean indicating current user is signed in.
+// Otherwise return false.
+export function loggedIn(userID) {
+
+}

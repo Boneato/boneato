@@ -3,6 +3,7 @@ import VotingController from '../../cont/VotingController';
 import LocationInfo from '../location/LocationInfo';
 import UpvoteButton from '../location/UpVoteButton';
 import DownvoteButton from '../location/DownVoteButton';
+import LoginController from '../../cont/LoginController';
 
 export class LocationsList extends Component {
     
@@ -25,7 +26,6 @@ export class LocationsList extends Component {
     // as well as vote count for upvotes and downvotes.
     // Communicate with VotingController to check whether user can upvote or downvote.
     // If VotingController indicates user has already voted, prevent user from voting.
-    // If list is empty, render a no locations found display.
     // If user is not signed, disallow interaction with UpvoteButton,
     // DownvoteButton.
     render() {
