@@ -58,7 +58,7 @@ This Component is a database model which stores all location data.
 
 This component is a view that displays the navigation bar of Bonito. This component is always visible at the top of any Bonito page (i.e. fixed to the top of the webpage at all times), and is active as long as a **Modal** component is not in use.
 
--   The navigation elements in the NavBar include:
+-   The navigation elements in the **NavBar\*** include:
     -   The logo (which is also a link that directs the user to the homepage)
     -   The “Find Ingredients” link
     -   The “About” link
