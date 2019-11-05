@@ -5,7 +5,7 @@
     * Lauren and Anthony
 2. What will their project management practices be?
     * Kanban (Trello)
-        * Using this to continue the 
+        * Using this to continue keeping track of our tasks, grooming the backlog and prioritizing stories
 3. Will conduct use daily or weekly meetings?
     * Continue to meet:
         * Digitally on Sundays at 1pm
@@ -19,8 +19,6 @@
     ![meeting agenda template](https://i.imgur.com/EaxDhHW.png "meeting agenda template")
 
 ## 2) What tools will you use to communicate?
-
-For each, articulate the alternatives and why that is the best choice.
 
 * **Private Slack channel** “c-llab” on the INFO 442 Autumn 2019 workspace for informal, text-based communication
     * Possible alternatives: Messenger, Google Hangouts, Microsoft Teams, Discord, and many others
@@ -72,7 +70,6 @@ For each, articulate the alternatives and why that is the best choice.
 * Set up database - Brian
 
 ## 4) What is your timeline?
-Include a list of milestones you'll reach and deadlines for each.
 
 ### Sprint schedule:
 ![sprint schedule](https://i.imgur.com/OazYEBp.png "sprint schedule")
@@ -146,17 +143,17 @@ ___
 
 ~
 
-**Page layout*** - will not be verifying any of these features. This is because the appearance of our webpage is not essential to the functionality of the application.
+**Page layout*** - We will not be verifying any of these features. This is because the appearance of our webpage is not essential to the functionality of the application.
 
-**Navbar*** - manual integration testing. Passing the test means that all of these specifications are met.
+**Navbar*** - Manual integration testing. Passing the test means that all of these specifications are met.
 
-**Design guidelines*** - will not be verifying any of these features. This is because the colors and typography is not essential to the functionality of the application, and we have decided not to prioritize accessibility.
+**Design guidelines*** - We will not be verifying any of these features. This is because the colors and typography is not essential to the functionality of the application, and we have decided not to prioritize accessibility.
 
 **Repeated Components** - We will be conducting integration testing for each requirement. Tests will pass if the components involved behave according to the specification.
 
-**Log in process*** - unit test. Will pass the test if user can successfully log in by following the process detailed below, and is indicated successful by displaying “Signed in as [user’s first name]” in place of the “Sign in” button. Will not pass if the error message displays, though this is still correct functionality.
+**Log in process*** - Unit test. Will pass the test if user can successfully log in by following the process detailed below, and is indicated successful by displaying “Signed in as [user’s first name]” in place of the “Sign in” button. Will not pass if the error message displays, though this is still correct functionality.
 
-**Search process*** - unit testing, including a stress test which will include inputs of all types (varying lengths, varying characters, etc). Will pass the test if search output is in the expected order.
+**Search process*** - Unit testing, including a stress test which will include inputs of all types (varying lengths, varying characters, etc). Will pass the test if search output is in the expected order.
 
 **Suggest a new ingredient** - Unless noted otherwise, we will conduct integration tests for each requirement to verify that components behave according to the specification. Tests will pass if components involved behave according to the specification.
 * Suggesting a new ingredient to be added to the database is displayed in the form of a modal that displays on top of the search bar.
@@ -169,13 +166,16 @@ ___
 * If the user does not fill in the name textbox but clicks submit, the submission will not be added to the table and an alert icon in the form of an exclamation point within a circle will appear to the right of the “Ingredient name” title with “This field cannot be left blank” to its right. “Please resolve the errors above” will also display below the submit button.
 * If the user does fill in the ingredient name and presses submit, the header will stay the same but the form will then change to an icon of a checkmark in a circle, vertically and horizontally centered within the modal, with the following text horizontally centered below it: “‘[Ingredient name]’ has been submitted for approval” with the ingredient name being bolded. Once the submission has occurred and the user’s inputs are placed into the firebase table, one of the team members will review the submission. If they approve the submission, they will add the submission to the existing database.
 
-**Ingredient page*** - manual integration testing. Will pass if page behaves according to specifications.
+**Ingredient page*** - Manual integration testing. Will pass if page behaves according to specifications.
 
-**About page*** - will not be verifying any of these features. This is because the appearance of our webpage is not essential to the functionality of the application.
+**About page*** - We will not be verifying any of these features. This is because the appearance of our webpage is not essential to the functionality of the application.
 
 **Voting process*** - Both unit testing and integration testing. We will conduct unit tests to verify that input is received on the back-end for each of these voting inputs, with particular focus on stress-testing. Upvoting, un-upvoting, downvoting, and un-downvoting all need to be tested in varying permutations over and over again to ensure that the back-end holds up given many different inputs, and we will conduct thorough integration tests to verify that components behave according to the specification. Tests will pass if components involved behave according to the specification.
 
-**Report a new location*** - unit testing + integration testing. Unit tests will be used to verify new location is stored in the firebase. Integration tests will pass when all front end functionality behaves according to specifications.
+**Report a new location*** - Both unit testing and integration testing. Unit tests will be used to verify new location is stored in the firebase. Integration tests will pass when all front end functionality behaves according to specifications.
+
+
+**Data & Architecture (ingredient data, user data, etc)*** - Verification will be done indirectly through the integration tests with the view components, therefore we will not have to actually do any further testing on our data and architecture.
 
 
 **_*Please see the requirements document "requirements.md" to view all requirements._**
