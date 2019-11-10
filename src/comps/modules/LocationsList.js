@@ -4,6 +4,7 @@ import LocationInfo from '../location/LocationInfo';
 import UpvoteButton from '../location/UpVoteButton';
 import DownvoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
+import { LoginPage } from '../LoginPage';
 
 export class LocationsList extends Component {
     
@@ -11,6 +12,15 @@ export class LocationsList extends Component {
     //      props must have list of LocationModels with respective LocationItems
     //      pass in boolean indicating user is signed-in or not.
     constructor(props) {
+        super(props);
+        this.state={
+            ingredientID: null,
+            locationModel: [{locationID:null,
+                            upVote: 0,
+                            downVote: 0,
+                            userID: null,
+                            dataFirstReport:null}],
+        };
 
     }
 
@@ -29,6 +39,25 @@ export class LocationsList extends Component {
     // If user is not signed, disallow interaction with UpvoteButton,
     // DownvoteButton.
     render() {
+        let voteAllow = null;
 
+        if (this.props.currentUser) {
+            voteAllow = <div>
+            <span>
+                <UpvoteButton/>
+                <DownvoteButton/>
+            </span>
+            <span>
+                <LocationInfo/>
+            </span>
+        </div>
+        }else{
+            <LoginPage/>
+        }
+        return(
+            <body>
+               {voteAllow}
+            </body>
+        );
     }
 }
