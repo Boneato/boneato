@@ -18,22 +18,22 @@ export class TeamCard extends Component {
     // renders a team member image, team member first name, and team member role
     render() {
 
-        const {PersonInfo}=this.props;
+        const {FirstName, LastName, Position}=this.props;
 
         return (
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
-                  image={"../imgs/" + PersonInfo.name + ".jpg"}
-                  title={PersonInfo.name + " Photo"}
+                  image={"../imgs/" + FirstName + ".jpg"}
+                  title={FirstName + " Photo"}
                 />
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {PersonInfo.name}
+                    {FirstName + " " + LastName}
                   </Typography>
                   <Typography variant="body2" color="textSecondary" component="p">
-                    {PersonInfo.position}
+                    {Position}
                   </Typography>
                 </CardContent>
               </CardActionArea>
