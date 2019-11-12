@@ -23,13 +23,13 @@ export class Navbar extends Component {
         if (this.props.currentUser) {
             loginLink = 
             <FormControl className={classes.formControl}>
-                <InputLabel id="simple-select-label">Signed in as ~username~</InputLabel>
+                <InputLabel id="simple-select-label">Signed in as {currentUser}</InputLabel>
                 <Select
                     labelId="simple-select-label"
                     id="simple-select"
                     onChange={handleChange}                    
                 >
-                    <MenuItem>Sign out</MenuItem>
+                    <MenuItem onClick={this.props.handleSignOut}>Sign out</MenuItem>
                 </Select>
             </FormControl>;
         } else {
