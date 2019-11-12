@@ -12,6 +12,8 @@ export class ResultsPage extends Component {
     //      renders relevant search results provided by SearchBarView (AgoliaController)
     //      Each relevant result will be linked to their respective SpecingPage.
     render() {
-
+        return(
+            <p>hello</p>
+        )
     }
 }
