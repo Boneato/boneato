@@ -45,7 +45,7 @@ export class LocationsList extends Component {
             voteAllow = <div>
             <span>
                 <UpvoteButton/>
-                <DownvoteButton/>
+                <DownVoteButton/>
             </span>
             <span>
                 <LocationInfo/>
