@@ -9,7 +9,7 @@ import NewLocationForm from './location/NewLocationForm';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
-export class SpecingPage extends Component {
+export default class SpecingPage extends Component {
     // takes in valid ingredientID, boolean indicating user is signed in
     constructor(props) {
         super(props);
