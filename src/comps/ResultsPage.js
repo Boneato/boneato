@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 export default class ResultsPage extends Component {
     // takes in list of links with attached ingredient IDs
