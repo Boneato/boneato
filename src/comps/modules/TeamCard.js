@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import Modal from '../modules/Modal';
 import Card from '@material-ui/core/Card';
-import {CardActionArea, CardContent, CardMedia, CardContent, Typography} from '@material-ui/core';
+import {CardActionArea, CardContent, CardMedia, Typography} from '@material-ui/core';
+
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 export default class TeamCard extends Component {
     
@@ -18,6 +27,7 @@ export default class TeamCard extends Component {
     render() {
 
         const {FirstName, LastName, Position}=this.props;
+        const classes = useStyles();
 
         return (
             <Card className={classes.card}>
