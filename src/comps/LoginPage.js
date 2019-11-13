@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginController from '../../cont/LoginController';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+
 
 export default class LoginPage extends Component {
     // takes in boolean variable indicating if user is logged in
@@ -15,6 +15,13 @@ export default class LoginPage extends Component {
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
     render() {
+        
+        const useStyles = makeStyles(theme => ({
+            link: {
+              margin: theme.spacing(1),
+            },
+          }));
+
         const classes = useStyles();
 
         return(

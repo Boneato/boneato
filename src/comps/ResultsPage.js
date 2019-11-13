@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import {List, ListItem, ListItemLink, ListItemText} from '@material-ui/core';
+import {List, ListItem, ListItemText} from '@material-ui/core';
 
 function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
@@ -21,17 +21,19 @@ export default class ResultsPage extends Component {
     render() {
         const { ingredientData } = this.props;
 
-        <List component="nav" aria-label="search results">
-        <ListItem button>
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItemLink href="#simple-list">
-          <ListItemText primary="Spam" />
-        </ListItemLink>
-      </List>
+
 
         return(
-            <p>hello</p>
+            <div>
+                <List component="nav" aria-label="search results">
+                    <ListItem button>
+                        <ListItemText primary="Trash" />
+                    </ListItem>
+                    <ListItemLink href="#simple-list">
+                        <ListItemText primary="Spam" />
+                    </ListItemLink>
+                </List>
+            </div>
         )
     }
 }
