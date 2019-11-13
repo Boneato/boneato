@@ -1,4 +1,4 @@
-import { Map, GoogleApiWrapper } from 'google-maps-react';
+// import { Map, GoogleApiWrapper } from 'google-maps-react';
 
 // create DOM elements for embedded map
 // takes in latitude and longitude coordinates
