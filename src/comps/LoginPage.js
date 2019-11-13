@@ -3,7 +3,7 @@ import LoginController from '../../cont/LoginController';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-export class LoginPage extends Component {
+export default class LoginPage extends Component {
     // takes in boolean variable indicating if user is logged in
     constructor(props) {
 
