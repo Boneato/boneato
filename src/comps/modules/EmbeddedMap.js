@@ -19,6 +19,6 @@ export default class EmbeddedMaps extends Component {
     // otherwise, show default map of Seattle as determined by the
     // MapsController
     render() {
-
+        return (<body/>);
     }
 }
