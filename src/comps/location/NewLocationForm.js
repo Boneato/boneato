@@ -24,6 +24,6 @@ export class NewLocationForm extends Component {
     // through the PlacesController.
     // If PlacesController returns empty list, disallow submittal of form.
     render() {
-        
+        return(<body/>);     
     }
 }
