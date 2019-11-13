@@ -9,5 +9,7 @@ export class HomePage extends Component {
 	// post-conditions:
 	//      if user signed in, render "Signed in as 'username'" link
 	//      otherwise render "Sign In" link.
-	render() {}
+	render() {
+		return(<body/>);
+	}
 }

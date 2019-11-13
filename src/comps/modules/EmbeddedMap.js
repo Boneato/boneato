@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from '../modules/Modal';
 import MapsController from '../../cont/MapsController';
 
-export class EmbeddedMaps extends Component {
+export default class EmbeddedMaps extends Component {
     
     // Takes in avaliable LocationModel(s)
     constructor(props) {

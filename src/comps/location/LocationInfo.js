@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class LocationInfo extends Component {
+export default class LocationInfo extends Component {
     
     // takes in an LocationModel and renders it in the render function
     constructor(props) {
@@ -8,6 +8,6 @@ export class LocationInfo extends Component {
     }
 
     render() {
-
+        return(<body/>);
     }
 }

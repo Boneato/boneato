@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-export class UpVoteButton extends Component {
+export default class UpVoteButton extends Component {
     // takes in number of votes as prop
     constructor(props) {
 
@@ -13,6 +13,6 @@ export class UpVoteButton extends Component {
 
     // renders upvotebutton with proper vote count
     render() {
-
+        return(<body/>);
     }
 }
