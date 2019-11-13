@@ -12,29 +12,16 @@ const useStyles = makeStyles(theme => ({
   }));
 
 
-export default class Navbar extends Component {
-    
-    // pre-conditions: application is open, sign-in status recieved as true or false in props
-    // post-conditions: passes props to render proper navbar links
-    constructor(props) {
-        super(props);
-    }
-
-
-    
-
+export default function Navbar(props) {
     // post-conditions:
     //      if user signed in, render "Signed in as 'username'" link
     //      otherwise render "Sign In" link.
     //      render "Find Ingredients", "About" links
     //      renders logo which links to homepage
-    render () {
         var loginLink = 1;
         const preventDefault = event => event.preventDefault();
         const classes = useStyles();
-
-
-        if (this.props.currentUser) {
+        if (props.currentUser) {
             loginLink = 
             <FormControl className={classes.formControl}>
                 <InputLabel id="simple-select-label">Signed in as ~current user~</InputLabel>
@@ -75,4 +62,3 @@ export default class Navbar extends Component {
             </header>
         );
     }
-}
