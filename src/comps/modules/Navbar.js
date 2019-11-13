@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import { NavLink } from 'react-router-dom';
 import { Link, Typography, Select, MenuItem, FormControl } from '@material-ui/core';
+import { InputLabel } from '@material-ui/core/esm';
+import { makeStyles } from '@material-ui/core/styles';
 
-export class Navbar extends Component {
+export default class Navbar extends Component {
     
     // pre-conditions: application is open, sign-in status recieved as true or false in props
     // post-conditions: passes props to render proper navbar links
     constructor(props) {
 
     }
+
+    
     
     // post-conditions:
     //      if user signed in, render "Signed in as 'username'" link
@@ -19,6 +23,14 @@ export class Navbar extends Component {
     render () {
         let loginlink = null;
 
+        const useStyles = makeStyles(theme => ({
+            link: {
+              margin: theme.spacing(1),
+            },
+          }));
+
+        const classes = useStyles();
+        const preventDefault = event => event.preventDefault();
 
         if (this.props.currentUser) {
             loginLink = 
