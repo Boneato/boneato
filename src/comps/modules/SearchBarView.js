@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import { InstantSearch } from 'react-instantsearch-dom';
 import SearchResultsView from './SearchResultsView';
 
-const searchClient = algoliasearch(
-  'YourApplicationID',
-  'YourSearchOnlyAPIKey'
-);
+// const searchClient = algoliasearch(
+//   'YourApplicationID',
+//   'YourSearchOnlyAPIKey'
+// );
 
 export class SearchBarView extends Component {
     constructor(props) {

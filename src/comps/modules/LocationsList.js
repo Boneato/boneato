@@ -38,6 +38,8 @@ export class LocationsList extends Component {
     // If VotingController indicates user has already voted, prevent user from voting.
     // If user is not signed, disallow interaction with UpvoteButton,
     // DownvoteButton.
+
+    
     render() {
         let voteAllow = null;
 
@@ -52,7 +54,7 @@ export class LocationsList extends Component {
             </span>
         </div>
         }else{
-            <LoginPage/>
+            voteAllow = <LoginPage/>
         }
         return(
             <body>

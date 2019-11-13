@@ -27,7 +27,11 @@ export default class App extends Component {
         <Navbar currentUser={this.state.user} />
         <main>
           <Switch>
-            <Route path="/about" component={AboutPage} />
+            <Route path="./HomePage" component={HomePage} />
+            <Route path="./AboutPage" component={AboutPage} />
+            <Route path="./LoginPage" component={LoginPage} />
+            <Route path="./ResultsPage" component={ResultsPage} />
+            <Route path='./SpecingPage' component={SpecingPage} />
           </Switch>
         </main>
       </div>
