@@ -21,6 +21,15 @@ export default class App extends Component {
   }
 
   render() {
-
+    return (
+      <div>
+        <Navbar currentUser={this.state.user} />
+        <main>
+          <Switch>
+            
+          </Switch>
+        </main>
+      </div>
+      );
   }
 }

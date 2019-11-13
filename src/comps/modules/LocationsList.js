@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import VotingController from '../../cont/VotingController';
 import LocationInfo from '../location/LocationInfo';
 import UpvoteButton from '../location/UpVoteButton';
-import DownvoteButton from '../location/DownVoteButton';
+import DownVoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
-import { LoginPage } from '../LoginPage';
+import LoginPage from '../LoginPage';
 
 export class LocationsList extends Component {
     
@@ -61,3 +61,5 @@ export class LocationsList extends Component {
         );
     }
 }
+
+export default DownVoteButton;

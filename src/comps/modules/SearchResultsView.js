@@ -9,6 +9,6 @@ export class SearchResultsView extends Component {
 
     // displays list of ingredients
     render() {
-
+        return(<body/>);
     }
 }

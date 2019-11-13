@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
-export class DownVoteButton extends Component {
+
+export default class DownVoteButton extends Component {
     // takes in number of votes as prop
     constructor(props) {
 
@@ -13,6 +14,7 @@ export class DownVoteButton extends Component {
 
     // renders downvotebutton with proper vote count
     render() {
-
+        return(<body/>);
     }
 }
+
