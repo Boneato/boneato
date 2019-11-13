@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 //import algoliasearch from 'algoliasearch/lite';
 //import { InstantSearch } from 'react-instantsearch-dom';
-=======
-// import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch } from 'react-instantsearch-dom';
->>>>>>> 1c361e0f1e059da9affa83683e31e5f789fe09d8
 import SearchResultsView from './SearchResultsView';
 
 // const searchClient = algoliasearch(
