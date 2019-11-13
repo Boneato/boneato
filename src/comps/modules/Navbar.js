@@ -16,13 +16,13 @@ export default class Navbar extends Component {
     
     // pre-conditions: application is open, sign-in status recieved as true or false in props
     // post-conditions: passes props to render proper navbar links
-    // constructor(props) {
+    constructor(props) {
+        super(props);
+    }
 
-    // }
 
     
-    
-    
+
     // post-conditions:
     //      if user signed in, render "Signed in as 'username'" link
     //      otherwise render "Sign In" link.
@@ -30,8 +30,8 @@ export default class Navbar extends Component {
     //      renders logo which links to homepage
     render () {
         var loginLink = 1;
-        const classes = useStyles();
         const preventDefault = event => event.preventDefault();
+        const classes = useStyles();
 
 
         if (this.props.currentUser) {

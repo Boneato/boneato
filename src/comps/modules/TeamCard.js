@@ -13,8 +13,6 @@ const useStyles = makeStyles({
     height: 140,
   },
 });
-const {FirstName, LastName, Position}=this.props;
-const classes = useStyles();
 
 export default class TeamCard extends Component {
     
@@ -29,7 +27,8 @@ export default class TeamCard extends Component {
 
     // renders a team member image, team member first name, and team member role
     render() {
-
+      const {FirstName, LastName, Position}=this.props;
+      const classes = useStyles();
         return (
             <Card className={classes.card}>
               <CardActionArea>

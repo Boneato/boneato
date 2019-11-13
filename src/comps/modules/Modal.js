@@ -14,6 +14,6 @@ export class Modal extends Component {
 
     // renders given DOM elements inside of modal
     render() {
-        return(<body/>);
+        return(<body></body>);
     }
 }
