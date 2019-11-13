@@ -5,14 +5,22 @@ import { Link, Typography, Select, MenuItem, FormControl } from '@material-ui/co
 import { InputLabel } from '@material-ui/core/esm';
 import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles(theme => ({
+    link: {
+      margin: theme.spacing(1),
+    },
+  }));
+
+
 export default class Navbar extends Component {
     
     // pre-conditions: application is open, sign-in status recieved as true or false in props
     // post-conditions: passes props to render proper navbar links
-    constructor(props) {
+    // constructor(props) {
 
-    }
+    // }
 
+    
     
     
     // post-conditions:
@@ -22,15 +30,9 @@ export default class Navbar extends Component {
     //      renders logo which links to homepage
     render () {
         var loginLink = 1;
-
-        const useStyles = makeStyles(theme => ({
-            link: {
-              margin: theme.spacing(1),
-            },
-          }));
-
         const classes = useStyles();
         const preventDefault = event => event.preventDefault();
+
 
         if (this.props.currentUser) {
             loginLink = 

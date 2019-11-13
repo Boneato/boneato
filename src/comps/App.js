@@ -24,7 +24,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar currentUser={this.state.user} />
+        <Navbar/>
         <main>
           <Switch>
             <Route path="./HomePage" component={HomePage} />

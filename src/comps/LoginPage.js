@@ -3,6 +3,11 @@ import LoginController from '../cont/LoginController';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
+const useStyles = makeStyles(theme => ({
+    link: {
+      margin: theme.spacing(1),
+    },
+  }));
 
 export default class LoginPage extends Component {
     // takes in boolean variable indicating if user is logged in
@@ -10,18 +15,12 @@ export default class LoginPage extends Component {
 
     }
 
+
     // renders login page for sign in
     // if user is signed in, redirects user to homePage
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
     render() {
-        
-        const useStyles = makeStyles(theme => ({
-            link: {
-              margin: theme.spacing(1),
-            },
-          }));
-
         const classes = useStyles();
 
         return(
