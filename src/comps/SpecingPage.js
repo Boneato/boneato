@@ -59,7 +59,7 @@ export default class SpecingPage extends Component {
                 <div>
                     <span>
                         <p>Know where to buy this?</p>
-                        <link href="/NewLocationForm" onChange={defaultStatus}>Report a new location.</link>
+                        <link href="/NewLocationForm" >Report a new location.</link>
                     </span>
                 </div>
                 <div>
