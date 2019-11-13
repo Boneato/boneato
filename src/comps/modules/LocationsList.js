@@ -4,7 +4,7 @@ import LocationInfo from '../location/LocationInfo';
 import UpvoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
-import { LoginPage } from '../LoginPage';
+import LoginPage from '../LoginPage';
 
 export class LocationsList extends Component {
     
