@@ -21,7 +21,7 @@ export default class Navbar extends Component {
     //      render "Find Ingredients", "About" links
     //      renders logo which links to homepage
     render () {
-        let loginlink = null;
+        var loginLink = 1;
 
         const useStyles = makeStyles(theme => ({
             link: {
@@ -35,7 +35,7 @@ export default class Navbar extends Component {
         if (this.props.currentUser) {
             loginLink = 
             <FormControl className={classes.formControl}>
-                <InputLabel id="simple-select-label">Signed in as {currentUser}</InputLabel>
+                <InputLabel id="simple-select-label">Signed in as ~current user~</InputLabel>
                 <Select
                     labelId="simple-select-label"
                     id="simple-select"

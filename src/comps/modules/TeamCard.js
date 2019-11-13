@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import Modal from '../modules/Modal';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import {CardActionArea, CardContent, CardMedia, CardContent, Typography} from '@material-ui/core';
 
-export class TeamCard extends Component {
+export default class TeamCard extends Component {
     
     // takes in team member image, first name, and member's role in a list
     constructor(props) {
