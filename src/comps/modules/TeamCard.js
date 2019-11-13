@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Modal from '../modules/Modal';
 import Card from '@material-ui/core/Card';
 import {CardActionArea, CardContent, CardMedia, Typography} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
 
 const useStyles = makeStyles({
   card: {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from '../assets/logo.svg';
+import logo from '../../assets/logo.svg';
 import { NavLink } from 'react-router-dom';
 import { Link, Typography, Select, MenuItem, FormControl } from '@material-ui/core';
 import { InputLabel } from '@material-ui/core/esm';
@@ -66,7 +66,7 @@ export default class Navbar extends Component {
                         <Link href="/AboutPage" onClick={preventDefault} className={classes.link}>
                             About
                         </Link>
-                        {loginlink}
+                        {loginLink}
                     </Typography>
                     </div>
                 </nav>
