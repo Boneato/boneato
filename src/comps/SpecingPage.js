@@ -35,7 +35,7 @@ export class SpecingPage extends Component {
     // render LocationList with LocationModel(s) and IngredientModel
     // if user not signed, prevent interaction with NewLocationForm component.
     render() {
-        let searchRes = null;
+        let searchRes = null, i=null;
 
         if(this.state.locationIDList.length==0){
             searchRes = <p>Phooey. There are no known locations yet.</p>;
