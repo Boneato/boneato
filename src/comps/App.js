@@ -7,7 +7,7 @@ import LoginPage from './LoginPage';
 import ResultsPage from './ResultsPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
 
 // renders application with all neccesary components
 export default class App extends Component {

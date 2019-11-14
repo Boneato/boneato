@@ -49,10 +49,10 @@ export default function Navbar(props) {
                     </div>
                     <div>
                     <Typography>
-                        <Link href="/SpecIngPage" onClick={preventDefault} className={classes.link}>
+                        <Link to="/SpecIngPage" className={classes.link}>
                             Find Ingredients
                         </Link>
-                        <Link href="/AboutPage" onClick={preventDefault} className={classes.link}>
+                        <Link to="/AboutPage" className={classes.link}>
                             About
                         </Link>
                         {loginLink}
