@@ -9,6 +9,7 @@ import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import Modal from './modules/Modal';
+
 // renders application with all neccesary components
 export default class App extends Component {
 
