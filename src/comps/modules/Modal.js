@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog } from '@material-ui/core';
+import { Dialog, DialogTitle } from '@material-ui/core';
 
 export function Modal(props) {
 
@@ -29,10 +29,24 @@ export function Modal(props) {
     const handleClose = () => {
         setOpen(false);
     }
-    
+
     return (
         <Dialog>
             <DialogTitle>{props.title}</DialogTitle>
+            {props.content}
         </Dialog>
     );
+}
+
+export function NewIngredientModal(props) {
+
+    var signInItem = (
+        <DialogButton handler={NewIngredientsController}>
+            Submit Ingredient
+        </DialogButton>
+    );
+
+    return (
+        <Modal title={props.title} content={signInItems}></Modal>
+    )
 }
