@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog, DialogTitle } from '@material-ui/core';
+import { Dialog, DialogTitle, Button } from '@material-ui/core';
 
+
+// pre-conditions: 
+//      props must be filled with a Header text 
+//      and DOM elements to fill Modal.
+// post-conditions:
+//      passes props and renders modal in render function
 export function Modal(props) {
+    const [open, setOpen] = React.useState(true);
 
-    // pre-conditions: 
-    //      props must be filled with a Header text 
-    //      and DOM elements to fill Modal.
-    // post-conditions:
-    //      passes props and renders modal in render function
-    constructor(props) {
-
-    }
-
-    // renders given DOM elements inside of modal
-    render() {
-        return(<body></body>);
-    }
-}
-
-export function Modal(props) {
-    const [open, setOpen] = React.useState(false);
-
+    // have an if statement outside of component that renders this component
+    // to keep button seperate from this component
     const handleClickOpen = () => {
         setOpen(true);
     }
@@ -30,8 +21,9 @@ export function Modal(props) {
         setOpen(false);
     }
 
+    // renders given DOM elements inside of modal
     return (
-        <Dialog>
+        <Dialog open={open} onClose={handleClose}>
             <DialogTitle>{props.title}</DialogTitle>
             {props.content}
         </Dialog>
@@ -40,13 +32,15 @@ export function Modal(props) {
 
 export function NewIngredientModal(props) {
 
-    var signInItem = (
-        <DialogButton handler={NewIngredientsController}>
+    var signInItems = (
+    <Button onClick={NewIngredientsController}>
             Submit Ingredient
-        </DialogButton>
+        </Button>
     );
 
     return (
         <Modal title={props.title} content={signInItems}></Modal>
     )
 }
+
+export default Modal;

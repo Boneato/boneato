@@ -1,7 +1,7 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 
 // takes in ingredient name and sends to database
 // table consisting of ingredients to be reviewd by admin
-export function sendIngred(ingredName) {
+export default function sendIngred(ingredName) {
 
 }
