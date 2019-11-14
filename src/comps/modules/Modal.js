@@ -31,7 +31,6 @@ export function Modal(props) {
 }
 
 export function NewIngredientModal(props) {
-
     var signInItems = (
     <Button onClick={NewIngredientsController}>
             Submit Ingredient
@@ -39,8 +38,19 @@ export function NewIngredientModal(props) {
     );
 
     return (
-        <Modal title={props.title} content={signInItems}></Modal>
-    )
+        <Modal title={} content={signInItems}></Modal>
+    );
+}
+
+export function LocationForm(props) {
+    var form = (
+        <Form>
+        </Form>
+    );
+
+    return (
+        <Modal title={}
+    );
 }
 
 export default Modal;
