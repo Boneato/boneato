@@ -49,12 +49,12 @@ export default function Navbar(props) {
                     </div>
                     <div>
                     <Typography>
-                        <Link to="/SpecIngPage" className={classes.link}>
+                        <NavLink to="/SpecIngPage" className={classes.link}>
                             Find Ingredients
-                        </Link>
-                        <Link to="/AboutPage" className={classes.link}>
+                        </NavLink>
+                        <NavLink to="/AboutPage" className={classes.link}>
                             About
-                        </Link>
+                        </NavLink>
                         {loginLink}
                     </Typography>
                     </div>

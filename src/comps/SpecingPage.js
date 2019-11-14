@@ -47,7 +47,6 @@ export default class SpecingPage extends Component {
                     </div>
             }
         }
-
         return(
             <body>
                 <div>
@@ -59,7 +58,7 @@ export default class SpecingPage extends Component {
                 <div>
                     <span>
                         <p>Know where to buy this?</p>
-                        <link href="/NewLocationForm" >Report a new location.</link>
+                        <a href="/NewLocationForm" >Report a new location.</a>
                     </span>
                 </div>
                 <div>

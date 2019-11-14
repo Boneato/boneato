@@ -6,7 +6,7 @@ export default class EmbeddedMaps extends Component {
     
     // Takes in avaliable LocationModel(s)
     constructor(props) {
-
+        super(props);
     }
 
     // Communicates with the MapsController to display
@@ -19,6 +19,6 @@ export default class EmbeddedMaps extends Component {
     // otherwise, show default map of Seattle as determined by the
     // MapsController
     render() {
-        return (<body/>);
+        return (<body></body>);
     }
 }

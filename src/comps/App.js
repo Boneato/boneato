@@ -26,14 +26,13 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <Modal title="test"></Modal>
         <main>
           <Switch>
-            <Route path="./HomePage" component={HomePage} />
-            <Route path="./AboutPage" component={AboutPage} />
-            <Route path="./LoginPage" component={LoginPage} />
-            <Route path="./ResultsPage" component={ResultsPage} />
-            <Route path='./SpecingPage' component={SpecingPage} />
+            <Route path="/HomePage" component={HomePage} />
+            <Route path="/AboutPage" component={AboutPage} />
+            <Route path="/LoginPage" component={LoginPage} />
+            <Route path="/ResultsPage" component={ResultsPage} />
+            <Route path='/SpecIngPage' component={SpecingPage} />
           </Switch>
         </main>
       </div>

@@ -9,28 +9,21 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-export default class LoginPage extends Component {
-    // takes in boolean variable indicating if user is logged in
-    constructor(props) {
-
-    }
-
-
+// takes in boolean variable indicating if user is logged in
+export default function LoginPage(props) {
     // renders login page for sign in
     // if user is signed in, redirects user to homePage
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
-    render() {
-        const classes = useStyles();
+    const classes = useStyles();
 
-        return(
-            <div>
-                <p>Please sign in with Google to continue.</p>
-                <Button variant="contained" className={classes.button}> {/*onClick go to google link*/}
-                    Log in with Google
-                </Button>
-                <p>Cannot retrieve information (placeholder)</p>
-            </div>
-        )
-    }
+    return(
+        <div>
+            <p>Please sign in with Google to continue.</p>
+            <Button variant="contained" className={classes.button}> {/*onClick go to google link*/}
+                Log in with Google
+            </Button>
+            <p>Cannot retrieve information (placeholder)</p>
+        </div>
+    )
 }

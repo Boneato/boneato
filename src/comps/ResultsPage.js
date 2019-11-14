@@ -10,7 +10,7 @@ function ListItemLink(props) {
 export default class ResultsPage extends Component {
     // takes in list of links with attached ingredient IDs
     constructor(props) {
-        
+        super(props);
     }
     
     
