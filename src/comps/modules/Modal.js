@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog, DialogTitle, Button } from '@material-ui/core';
+import { Dialog, DialogTitle, Button, TextField } from '@material-ui/core';
 
 
 // pre-conditions: 
@@ -32,24 +32,39 @@ export function Modal(props) {
 
 export function NewIngredientModal(props) {
     var signInItems = (
-    <Button onClick={NewIngredientsController}>
-            Submit Ingredient
-        </Button>
+        <form>
+            <TextField required id='standard-required' 
+                label="Ingredient Name", 
+                variant="outlined">
+            />
+            <Button onClick={NewIngredientsController}>
+                Submit Ingredient
+            </Button>
+        </form>
+    
     );
-
+    if ()
     return (
-        <Modal title={} content={signInItems}></Modal>
+        <Modal title={"Suggest a new ingredient"} content={signInItems}>
+        </Modal>
     );
 }
 
 export function LocationForm(props) {
     var form = (
-        <Form>
-        </Form>
+        <form>
+            <div>
+                <TextField required id="standard-required" label="Required"
+                    defaultValue="Suggest a new location"
+                className={classes.textField}
+                margin="normal"
+                />
+            </div>
+        </form>
     );
 
     return (
-        <Modal title={}
+        <Modal title={"Suggest a New Location"} content={form}></Modal>
     );
 }
 
