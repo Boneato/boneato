@@ -10,7 +10,7 @@ import SearchResultsView from './SearchResultsView';
 
 export class SearchBarView extends Component {
     constructor(props) {
-
+      super(props);
     }
     
     // The SearchController:
