@@ -8,7 +8,7 @@ import ResultsPage from './ResultsPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import Modal from './modules/Modal';
+import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
 
 // renders application with all neccesary components
 export default class App extends Component {
@@ -26,6 +26,7 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
+        <NewLocationModal ingredName="Asafoetida"/>
         <main>
           <Switch>
             <Route path="/HomePage" component={HomePage} />
