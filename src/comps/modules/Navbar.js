@@ -18,7 +18,7 @@ export default function Navbar(props) {
     //      otherwise render "Sign In" link.
     //      render "Find Ingredients", "About" links
     //      renders logo which links to homepage
-        var loginLink = 1;
+        var loginLink = <Link href="/LoginPage" className="nav-link">Sign In</Link>;
         const preventDefault = event => event.preventDefault();
         const classes = useStyles();
         if (props.currentUser) {
@@ -33,8 +33,6 @@ export default function Navbar(props) {
                     <MenuItem onClick={this.props.handleSignOut}>Sign out</MenuItem>
                 </Select>
             </FormControl>;
-        } else {
-            loginLink = <Link href="/LoginPage" className="nav-link">Sign In</Link>
         }
 
         const handleChange = event =>{
