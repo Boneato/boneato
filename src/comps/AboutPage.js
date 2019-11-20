@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import TeamCard from './modules/TeamCard';
+import Lauren from '../imgs/Lauren.jpg';
+import Cate from '../imgs/Cate.png';
+import Anthony from '../imgs/Anthony.jpg';
+import Laura from '../imgs/Laura.jpg';
+import Brian from '../imgs/Brian.jpg';
+
 
 export default class AboutPage extends Component {
     
@@ -10,11 +16,11 @@ export default class AboutPage extends Component {
 
         let featuredCards = (
             <div className='row'>
-                <TeamCard FirstName='Anthony' LastName='Nguyen' Position='CEO' />
-                <TeamCard FirstName='Lauren' LastName='Smith' Position='Project Manager' />
-                <TeamCard FirstName='Laura' LastName='Freeman' Position='Designer' />
-                <TeamCard FirstName='Cate' LastName='Lyu' Position='CTO' />
-                <TeamCard FirstName='Brian' LastName='Uyeda' Position='CTO' />
+                <TeamCard FirstName='Anthony' LastName='Nguyen' Position='CEO' picture={Anthony}/>
+                <TeamCard FirstName='Lauren' LastName='Smith' Position='Project Manager' picture={Lauren}/>
+                <TeamCard FirstName='Laura' LastName='Freeman' Position='Designer' picture={Laura}/>
+                <TeamCard FirstName='Cate' LastName='Lyu' Position='CTO' picture={Cate}/>
+                <TeamCard FirstName='Brian' LastName='Uyeda' Position='CTO' picture={Brian}/>
             </div>
         );
 
