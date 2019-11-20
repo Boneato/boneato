@@ -38,25 +38,6 @@ TabPanel.propTypes = {
     value: PropTypes.any.isRequired,
 };
 
-// function a11yProps(index) {
-//     return {
-//         id: `nav-tab-${index}`,
-//         'aria-controls': `nav-tabpanel-${index}`,
-//     };
-// }
-
-function LinkTab(props) {
-    return (
-        <Tab
-            component="a"
-            onClick={event => {
-                event.preventDefault();
-            }}
-            {...props}
-        />
-    );
-}
-
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -66,10 +47,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function NavTabs() {
     const classes = useStyles();
-    //const [value, setValue] = React.useState(0);
+    const [value, setValue] = React.useState(0);
 
-    const handleChange = (event, value) => {
-        this.setState({value});
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
 
     return (
@@ -77,12 +58,13 @@ export default function NavTabs() {
             <AppBar position="static">
                 <Tabs
                     variant="fullWidth"
-                    //value={this.state.value}
+                    value={value}
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <Tab label="Home Page" href={Link} to='HomePage' />
+                    <Tab label="Home Page" href={Link} to="/HomePage" />
                     <Tab label="About Page" href={Link} to="/AboutPage"/>
+                    {/* I'm not going to make any more until I can figure this out */}
                 </Tabs>
             </AppBar>
 
