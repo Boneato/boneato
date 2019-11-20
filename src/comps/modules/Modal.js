@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog, DialogTitle, Button, TextField } from '@material-ui/core';
-
+import { Dialog, DialogTitle, 
+        Button, TextField, DialogContent
+       } from '@material-ui/core';
 
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -24,47 +25,52 @@ export function Modal(props) {
     // renders given DOM elements inside of modal
     return (
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>{props.title}</DialogTitle>
-            {props.content}
+            <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+            <DialogContent>
+                {props.content}
+            </DialogContent>
         </Dialog>
     );
 }
 
 export function NewIngredientModal(props) {
-    var signInItems = (
-        <form>
-            <TextField required id='standard-required' 
-                label="Ingredient Name", 
-                variant="outlined">
-            />
-            <Button onClick={NewIngredientsController}>
-                Submit Ingredient
-            </Button>
-        </form>
-    
+    var ingredItems = (
+    <div>
+        <TextField
+            id="filled-basic"
+            label="Ingredient Name"
+            margin="dense"
+            variant="filled"
+            fullWidth
+        />
+        <TextField
+            id="filled-basic"
+            label="Comments (optional)"
+            margin="normal"
+            variant="filled"
+            fullWidth
+        />
+        <Button onClick={NewIngredientsController}>
+            Submit Ingredient
+        </Button>
+    </div>
     );
-    if ()
     return (
-        <Modal title={"Suggest a new ingredient"} content={signInItems}>
-        </Modal>
-    );
+        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
+    )
 }
 
-export function LocationForm(props) {
-    var form = (
-        <form>
-            <div>
-                <TextField required id="standard-required" label="Required"
-                    defaultValue="Suggest a new location"
-                className={classes.textField}
-                margin="normal"
-                />
-            </div>
-        </form>
+export function NewLocationModal(props) {
+    var locationItems = (
+        <div>
+            <TextField/>
+            <Button onClick={NewIngredientsController}>
+                Submit
+            </Button>
+        </div>
     );
-
     return (
-        <Modal title={"Suggest a New Location"} content={form}></Modal>
+        <Modal title={"Report a new " + props.ingredName + " location"}/>
     );
 }
 
