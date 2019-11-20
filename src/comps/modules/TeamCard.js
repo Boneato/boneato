@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from '../modules/Modal';
 import {Card, CardActionArea, CardContent, CardMedia, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Lauren from '../../imgs/Lauren.jpg';
+// import Lauren from '../../imgs/Lauren.jpg';
 // import 
 
 
@@ -16,14 +16,14 @@ const useStyles = makeStyles({
 });
 
 export default function TeamCard(props) {
-  const {FirstName, LastName, Position}=props;
+  const {FirstName, LastName, Position, picture}=props;
   const classes = useStyles();
   return (
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={Lauren}
+          image={picture}
           title={FirstName + " Photo"}
         />
         <CardContent>
