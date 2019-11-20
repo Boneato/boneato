@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from '../modules/Modal';
-import {Card, CardActionArea, CardContent, CardMedia, Typography} from '@material-ui/core';
+import {ListItem, ListItemText, ListItemSecondaryAction} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -13,25 +13,14 @@ const useStyles = makeStyles({
 });
 
 export default function TeamCard(props) {
-  const {FirstName, LastName, Position, picture}=props;
+  const {location, upvotes, downvotes}=props;
   const classes = useStyles();
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={picture}
-          title={FirstName + " Photo"}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {FirstName + " " + LastName}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {Position}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <ListItem>
+      <ListItemText primary={location} secondary="I've realized i've created the wrong thing."/>
+      <ListItemSecondaryAction>
+        the up down votes will go here
+      </ListItemSecondaryAction>
+    </ListItem>
   );
 }

@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Link, Typography, Select, MenuItem, FormControl } from '@material-ui/core';
 import { InputLabel } from '@material-ui/core/esm';
 import { makeStyles } from '@material-ui/core/styles';
+//import logo from '../imgs/bonito_logo.png';
 
 const useStyles = makeStyles(theme => ({
     link: {

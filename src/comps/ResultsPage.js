@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import {List, ListItem, ListItemText} from '@material-ui/core';
-import ResultCard from './modules/ResultCard';
 
 function ListItemLink(props) {
     return <ListItem button component="a" {...props} />;
@@ -24,7 +23,7 @@ export default class ResultsPage extends Component {
         return(
             <div>
                 <List component="nav" aria-label="search results">
-                    <ResultCard location='safeway' upvotes='4' downvotes='5'/>
+                    will be able to complete this once the controller is done
                 </List>
             </div>
         )
