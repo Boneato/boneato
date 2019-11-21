@@ -26,7 +26,6 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <NewLocationModal ingredName="Asafoetida"/>
         <main>
           <Switch>
             <Route path="/HomePage" component={HomePage} />
