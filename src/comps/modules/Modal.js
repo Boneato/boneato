@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
 import { Dialog, DialogTitle, 
-        Button, TextField, DialogContent
+        Button, TextField, DialogContentText, DialogContent
        } from '@material-ui/core';
 import checkmark from '../../assets/checkmark.svg';
 

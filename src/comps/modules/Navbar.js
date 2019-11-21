@@ -62,8 +62,8 @@ export default function NavTabs() {
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <Tab label="Home Page" href={Link} to="/HomePage" />
-                    <Tab label="About Page" href={Link} to="/AboutPage"/>
+                    <Tab label="Home Page" href="/HomePage" />
+                    <Tab label="About Page" href="/AboutPage"/>
                     {/* I'm not going to make any more until I can figure this out */}
                 </Tabs>
             </AppBar>
