@@ -6,29 +6,59 @@ import DownVoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
 import LoginPage from '../LoginPage';
 
-export class LocationsList extends Component {
+
+
+export default function LocationsList(props){
     
     // pre-conditions: 
     //      props must have list of LocationModels with respective LocationItems
     //      pass in boolean indicating user is signed-in or not.
-    constructor(props) {
-        super(props);
-        this.state={
-            ingredientID: null,
-            locationModel: [{locationID:null,
-                            upVote: 0,
-                            downVote: 0,
-                            userID: null,
-                            dataFirstReport:null}],
-        };
+    let locationIDList = props.locationIDList
+    let ingredientID = props.ingredientID;
+    let searchRes = [];
 
+    for(let [index,value] of locationIDList.entries()){
+        searchRes.push(<LocationInfo locationInfo={componentDidUpdate(ingredientID,value)} index={index+1}/>)
     }
 
-    // if the vote count is updated by the UpvoteButton or DownvoteButton,
-    // update the DOM to reflect the accurate vote and 
-    // communicate with the VotingController to update the database.
-    componentDidUpdate() {
+    
 
+    // if (props.currentUser) {
+    //     voteAllow = 
+    //     <span>
+    //         <div>
+    //             <UpvoteButton/>
+    //             <DownVoteButton/>
+    //         </div>
+    //         <LocationInfo locationInfo={this.locationInfo} index={i++}/>
+    //     </span>
+    // }else{
+    //     voteAllow = <div>
+    //         <p>You need to sign to see the result</p>
+    //     <LoginPage/>
+    //     </div>;
+    // }
+
+    return(
+        <div>
+            {searchRes}
+        </div>
+    )
+
+}
+
+function componentDidUpdate(ingredientID,locationID) {
+        let locationInfo = {
+            ingredientID: null,
+            locationID:null,
+            upVote: 0,
+            downVote: 0,
+            userID: null,
+            dateFirstReport:null,
+        };
+        //function to fetch other information in JSON file
+        //the ingredientID and locationID is given
+        return locationInfo
     }
 
     // Displays list of locations with subcomponents:
@@ -40,28 +70,4 @@ export class LocationsList extends Component {
     // DownvoteButton.
 
     
-    render() {
-        let voteAllow = null;
 
-        if (this.props.currentUser) {
-            voteAllow = <div>
-            <span>
-                <UpvoteButton/>
-                <DownVoteButton/>
-            </span>
-            <span>
-                <LocationInfo/>
-            </span>
-        </div>
-        }else{
-            voteAllow = <LoginPage/>
-        }
-        return(
-            <body>
-               {voteAllow}
-            </body>
-        );
-    }
-}
-
-export default DownVoteButton;

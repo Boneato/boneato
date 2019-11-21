@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import LocationList from './modules/LocationsList';
+import LocationsList from './modules/LocationsList';
 import LocationsController from '../cont/LocationsController';
 import EmbeddedMap from './modules/EmbeddedMap';
 import Modal from './modules/Modal';
@@ -40,13 +40,10 @@ export default class SpecingPage extends Component {
         if(this.state.locationIDList.length==0){
             searchRes = <p>Phooey. There are no known locations yet.</p>;
         }else{
-            for(i in this.state.locationIDList){
-                searchRes += <div>
-                    // It shall pass a dictionary of locationID along with other variables.
-                    <LocationList ingredientID={this.state.ingredientID} locationID={this.state.locationIDList[i]}/>
-                    </div>
-            }
+            searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID}/>
         }
+
+        
         return(
             <body>
                 <div>
@@ -56,10 +53,10 @@ export default class SpecingPage extends Component {
                     <h1>{this.state.ingredientName}</h1>
                 </div>
                 <div>
-                    <span>
-                        <p>Know where to buy this?</p>
-                        <a href="/NewLocationForm" >Report a new location.</a>
-                    </span>
+                    <p>
+                    Know where to buy this?
+                    <NavLink to="/NewLocationForm">Report a new location.</NavLink>
+                    </p>
                 </div>
                 <div>
                     <span>

@@ -1,18 +1,23 @@
 import React, {Component} from 'react';
 
-export default class UpVoteButton extends Component {
-    // takes in number of votes as prop
-    constructor(props) {
+export default function UpVoteButton(props){
 
-    }
+    let locationInfo = props.locationInfo;
+    // let locationInfo = {
+    //     ingredientID: null,
+    //     locationID:null,
+    //     upVote: 0,
+    //     downVote: 0,
+    //     userID: null,
+    //     dateFirstReport:null,
+    // };
+    
 
-    // updates vote counter when clicked
-    componentDidUpdate() {
+    return(<button> {locationInfo.upVote} CONFIRMED</button>);
+    
+}
 
-    }
+ // updates vote counter when clicked
+function componentDidUpdate() {
 
-    // renders upvotebutton with proper vote count
-    render() {
-        return(<body/>);
-    }
 }
