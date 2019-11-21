@@ -1,62 +1,77 @@
-import React, { Component } from 'react';
-import logo from '../../assets/logo.svg';
-import { NavLink } from 'react-router-dom';
-import { Link, Typography, Select, MenuItem, FormControl } from '@material-ui/core';
-import { InputLabel } from '@material-ui/core/esm';
+import React from 'react';
+import PageShell from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import {Link} from '@material-ui/core'
+import HomePage from '../HomePage';
+import LoginPage from '../LoginPage';
+import ResultsPage from '../ResultsPage';
+import SpecingPage from '../SpecingPage';
+import AboutPage from '../AboutPage';
+import {Route, Switch, Redirect} from 'react-router-dom';
+
+function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <Typography
+            component="div"
+            role="tabpanel"
+            hidden={value !== index}
+            id={`nav-tabpanel-${index}`}
+            aria-labelledby={`nav-tab-${index}`}
+            {...other}
+        >
+            <Box p={3}>{children}</Box>
+        </Typography>
+    );
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.any.isRequired,
+    value: PropTypes.any.isRequired,
+};
 
 const useStyles = makeStyles(theme => ({
-    link: {
-      margin: theme.spacing(1),
+    root: {
+        flexGrow: 1,
+        backgroundColor: theme.palette.background.paper,
     },
-  }));
+}));
 
+export default function NavTabs() {
+    const classes = useStyles();
+    const [value, setValue] = React.useState(0);
 
-export default function Navbar(props) {
-    // post-conditions:
-    //      if user signed in, render "Signed in as 'username'" link
-    //      otherwise render "Sign In" link.
-    //      render "Find Ingredients", "About" links
-    //      renders logo which links to homepage
-        var loginLink = <Link href="/LoginPage" className="nav-link">Sign In</Link>;
-        const preventDefault = event => event.preventDefault();
-        const classes = useStyles();
-        if (props.currentUser) {
-            loginLink = 
-            <FormControl className={classes.formControl}>
-                <InputLabel id="simple-select-label">Signed in as ~current user~</InputLabel>
-                <Select
-                    labelId="simple-select-label"
-                    id="simple-select"
-                    onChange={handleChange}                    
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
+    return (
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Tabs
+                    variant="fullWidth"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="nav tabs example"
                 >
-                    <MenuItem onClick={this.props.handleSignOut}>Sign out</MenuItem>
-                </Select>
-            </FormControl>;
-        }
+                    <Tab label="Home Page" href={Link} to="/HomePage" />
+                    <Tab label="About Page" href={Link} to="/AboutPage"/>
+                    {/* I'm not going to make any more until I can figure this out */}
+                </Tabs>
+            </AppBar>
 
-        const handleChange = event =>{
-            // function that probably is a link?
-        };
-
-        return(
-            <header>
-                <nav className='navbar'>
-                    <div>
-                        //the logo will go here i think?
-                    </div>
-                    <div>
-                    <Typography>
-                        <NavLink to="/SpecIngPage" className={classes.link}>
-                            Find Ingredients
-                        </NavLink>
-                        <NavLink to="/AboutPage" className={classes.link}>
-                            About
-                        </NavLink>
-                        {loginLink}
-                    </Typography>
-                    </div>
-                </nav>
-            </header>
-        );
-    }
+            <Switch>
+                <Route path="/HomePage" component={HomePage} />
+                <Route path="/AboutPage" component={AboutPage} />
+            </Switch>
+        </div>
+    );
+}

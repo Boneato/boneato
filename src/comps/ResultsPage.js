@@ -23,12 +23,7 @@ export default class ResultsPage extends Component {
         return(
             <div>
                 <List component="nav" aria-label="search results">
-                    <ListItem button>
-                        <ListItemText primary="Trash" />
-                    </ListItem>
-                    <ListItemLink href="#simple-list">
-                        <ListItemText primary="Spam" />
-                    </ListItemLink>
+                    will be able to complete this once the controller is done
                 </List>
             </div>
         )
