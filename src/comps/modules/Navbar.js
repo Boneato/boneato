@@ -7,13 +7,14 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {Link} from '@material-ui/core'
+import {Link, FormControl, InputLabel, Select, MenuItem} from '@material-ui/core'
 import HomePage from '../HomePage';
 import LoginPage from '../LoginPage';
 import ResultsPage from '../ResultsPage';
 import SpecingPage from '../SpecingPage';
 import AboutPage from '../AboutPage';
 import {Route, Switch, Redirect} from 'react-router-dom';
+//import FormControl from 
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -45,13 +46,27 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
+    var loginlink = <Tab label="Log in" href="/LoginPage" />
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    if (props.currentUser) {
+        loginlink =
+            <FormControl className={classes.formControl}>
+                <InputLabel>Signed in as {props.currentUser.name}</InputLabel>
+                <Select
+                    onChange={handleChange}
+                >
+                    <MenuItem onClick={this.props.handleSignOut}>Sign out</MenuItem>
+                </Select>
+            </FormControl>;
+    }
+
 
     return (
         <div className={classes.root}>
@@ -62,9 +77,9 @@ export default function NavTabs() {
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <Tab label="Home Page" href="/HomePage" />
-                    <Tab label="About Page" href="/AboutPage"/>
-                    {/* I'm not going to make any more until I can figure this out */}
+                    <Tab label="Find Ingredients" href="/HomePage" />
+                    <Tab label="About" href="/AboutPage"/>
+                    {loginlink}
                 </Tabs>
             </AppBar>
 
