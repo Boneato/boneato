@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog, DialogTitle, 
-        Button, TextField, DialogContent
-       } from '@material-ui/core';
+import { 
+    Dialog, DialogTitle, 
+    Button, TextField, 
+    DialogContent, DialogContentText
+    } from '@material-ui/core';
 import checkmark from '../../assets/checkmark.svg';
 
 // pre-conditions: 
@@ -56,7 +58,6 @@ export function NewIngredientModal(props) {
         </Button>
     </div>
     );
-    
     if (props.submitted) {
         ingredItems = (
             <div>
@@ -83,6 +84,5 @@ export function NewLocationModal(props) {
         <Modal title={"Report a new " + props.ingredName + " location"}/>
     );
 }
-
 
 export default Modal;
