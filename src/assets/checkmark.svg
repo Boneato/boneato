@@ -1,1 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1045.53 1045.54"><defs><style>.cls-1{fill:none;stroke:#7e7e7e;stroke-linecap:round;stroke-linejoin:round;stroke-width:5px;}</style></defs><title>Asset 3</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M1043,475.2v47.86A520.26,520.26,0,1,1,734.52,47.54"/><path class="cls-1" d="M1043,106.85,522.77,627.64,366.69,471.56"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1045.53 1045.54"><defs>
+<style>.cls-1{fill:none;stroke:#7e7e7e;stroke-linecap:round;stroke-linejoin:round;stroke-width:5px;}</style>
+</defs><title>Asset 3</title>
+<g id="Layer_2" data-name="Layer 2">
+<g id="Layer_1-2" data-name="Layer 1">
+<path class="cls-1" d="M1043,475.2v47.86A520.26,520.26,0,1,1,734.52,47.54"/>
+<path class="cls-1" d="M1043,106.85,522.77,627.64,366.69,471.56"/>
+</g></g></svg>

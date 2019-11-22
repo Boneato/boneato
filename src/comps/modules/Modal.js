@@ -3,15 +3,21 @@ import NewIngredientsController from '../../cont/NewIngredientsController';
 import { 
     Dialog, DialogTitle, 
     Button, TextField, 
-    DialogContent, DialogContentText
+    DialogContent, DialogContentText, Tab
     } from '@material-ui/core';
-import checkmark from '../../assets/checkmark.png';
+import checkmark from '../../assets/checkmark.svg';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { makeStyles } from '@material-ui/core/styles';
+import { classes } from 'istanbul-lib-coverage';
 
 const useStyles = makeStyles({
-    cls-1{fill:none;stroke:#7e7e7e;
-        stroke-linecap:round;stroke-linejoin:round;stroke-width:5px;}
+    cls1: {
+        fill: "none",
+        stroke: "#7e7e7e",
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: "5px"
+    },
 });
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -63,16 +69,24 @@ export function NewIngredientModal(props) {
         </Button>
     </div>
     );
-    if (props.submitted) {
-        ingredItems = (
-            <SvgIcon>
-                <path d="M1043,475.2v47.86A520.26,520.26,0,1,1,734.52,47.54"/>
-            </SvgIcon>
-        )
-    }
-    return (
-        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
+    ingredItems = (
+        <div>
+            <HomeIcon/>
+        </div>
     )
+    function HomeIcon(props) {
+        return (
+          <Tab icon={<img src={checkmark}></img>}/>
+        );
+      }
+    //if (props.submitted) {
+        
+    //}<path d="M1043 106-85 522-77 627-64 366-69 471-56"/>
+    //<path d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
+    return (                
+
+        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
+    );
 }
 
 export function NewLocationModal(props) {
@@ -87,6 +101,18 @@ export function NewLocationModal(props) {
     return (
         <Modal title={"Report a new " + props.ingredName + " location"}/>
     );
+}
+
+function CheckMark(props) {
+    const classes = useStyles();
+
+    return (
+        <SvgIcon {...props}>
+           
+<path className={classes.cls1} d="M1043 106-85 522-77 627-64 366-69 471-56"/>
+<path className={classes.cls1} d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
+        </SvgIcon>
+   );
 }
 
 export default Modal;

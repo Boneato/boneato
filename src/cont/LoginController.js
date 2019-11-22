@@ -30,7 +30,7 @@ export default function toggleSignIn() {
         // [END signout]
     }
     // [START_EXCLUDE]
-    document.getElementById('quickstart-sign-in').disabled = true;
+    // document.getElementById('quickstart-sign-in').disabled = true;
     // [END_EXCLUDE]
 }
 // [END buttoncallback]
@@ -111,7 +111,7 @@ function initApp() {
 }
 
 window.onload = function () {
-    initApp();
+    //initApp();
 };
 
 

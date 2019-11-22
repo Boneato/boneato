@@ -47,12 +47,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-<<<<<<< HEAD
-        <Navbar currentUser={LoginController.user}/>
-=======
         <Navbar/>
         <NewIngredientModal submitted={true}/>
->>>>>>> 1a117a7329e6d8da988b380d498a24f073585dc8
         <main>
           <Switch>
             {/* <Route path="/" component={HomePage} /> This was making everything else break*/}
