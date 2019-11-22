@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBarView from './modules/SearchBarView';
 import TextField from '@material-ui/core/TextField';
+import { Input } from '@material-ui/core';
 
 
 export default class HomePage extends Component {
@@ -18,13 +19,11 @@ export default class HomePage extends Component {
 
 			<div className="search-label">Where can I buy</div>
 
-			<TextField
-				id="outlined-search"
-				label="Search field"
-				type="search"
-				className="search-ingredient"
-				margin="normal"
-				variant="outlined"
+			<Input
+				placeholder="Bonito"
+				inputProps={{
+					'aria-label': 'bonito search bar'
+				}}
 			/>
 
 
