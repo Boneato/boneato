@@ -26,7 +26,7 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <Modal submitted={true}/>
+        <NewIngredientModal submitted={true}/>
         <main>
           <Switch>
             <Route path="/HomePage" component={HomePage} />

@@ -5,26 +5,32 @@ import {
     Button, TextField, 
     DialogContent, DialogContentText
     } from '@material-ui/core';
-import checkmark from '../../assets/checkmark.svg';
+import checkmark from '../../assets/checkmark.png';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+    img: {
+      height: "50px",
+      width: "50px"
+    },
+});
 // pre-conditions: 
 //      props must be filled with a Header text 
 //      and DOM elements to fill Modal.
 // post-conditions:
 //      passes props and renders modal in render function
 export function Modal(props) {
+    const classes = useStyles();
     const [open, setOpen] = React.useState(true);
-
     // have an if statement outside of component that renders this component
     // to keep button seperate from this component
     const handleClickOpen = () => {
         setOpen(true);
     }
-
     const handleClose = () => {
         setOpen(false);
     }
-
     // renders given DOM elements inside of modal
     return (
         <Dialog open={open} onClose={handleClose}>
@@ -37,6 +43,7 @@ export function Modal(props) {
 }
 
 export function NewIngredientModal(props) {
+    const classes = useStyles();
     var ingredItems = (
     <div>
         <TextField
@@ -60,10 +67,7 @@ export function NewIngredientModal(props) {
     );
     if (props.submitted) {
         ingredItems = (
-            <div>
-                <img src={checkmark}/>
-                <DialogContentText/>
-            </div>
+            <img src={checkmark} class={classes.img}/>
         )
     }
     return (
