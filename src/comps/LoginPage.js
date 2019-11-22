@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginController from '../cont/LoginController';
+//import LoginController from '../cont/LoginController';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -24,7 +24,8 @@ export default function LoginPage(props) {
 
             {/* Container where we'll display the user details */}
             <div class="quickstart-user-details-container">
-                Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+                {/* Sign in status */}
+                <span id="quickstart-sign-in-status">Unknown</span>
                 <div>Firebase auth <code>currentUser</code> object value:</div>
                 <pre><code id="quickstart-account-details">null</code></pre>
                 {/* <div>Google OAuth Access Token:</div>
