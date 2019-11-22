@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
 import { Dialog, DialogTitle, 
-        Button, TextField, DialogContent
+        Button, TextField, DialogContentText, DialogContent
        } from '@material-ui/core';
+import checkmark from '../../assets/checkmark.svg';
 
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -55,6 +56,15 @@ export function NewIngredientModal(props) {
         </Button>
     </div>
     );
+    
+    if (props.submitted) {
+        ingredItems = (
+            <div>
+                <img src={checkmark}/>
+                <DialogContentText/>
+            </div>
+        )
+    }
     return (
         <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
     )
@@ -73,5 +83,6 @@ export function NewLocationModal(props) {
         <Modal title={"Report a new " + props.ingredName + " location"}/>
     );
 }
+
 
 export default Modal;
