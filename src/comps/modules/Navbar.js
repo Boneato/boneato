@@ -1,5 +1,4 @@
 import React from 'react';
-import PageShell from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,14 +6,8 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {Link, FormControl, InputLabel, Select, MenuItem} from '@material-ui/core'
-import HomePage from '../HomePage';
-import LoginPage from '../LoginPage';
-import ResultsPage from '../ResultsPage';
-import SpecingPage from '../SpecingPage';
-import AboutPage from '../AboutPage';
-import {Route, Switch, Redirect} from 'react-router-dom';
-//import FormControl from 
+import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core'
+import bonito_logo from '../../imgs/bonito_logo-03.png';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -75,9 +68,9 @@ export default function NavTabs(props) {
                     variant="fullWidth"
                     value={value}
                     onChange={handleChange}
-                    aria-label="nav tabs example"
                 >
-                    <Tab label="Find Ingredients" href="/" />
+                    <Tab icon={<img src={bonito_logo}/>} href="/HomePage" />
+                    <Tab label="Find Ingredients" href="/HomePage" />
                     <Tab label="About" href="/AboutPage"/>
                     {loginlink}
                 </Tabs>
