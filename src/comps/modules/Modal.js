@@ -10,10 +10,8 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
-    img: {
-      height: "50px",
-      width: "50px"
-    },
+    cls-1{fill:none;stroke:#7e7e7e;
+        stroke-linecap:round;stroke-linejoin:round;stroke-width:5px;}
 });
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -67,7 +65,9 @@ export function NewIngredientModal(props) {
     );
     if (props.submitted) {
         ingredItems = (
-            <img src={checkmark} class={classes.img}/>
+            <SvgIcon>
+                <path d="M1043,475.2v47.86A520.26,520.26,0,1,1,734.52,47.54"/>
+            </SvgIcon>
         )
     }
     return (

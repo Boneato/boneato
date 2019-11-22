@@ -69,7 +69,7 @@ export default function NavTabs(props) {
                     value={value}
                     onChange={handleChange}
                 >
-                    <Tab icon={<bonito_logo />} href="/HomePage" />
+                    <Tab icon={<img src={bonito_logo}/>} href="/HomePage" />
                     <Tab label="Find Ingredients" href="/HomePage" />
                     <Tab label="About" href="/AboutPage"/>
                     {loginlink}
