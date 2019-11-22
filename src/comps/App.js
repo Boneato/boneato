@@ -28,7 +28,7 @@ export default class App extends Component {
         <Navbar/>
         <main>
           <Switch>
-            <Route path="/HomePage" component={HomePage} />
+            <Route path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" component={LoginPage} />
             <Route path="/ResultsPage" component={ResultsPage} />

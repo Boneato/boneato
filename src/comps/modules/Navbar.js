@@ -77,16 +77,11 @@ export default function NavTabs(props) {
                     onChange={handleChange}
                     aria-label="nav tabs example"
                 >
-                    <Tab label="Find Ingredients" href="/HomePage" />
+                    <Tab label="Find Ingredients" href="/" />
                     <Tab label="About" href="/AboutPage"/>
                     {loginlink}
                 </Tabs>
             </AppBar>
-
-            <Switch>
-                <Route path="/HomePage" component={HomePage} />
-                <Route path="/AboutPage" component={AboutPage} />
-            </Switch>
         </div>
     );
 }
