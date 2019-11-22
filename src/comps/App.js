@@ -28,7 +28,7 @@ export default class App extends Component {
         <Navbar/>
         <main>
           <Switch>
-            <Route path="/" component={HomePage} />
+            {/* <Route path="/" component={HomePage} /> This was making everything else break*/}
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" component={LoginPage} />
             <Route path="/ResultsPage" component={ResultsPage} />
