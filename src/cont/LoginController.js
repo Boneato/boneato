@@ -106,8 +106,16 @@ function initApp() {
         document.getElementById('quickstart-sign-in').disabled = false;
         // [END_EXCLUDE]
     });
+    
+    /* Previous code (changed by Laura):
+        document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+    */
+
     // [END authstatelistener]
-    document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+    if(document.getElementById('quickstart-sign-in')) {
+        document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);
+    }
+    
 }
 
 window.onload = function () {
