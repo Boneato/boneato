@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
   iconSearch: {
     width: '84px',
     height: '84px',
-  }
+    color: '#0C9A89'
+  },
 }));
 
 export default function CustomizedInputBase() {
@@ -48,74 +49,3 @@ export default function CustomizedInputBase() {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-
-// We can inject some CSS into the DOM.
-const styles = {
-  root: {
-    background: '#FFFFFF',
-    borderRadius: 12,
-    border: 0,
-    color: 'white',
-    height: 130,
-    padding: '0 30px',
-    width: '100%',
-    marginTop: 'auto',
-    marginBotton: 'auto',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  input: {
-    fontSize: 84,
-  }
-};
-
-function ClassNames(props) {
-  const { classes, children, className, ...other } = props;
-
-  return (
-    <TextField type="search" placeholder="BONITO?" className={clsx(classes.root, classes.input, className)} {...other}>
-      {children || 'class names'}
-    </TextField>
-    
-    
-  );
-}
-
-ClassNames.propTypes = {
-  children: PropTypes.node,
-  classes: PropTypes.object.isRequired,
-  className: PropTypes.string,
-};
-
-export default withStyles(styles)(ClassNames);
-
-/*<TextField
-					id="outlined-search"
-					label="Search field"
-					type="search"
-					className="search-ingredient"
-					margin="normal"
-					variant="outlined"
-        />*/
-        

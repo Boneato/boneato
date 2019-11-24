@@ -47,8 +47,8 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar currentUser={LoginController.user}/>
         <main>
+        <Navbar currentUser={LoginController.user}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />

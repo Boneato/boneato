@@ -23,7 +23,7 @@ export default class HomePage extends Component {
 				<div className="search-location">Seattle, WA</div>
 				<div className="search-description">Source hard-to-find ingredients for your next home-cooked meal.</div>
 
-			</div >
+			</div>
 		</div >);
 	}
 }

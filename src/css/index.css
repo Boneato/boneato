@@ -17,13 +17,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.makeStyles-root-1 {
+  background-color: transparent !important;
+}
 .bonito-logo {
   height: 28px;
+  display: flex;
+  align-items: center;
+}
+.nav-tabs {
+  margin-left: 30px;
 }
 
 /* HOME PAGE */
+
 .search-container {
+  margin-top: 7em;
   margin-right: auto;
   margin-left: auto;
   width: 60%;
@@ -33,29 +42,12 @@ code {
   font-size: 4rem;
   letter-spacing: -2%;
   color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 .search-ingredient {
   width: 100%;
 }
-/*
-.MuiInputBase-input {
-  font-size: 84pt !important;
-  color: #CECECE !important;
-  background-color: #FFFFFF !important;
-  border-radius: 12px;
-  width: 100%;
-  border: 0;
-  height: 130px !important;
-  margin: 0;
-  display: block;
-  padding: 6px 0 7px;
-  min-width: 0;
-  background: none;
-  box-sizing: content-box;
-  animation-name: MuiInputBase-keyframes-auto-fill-cancel;
-  -webkit-tap-highlight-color: transparent;
-}
-*/
+
 .search-location {
   font-style: normal;
   font-weight: normal;
@@ -64,6 +56,7 @@ code {
   /* identical to box height */
   text-align: right;
   color: #FFFFFF;
+  margin-top: .5rem;
 }
 .search-description {
   font-style: normal;
@@ -71,4 +64,5 @@ code {
   font-size: 1.25rem;
   line-height: 1.5;
   color: #FFFFFF;
+  margin-top: .5rem;
 }

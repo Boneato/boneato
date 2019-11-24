@@ -6,8 +6,11 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import {FormControl, InputLabel, Select, MenuItem} from '@material-ui/core'
+import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import bonito_logo from '../../imgs/bonito_logo-03.png';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -63,17 +66,21 @@ export default function NavTabs(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
-                <Tabs
-                    variant="fullWidth"
-                    value={value}
-                    onChange={handleChange}
-                >
-                    <Tab icon={<img src={bonito_logo} className="bonito-logo"/>} href="/" />
-                    <Tab label="Find Ingredients" href="/" />
-                    <Tab label="About" href="/AboutPage"/>
-                    {loginlink}
-                </Tabs>
+            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
+                <Toolbar>
+                    <Typography variant="h6">
+                        <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>
+                    </Typography>
+                    <Tabs
+                        className="nav-tabs"
+                        value={value}
+                        onChange={handleChange}
+                    >
+                        <Tab label="Find Ingredients" href="/" />
+                        <Tab label="About" href="/AboutPage" />
+                        {loginlink}
+                    </Tabs>
+                </Toolbar>
             </AppBar>
         </div>
     );
