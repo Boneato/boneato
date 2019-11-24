@@ -43,6 +43,9 @@ export default function toggleSignIn() {
 *    the auth redirect flow. It is where you can get the OAuth access token from the IDP.
 */
 function initApp() {
+
+    /*
+    
     // Result from Redirect auth flow.
     // [START getidptoken]
     firebase.auth().getRedirectResult().then(function (result) {
@@ -106,6 +109,8 @@ function initApp() {
         document.getElementById('quickstart-sign-in').disabled = false;
         // [END_EXCLUDE]
     });
+
+    */
     
     /* Previous code (changed by Laura):
         document.getElementById('quickstart-sign-in').addEventListener('click', toggleSignIn, false);

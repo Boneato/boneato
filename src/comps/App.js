@@ -50,7 +50,7 @@ export default class App extends Component {
         <Navbar currentUser={LoginController.user}/>
         <main>
           <Switch>
-            {/* <Route path="/" component={HomePage} /> This was making everything else break*/}
+            <Route exact path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" component={LoginPage} />
             <Route path="/ResultsPage" component={ResultsPage} />
