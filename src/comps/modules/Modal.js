@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { Dialog, DialogTitle, Button } from '@material-ui/core';
-
+import { Dialog, DialogTitle, 
+        Button, TextField, DialogContentText, DialogContent
+       } from '@material-ui/core';
+import checkmark from '../../assets/checkmark.svg';
 
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -24,23 +26,63 @@ export function Modal(props) {
     // renders given DOM elements inside of modal
     return (
         <Dialog open={open} onClose={handleClose}>
-            <DialogTitle>{props.title}</DialogTitle>
-            {props.content}
+            <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
+            <DialogContent>
+                {props.content}
+            </DialogContent>
         </Dialog>
     );
 }
 
 export function NewIngredientModal(props) {
-
-    var signInItems = (
-    <Button onClick={NewIngredientsController}>
+    var ingredItems = (
+    <div>
+        <TextField
+            id="filled-basic"
+            label="Ingredient Name"
+            margin="dense"
+            variant="filled"
+            fullWidth
+        />
+        <TextField
+            id="filled-basic"
+            label="Comments (optional)"
+            margin="normal"
+            variant="filled"
+            fullWidth
+        />
+        <Button onClick={NewIngredientsController}>
             Submit Ingredient
         </Button>
+    </div>
     );
-
+    
+    if (props.submitted) {
+        ingredItems = (
+            <div>
+                <img src={checkmark}/>
+                <DialogContentText/>
+            </div>
+        )
+    }
     return (
-        <Modal title={props.title} content={signInItems}></Modal>
+        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
     )
 }
+
+export function NewLocationModal(props) {
+    var locationItems = (
+        <div>
+            <TextField/>
+            <Button onClick={NewIngredientsController}>
+                Submit
+            </Button>
+        </div>
+    );
+    return (
+        <Modal title={"Report a new " + props.ingredName + " location"}/>
+    );
+}
+
 
 export default Modal;
