@@ -6,6 +6,7 @@ import EmbeddedMap from './modules/EmbeddedMap';
 import Modal from './modules/Modal';
 import firebase from 'firebase';
 import NewLocationForm from './location/NewLocationForm';
+//import test from '../index';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
@@ -35,13 +36,15 @@ export default class SpecingPage extends Component {
     // render LocationList with LocationModel(s) and IngredientModel
     // if user not signed, prevent interaction with NewLocationForm component.
     render() {
-        let searchRes = null, i=null;
+        let searchRes = null, i=null, output=null, output2;
 
         if(this.state.locationIDList.length==0){
             searchRes = <p>Phooey. There are no known locations yet.</p>;
         }else{
             searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID}/>
         }
+
+        output2 = 123
 
         
         return(
@@ -58,12 +61,12 @@ export default class SpecingPage extends Component {
                     <NavLink to="/NewLocationForm">Report a new location.</NavLink>
                     </p>
                 </div>
-                <div>
-                    <span>
+                    <div>
                         {searchRes}
-                        <EmbeddedMap/>
-                    </span>
-                </div>
+                        <EmbeddedMap />
+                    </div>
+                    <p>{output}</p>
+                    <p>{output2}</p>
             </body>
         );
     }

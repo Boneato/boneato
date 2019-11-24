@@ -19,7 +19,7 @@ export default function DownVoteButton(props){
 }
 
  // updates vote counter when clicked
-function componentDidUpdate() {
+// function componentDidUpdate() {
 
-}
+// }
 
