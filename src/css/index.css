@@ -26,8 +26,31 @@ code {
   align-items: center;
 }
 .nav-tabs {
-  margin-left: 30px;
+  float: right;
 }
+.MuiTab-wrapper {
+  text-transform: none !important;
+  font-size: .875rem;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  align-items: flex-end !important;
+}
+.MuiTab-root {
+  padding: 6px 0px !important;
+}
+@media (min-width: 600px) {
+  .MuiTab-root {
+    min-width: 120px !important;
+  }
+}
+
+.MuiTab-textColorInherit {
+  opacity: 1 !important;
+}
+.MuiTab-wrapper:hover {
+  text-decoration: underline;
+}
+
 
 /* HOME PAGE */
 
