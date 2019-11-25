@@ -73,7 +73,7 @@ export default function NavTabs(props) {
                     </Typography>
                     <Tabs
                         className="nav-tabs"
-                        value={value}
+                        //value={value}
                         onChange={handleChange}
                     >
                         <Tab label="Find Ingredients" href="/" />
