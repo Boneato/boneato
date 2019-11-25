@@ -70,16 +70,15 @@ code {
 .search-ingredient {
   width: 100%;
 }
-
 .search-location {
   font-style: normal;
   font-weight: normal;
   font-size: 1.125rem;
   line-height: 1.5;
-  /* identical to box height */
   text-align: right;
   color: #FFFFFF;
   margin-top: .5rem;
+  
 }
 .search-description {
   font-style: normal;

@@ -9,10 +9,7 @@ import Box from '@material-ui/core/Box';
 import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import bonito_logo from '../../imgs/bonito_logo-03.png';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import Grid from '@material-ui/core/Grid';
-
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -42,7 +39,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         backgroundColor: theme.palette.background.paper,
     },
-    
+
 }));
 
 export default function NavTabs(props) {
@@ -50,7 +47,7 @@ export default function NavTabs(props) {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    
+
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -77,15 +74,15 @@ export default function NavTabs(props) {
                         <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>
                     </Typography>
                     <Grid container alignItems="flex-start" justify="flex-end" direction="row">
-                    <Tabs
-                        className="nav-tabs"
-                        //value={value}
-                        onChange={handleChange}
-                    >
-                        <Tab label="Find Ingredients" href="/" />
-                        <Tab label="About" href="/AboutPage" />
-                        {loginlink}
-                    </Tabs>
+                        <Tabs
+                            className="nav-tabs"
+                            //value={value}
+                            onChange={handleChange}
+                        >
+                            <Tab label="Find Ingredients" href="/" />
+                            <Tab label="About" href="/AboutPage" />
+                            {loginlink}
+                        </Tabs>
                     </Grid>
                 </Toolbar>
             </AppBar>
