@@ -37,7 +37,7 @@ export function Modal(props) {
     }
     // renders given DOM elements inside of modal
     return (
-        <Dialog open={open}>
+        <Dialog open={open} onClose={handleClose}>
             <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
             <DialogContent>
                 {props.content}
@@ -49,20 +49,17 @@ export function Modal(props) {
 export function NewIngredientModal(props) {
     const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
-    const [filled, setFilled] = React.useState(true);
     const [ingredName, setIngredName] = React.useState("");
-    const verifySubmit = () => {
-        if (filled) {
+    const handleClose = () => {
+        //e.preventDefault();
+        console.log(ingredName);
+        if (ingredName.length > 0) {
             setSubmit(true);
-        }
-    }
-    const handleClose = (e) => {
-        e.preventDefault();
-        if (ingredName.length < 1) {
             return true;
         } else {
             return false;
         }
+        
     }
     var ingredItems = (
     <div>
@@ -72,11 +69,7 @@ export function NewIngredientModal(props) {
             margin="dense"
             variant="filled"
             fullWidth
-            onChange={(e) => {
-                setIngredName(e.target.value)
-                console.log(ingredName.length)
-                console.log(handleClose(e))
-            }}
+            onChange={(e) => setIngredName(e.target.value)}
             error={ingredName === ""}
             helperText={ingredName === "" ? "This field cannot be left blank" : ' '}
             value={ingredName}
@@ -88,7 +81,7 @@ export function NewIngredientModal(props) {
             variant="filled"
             fullWidth
         />
-        <Button onClick={verifySubmit}>
+        <Button onClick={handleClose}>
             Submit Ingredient
         </Button>
     </div>
@@ -101,7 +94,7 @@ export function NewIngredientModal(props) {
         )
     }
     return (
-        <Modal title={"Suggest a new ingredient"} content={ingredItems} handleClose={handleClose}/>
+        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
     );
 }
 
