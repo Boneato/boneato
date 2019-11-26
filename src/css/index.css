@@ -5,23 +5,107 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #024595 !important;
-  background: radial-gradient(60% 50% at 60% 45%, rgba(64,118,182,.8) 0%, rgba(130,130,130,0) 100%);
-background-repeat: no-repeat;
+  
 }
 html, body {
   height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: 'Open Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.page-title {
+  font-size: 64px;
+  border-bottom: 2px solid #0C9A89;
+  font-weight: bold;
+  padding: 3rem 0 .25rem 0;
+  margin-bottom: 2.5rem;
+}
+
+/* NAVIGATION */
+.makeStyles-root-1 {
+  background-color: #024595 !important;
+}
+.homepage-body .makeStyles-root-1 {
+  background-color: transparent !important;
+}
+
+.bonito-logo {
+  height: 28px;
+  display: flex;
+  align-items: center;
+}
+.nav-tabs {
+  float: right;
+}
+.MuiTab-wrapper {
+  text-transform: none !important;
+  font-size: .875rem;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  align-items: flex-end !important;
+}
+.MuiTab-root {
+  padding: 6px 0px !important;
+}
+@media (min-width: 600px) {
+  .MuiTab-root {
+    min-width: 120px !important;
+  }
+}
+.MuiTab-textColorInherit {
+  opacity: 1 !important;
+}
+.MuiTab-wrapper:hover {
+  text-decoration: underline;
+}
+
 
 /* HOME PAGE */
+.homepage-body {
+  background-color: #024595 !important;
+  background: radial-gradient(60% 50% at 60% 45%, rgba(64,118,182,.8) 0%, rgba(130,130,130,0) 100%);
+background-repeat: no-repeat;
+margin-top: -64px;
+height: 100vh;
+}
+.search-container {
+  margin-right: auto;
+  margin-left: auto;
+  width: 60%;
+  padding-top: 10rem;
+}
 .search-label {
   font-weight: 300;
-  font-size: 48pt;
+  font-size: 4rem;
   letter-spacing: -2%;
-  color: #ffffff;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+.search-ingredient {
+  width: 100%;
+}
+.search-location {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: right;
+  color: #FFFFFF;
+  margin-top: .5rem;
+  
+}
+.search-description {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #FFFFFF;
+  margin-top: .5rem;
+}
+
+/* ABOUT PAGE */
+.about-paragraph {
+  padding-top: 2rem;
 }

@@ -22,6 +22,8 @@ export default class ResultsPage extends Component {
     render() {
         return(
             <div>
+                <h2>Ingredient name here</h2>
+                <h3>Found ## results for ingredient xx</h3>
                 <List component="nav" aria-label="search results">
                     will be able to complete this once the controller is done
                 </List>

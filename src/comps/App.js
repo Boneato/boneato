@@ -47,10 +47,10 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar currentUser={LoginController.user}/>
         <main>
+        <Navbar currentUser={LoginController.user}/>
           <Switch>
-            {/* <Route path="/" component={HomePage} /> This was making everything else break*/}
+            <Route exact path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" component={LoginPage} />
             <Route path="/ResultsPage" component={ResultsPage} />
