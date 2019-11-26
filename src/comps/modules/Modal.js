@@ -37,7 +37,7 @@ export function Modal(props) {
     }
     // renders given DOM elements inside of modal
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open}>
             <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
             <DialogContent>
                 {props.content}
@@ -48,6 +48,22 @@ export function Modal(props) {
 
 export function NewIngredientModal(props) {
     const classes = useStyles();
+    const [submit, setSubmit] = React.useState(false);
+    const [filled, setFilled] = React.useState(true);
+    const [ingredName, setIngredName] = React.useState("");
+    const verifySubmit = () => {
+        if (filled) {
+            setSubmit(true);
+        }
+    }
+    const handleClose = (e) => {
+        e.preventDefault();
+        if (ingredName.length < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     var ingredItems = (
     <div>
         <TextField
@@ -56,6 +72,14 @@ export function NewIngredientModal(props) {
             margin="dense"
             variant="filled"
             fullWidth
+            onChange={(e) => {
+                setIngredName(e.target.value)
+                console.log(ingredName.length)
+                console.log(handleClose(e))
+            }}
+            error={ingredName === ""}
+            helperText={ingredName === "" ? "This field cannot be left blank" : ' '}
+            value={ingredName}
         />
         <TextField
             id="filled-basic"
@@ -64,55 +88,49 @@ export function NewIngredientModal(props) {
             variant="filled"
             fullWidth
         />
-        <Button onClick={NewIngredientsController}>
+        <Button onClick={verifySubmit}>
             Submit Ingredient
         </Button>
     </div>
     );
-    ingredItems = (
+    if (submit) {
+        ingredItems = (
         <div>
-            <HomeIcon/>
+            <Tab icon={<img src={checkmark}></img>}/>
         </div>
-    )
-    function HomeIcon(props) {
-        return (
-          <Tab icon={<img src={checkmark}></img>}/>
-        );
-      }
-    //if (props.submitted) {
-        
-    //}<path d="M1043 106-85 522-77 627-64 366-69 471-56"/>
-    //<path d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
-    return (                
-
-        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
+        )
+    }
+    return (
+        <Modal title={"Suggest a new ingredient"} content={ingredItems} handleClose={handleClose}/>
     );
 }
 
 export function NewLocationModal(props) {
+    const [submit, setSubmit] = React.useState(false);
     var locationItems = (
         <div>
-            <TextField/>
+            <TextField
+             id="filled-basic"
+             label="Location"
+             margin="normal"
+             variant="filled"
+             fullWidth
+            />
             <Button onClick={NewIngredientsController}>
                 Submit
             </Button>
         </div>
     );
+    if (submit) {
+        locationItems = (
+        <div>
+            <Tab icon={<img src={checkmark}></img>}/>
+        </div>
+        )
+    }
     return (
-        <Modal title={"Report a new " + props.ingredName + " location"}/>
+        <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems}/>
     );
-}
-
-function CheckMark(props) {
-    const classes = useStyles();
-
-    return (
-        <SvgIcon {...props}>
-           
-<path className={classes.cls1} d="M1043 106-85 522-77 627-64 366-69 471-56"/>
-<path className={classes.cls1} d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
-        </SvgIcon>
-   );
 }
 
 export default Modal;
