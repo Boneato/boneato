@@ -5,21 +5,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #024595 !important;
-  background: radial-gradient(60% 50% at 60% 45%, rgba(64,118,182,.8) 0%, rgba(130,130,130,0) 100%);
-background-repeat: no-repeat;
+  
 }
 html, body {
   height: 100%;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: 'Open Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.page-title {
+  font-size: 64px;
+  border-bottom: 2px solid #0C9A89;
+  font-weight: bold;
+  padding: 3rem 0 .25rem 0;
+  margin-bottom: 2.5rem;
+}
+
+/* NAVIGATION */
 .makeStyles-root-1 {
+  background-color: #024595 !important;
+}
+.homepage-body .makeStyles-root-1 {
   background-color: transparent !important;
 }
+
 .bonito-logo {
   height: 28px;
   display: flex;
@@ -43,7 +54,6 @@ code {
     min-width: 120px !important;
   }
 }
-
 .MuiTab-textColorInherit {
   opacity: 1 !important;
 }
@@ -53,12 +63,18 @@ code {
 
 
 /* HOME PAGE */
-
+.homepage-body {
+  background-color: #024595 !important;
+  background: radial-gradient(60% 50% at 60% 45%, rgba(64,118,182,.8) 0%, rgba(130,130,130,0) 100%);
+background-repeat: no-repeat;
+margin-top: -64px;
+height: 100vh;
+}
 .search-container {
-  margin-top: 7em;
   margin-right: auto;
   margin-left: auto;
   width: 60%;
+  padding-top: 10rem;
 }
 .search-label {
   font-weight: 300;
@@ -87,4 +103,9 @@ code {
   line-height: 1.5;
   color: #FFFFFF;
   margin-top: .5rem;
+}
+
+/* ABOUT PAGE */
+.about-paragraph {
+  padding-top: 2rem;
 }

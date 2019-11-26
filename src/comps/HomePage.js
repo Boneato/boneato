@@ -13,7 +13,7 @@ export default class HomePage extends Component {
 	//      if user signed in, render "Signed in as 'username'" link
 	//      otherwise render "Sign In" link.
 	render() {
-		return (<div>
+		return (<div className="homepage-body">
 			<div className="search-container">
 				<div className="search-label">Where can I buy</div>
 
