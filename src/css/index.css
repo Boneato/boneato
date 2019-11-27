@@ -9,19 +9,32 @@ body {
 }
 html, body {
   height: 100%;
+  overflow-x: hidden;
 }
-
+.nav-tabs a, .nav-tabs a:hover {
+  color: #FFFFFF;
+}
+a {
+  font-weight: 600;
+  color: #0A8576;
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
 code {
   font-family: 'Open Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .page-title {
   font-size: 64px;
-  border-bottom: 2px solid #0C9A89;
+  border-bottom: 1px solid #D6D6D6;
   font-weight: bold;
   padding: 3rem 0 .25rem 0;
   margin-bottom: 2.5rem;
 }
+
 
 /* NAVIGATION */
 .makeStyles-root-1 {
@@ -108,4 +121,31 @@ height: 100vh;
 /* ABOUT PAGE */
 .about-paragraph {
   padding-top: 2rem;
+}
+
+/* SPECIFIC INGREDIENT PAGE */
+.spec-ingredient-title {
+  font-size: 64px;
+  font-weight: bold;
+}
+.spec-ingredient-label {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  padding-top: 3rem;
+}
+.spec-ingredient-subtext {
+  font-size: 14px;
+}
+.locations-container {
+  border-top: 1px solid #D6D6D6;
+  margin: 2rem 0 1.5rem 0;
+}
+.map-container {
+  margin: 2rem 0 1.5rem 0;
+}
+.no-locations {
+  font-size: 24px;
+  font-style: italic;
+  color: #888888;
 }

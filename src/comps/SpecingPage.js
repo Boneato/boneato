@@ -6,6 +6,7 @@ import EmbeddedMap from './modules/EmbeddedMap';
 import Modal from './modules/Modal';
 import firebase from 'firebase';
 import NewLocationForm from './location/NewLocationForm';
+import Grid from '@material-ui/core/Grid';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
@@ -13,9 +14,9 @@ export default class SpecingPage extends Component {
     // takes in valid ingredientID, boolean indicating user is signed in
     constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             ingredientID: null,
-            ingredientName:'',
+            ingredientName: 'Pickles',
             locationIDList: [],
         };
     }
@@ -35,36 +36,49 @@ export default class SpecingPage extends Component {
     // render LocationList with LocationModel(s) and IngredientModel
     // if user not signed, prevent interaction with NewLocationForm component.
     render() {
-        let searchRes = null, i=null;
+        let searchRes = null, i = null;
 
-        if(this.state.locationIDList.length==0){
-            searchRes = <p>Phooey. There are no known locations yet.</p>;
-        }else{
-            searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID}/>
+        if (this.state.locationIDList.length == 0) {
+            searchRes = <div className="no-locations">Phooey. There are no known locations yet.</div>;
+        } else {
+            searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID} />
         }
 
-        
-        return(
-            <body>
-                <div>
-                    <p>INGREDIENT</p>
+
+        return (
+            <div>
+                <Grid container direction="row" justify="center" spacing={3}>
+                    <Grid item xs={10} xl={9}>
+
+
+                        <div className="spec-ingredient-label">
+                            Ingredient
                 </div>
-                <div>
-                    <h1>{this.state.ingredientName}</h1>
-                </div>
-                <div>
-                    <p>
-                    Know where to buy this?
-                    <NavLink to="/NewLocationForm">Report a new location.</NavLink>
-                    </p>
-                </div>
-                <div>
-                    <span>
-                        {searchRes}
-                        <EmbeddedMap/>
-                    </span>
-                </div>
-            </body>
+                        <div className="spec-ingredient-title">
+                            {this.state.ingredientName}
+                        </div>
+                        <div className="spec-ingredient-subtext">
+                            <span>Know where to buy this? </span>
+                            <NavLink to="/NewLocationForm">Report a new location.</NavLink>
+                        </div>
+
+
+                        <Grid container spacing={8} justify="flex-start">
+                            <Grid item xs={12} md={6}>
+                                <div className="locations-container" />{searchRes}
+                            </Grid>
+                            <Grid item xs={12} md={6}>
+                                <div className="map-container">
+                                the map will be here
+                                <EmbeddedMap />
+                                </div>
+                                
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </div>
         );
     }
 }
