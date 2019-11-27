@@ -48,6 +48,11 @@ export function Modal(props) {
 
 export function NewIngredientModal(props) {
     const classes = useStyles();
+    const [submit, setSubmit] = React.useState(false);
+    // call ingredientcontroller
+    const handleSubmit = () => {
+        setSubmit(true);
+    }
     var ingredItems = (
     <div>
         <TextField
@@ -64,28 +69,28 @@ export function NewIngredientModal(props) {
             variant="filled"
             fullWidth
         />
-        <Button onClick={NewIngredientsController}>
+        <Button onClick={handleSubmit}>
             Submit Ingredient
         </Button>
     </div>
     );
-    ingredItems = (
-        <div>
-            <HomeIcon/>
-        </div>
-    )
-    function HomeIcon(props) {
-        return (
-          <Tab icon={<img src={checkmark}></img>}/>
-        );
-      }
-    //if (props.submitted) {
+    if (props.submitted) {
+        ingredItems = (
+            <div>
+                <Tab icon={<img src={checkmark}></img>}/>
+            </div>
+        )
+    }
+    return (
+        {if (submit) {
+            (<div>
+                <Tab icon={<img src={checkmark}></img>}/>
+            </div>)
+        } else {
+            (<Modal title={"Suggest a new ingredient"} content={ingredItems}/>)
+        }
+    }
         
-    //}<path d="M1043 106-85 522-77 627-64 366-69 471-56"/>
-    //<path d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
-    return (                
-
-        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
     );
 }
 
