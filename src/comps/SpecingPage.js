@@ -48,12 +48,13 @@ export default class SpecingPage extends Component {
         return (
             <div>
                 <Grid container direction="row" justify="center" spacing={3}>
+                    
                     <Grid item xs={10} xl={9}>
 
 
                         <div className="spec-ingredient-label">
                             Ingredient
-                </div>
+                        </div>
                         <div className="spec-ingredient-title">
                             {this.state.ingredientName}
                         </div>
@@ -62,21 +63,22 @@ export default class SpecingPage extends Component {
                             <NavLink to="/NewLocationForm">Report a new location.</NavLink>
                         </div>
 
-
                         <Grid container spacing={8} justify="flex-start">
                             <Grid item xs={12} md={6}>
                                 <div className="locations-container" />{searchRes}
                             </Grid>
+
                             <Grid item xs={12} md={6}>
                                 <div className="map-container">
-                                the map will be here
-                                <EmbeddedMap />
+                                    <EmbeddedMap />
                                 </div>
-                                
+
                             </Grid>
+
                         </Grid>
 
                     </Grid>
+
                 </Grid>
             </div>
         );
