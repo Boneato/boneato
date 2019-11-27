@@ -49,9 +49,17 @@ export function Modal(props) {
 export function NewIngredientModal(props) {
     const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
-    // call ingredientcontroller
-    const handleSubmit = () => {
-        setSubmit(true);
+    const [ingredName, setIngredName] = React.useState("");
+    const handleClose = () => {
+        //e.preventDefault();
+        console.log(ingredName);
+        if (ingredName.length > 0) {
+            setSubmit(true);
+            return true;
+        } else {
+            return false;
+        }
+        
     }
     var ingredItems = (
     <div>
@@ -61,6 +69,10 @@ export function NewIngredientModal(props) {
             margin="dense"
             variant="filled"
             fullWidth
+            onChange={(e) => setIngredName(e.target.value)}
+            error={ingredName === ""}
+            helperText={ingredName === "" ? "This field cannot be left blank" : ' '}
+            value={ingredName}
         />
         <TextField
             id="filled-basic"
@@ -69,55 +81,49 @@ export function NewIngredientModal(props) {
             variant="filled"
             fullWidth
         />
-        <Button onClick={handleSubmit}>
+        <Button onClick={handleClose}>
             Submit Ingredient
         </Button>
     </div>
     );
-    if (props.submitted) {
+    if (submit) {
         ingredItems = (
-            <div>
-                <Tab icon={<img src={checkmark}></img>}/>
-            </div>
+        <div>
+            <Tab icon={<img src={checkmark}></img>}/>
+        </div>
         )
     }
     return (
-        {if (submit) {
-            (<div>
-                <Tab icon={<img src={checkmark}></img>}/>
-            </div>)
-        } else {
-            (<Modal title={"Suggest a new ingredient"} content={ingredItems}/>)
-        }
-    }
-        
+        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
     );
 }
 
 export function NewLocationModal(props) {
+    const [submit, setSubmit] = React.useState(false);
     var locationItems = (
         <div>
-            <TextField/>
+            <TextField
+             id="filled-basic"
+             label="Location"
+             margin="normal"
+             variant="filled"
+             fullWidth
+            />
             <Button onClick={NewIngredientsController}>
                 Submit
             </Button>
         </div>
     );
+    if (submit) {
+        locationItems = (
+        <div>
+            <Tab icon={<img src={checkmark}></img>}/>
+        </div>
+        )
+    }
     return (
-        <Modal title={"Report a new " + props.ingredName + " location"}/>
+        <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems}/>
     );
-}
-
-function CheckMark(props) {
-    const classes = useStyles();
-
-    return (
-        <SvgIcon {...props}>
-           
-<path className={classes.cls1} d="M1043 106-85 522-77 627-64 366-69 471-56"/>
-<path className={classes.cls1} d="M1043 475-2v47-86A520-26 520-26 0 1 1 734-52 47-54"/>
-        </SvgIcon>
-   );
 }
 
 export default Modal;

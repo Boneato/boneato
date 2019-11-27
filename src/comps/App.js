@@ -48,7 +48,7 @@ export default class App extends Component {
     return (
       <div>
         <Navbar/>
-        <NewIngredientModal submitted={false}/>
+        <NewIngredientModal/>
         <main>
           <Switch>
             {/* <Route path="/" component={HomePage} /> This was making everything else break*/}
