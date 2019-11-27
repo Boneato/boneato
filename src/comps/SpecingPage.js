@@ -16,7 +16,7 @@ export default class SpecingPage extends Component {
         super(props);
         this.state = {
             ingredientID: null,
-            ingredientName: 'Pickles',
+            ingredientName: '',
             locationIDList: [],
         };
     }
@@ -39,7 +39,7 @@ export default class SpecingPage extends Component {
         let searchRes = null, i = null;
 
         if (this.state.locationIDList.length == 0) {
-            searchRes = <div className="no-locations">Phooey. There are no known locations yet.</div>;
+            searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
             searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID} />
         }

@@ -31,7 +31,7 @@ code {
   font-size: 64px;
   border-bottom: 1px solid #D6D6D6;
   font-weight: bold;
-  padding: 3rem 0 .25rem 0;
+  padding: 3rem 0 24px 0;
   margin-bottom: 2.5rem;
 }
 
@@ -121,6 +121,7 @@ height: 100vh;
 /* ABOUT PAGE */
 .about-paragraph {
   padding-top: 2rem;
+  margin-bottom: 10rem;
 }
 
 /* SPECIFIC INGREDIENT PAGE */
@@ -144,8 +145,15 @@ height: 100vh;
 .map-container {
   margin: 2rem 0 1.5rem 0;
 }
-.no-locations {
+
+
+/* RESULTS PAGE */
+.search-query {
+  color: #666666;
+}
+.large-italic {
   font-size: 24px;
   font-style: italic;
   color: #888888;
+  padding-bottom: 16px;
 }
