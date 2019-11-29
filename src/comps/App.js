@@ -10,7 +10,7 @@ import AboutPage from './AboutPage';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import LoginController from '../cont/LoginController';
 import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
-
+import {AutoComplete}x from '../cont/PlacesController';
 // renders application with all neccesary components
 export default class App extends Component {
 
@@ -49,6 +49,7 @@ export default class App extends Component {
       <div>
         <main>
         <Navbar currentUser={LoginController.user}/>
+        <AutoComplete/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />
