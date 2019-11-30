@@ -4,7 +4,7 @@ import TeamCard from './modules/TeamCard';
 import Lauren from '../imgs/Lauren.jpg';
 import Cate from '../imgs/Cate.png';
 import Anthony from '../imgs/Anthony.jpg';
-import Laura from '../imgs/Laura.jpg';
+import Laura from '../imgs/Laura.png';
 import Brian from '../imgs/brian.jpg';
 import Grid from '@material-ui/core/Grid';
 
