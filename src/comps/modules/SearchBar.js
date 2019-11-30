@@ -11,7 +11,6 @@ const useStyles = makeStyles(theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: '100%',
     height: 130,
   },
   input: {
@@ -22,8 +21,7 @@ const useStyles = makeStyles(theme => ({
     padding: '0px 20px',
   },
   iconButton: {
-    padding: 10,
-    marginRight: 10,
+    padding: '10px 20px 10px 10px',
   },
   iconSearch: {
     width: '84px',
