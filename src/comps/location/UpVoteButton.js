@@ -1,4 +1,8 @@
 import React, {Component} from 'react';
+import canVote from '.../cont/VotingController';
+import { voteTotal , canVote} from '../../cont/VotingController';
+
+var voteRight = true;
 
 export default function UpVoteButton(props){
 
@@ -13,11 +17,18 @@ export default function UpVoteButton(props){
     // };
     
 
-    return(<button> {locationInfo.upVote} CONFIRMED</button>);
+    return(<button onclick="componentDidUpdate()"> {locationInfo.upVote} CONFIRMED</button>);
     
 }
 
  // updates vote counter when clicked
-function componentDidUpdate() {
-
+ function componentDidUpdate() {
+    if(!canVote(userID)){
+        return false;
+    }else{
+        voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, true, false);
+        return true;
+    }
 }
+
+export default voteRight;

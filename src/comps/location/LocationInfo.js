@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
+import voteRight from 'DownVoteButton';
+import voteRight from 'UpVoteButton';
 
 export default function LocationInfo(props) {
     let locationInfo = props.locationInfo;
@@ -16,6 +18,10 @@ export default function LocationInfo(props) {
     let index = props.index;
     let errorWarning = null;
 
+    if(!voteRight){
+        upDownVoteRight = <p>Please <a to="../LoginPage">sign in with Google</a> to share whether you foung this ingredient here. </p>
+    }
+
     if(locationInfo.upVote>= 5){
         errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
     }
@@ -23,6 +29,7 @@ export default function LocationInfo(props) {
 
     return(
         <div>
+            {upDownVoteRight}
             {errorWarning}
             <span>
                 <UpVoteButton locationInfo={locationInfo}/>
