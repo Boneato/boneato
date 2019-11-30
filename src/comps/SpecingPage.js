@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LocationsList from './modules/LocationsList';
 import LocationsController from '../cont/LocationsController';
@@ -10,20 +10,23 @@ import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import {getNamebyIngredientID} from '../firestore';
 import {getLocasbyIngredientID} from '../firestore';
+import {db} from '../firestore';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
 export default function SpecingPage(props){
     let ingredientID = props.ingredientID;
-    let ingredientName = "";
     let locationIDList = [];
-
+    let [currentLocationID, setLoca] = useState([]);
+    let [ingredientName, setIngred] = useState("");
     //Below is just for testing purpose
     ingredientID = "V5MFG9iQMnhIkRcs4PDV";
 
     //get ingredient name and locationIDLists
-    ingredientName = getNamebyIngredientID(ingredientID);
-    locationIDList = getLocasbyIngredientID(ingredientID);
+    db.firestore().collection("ingredients").doc(ingredientID).onSnapshot(function(doc) {
+        setIngred(doc.data().name);
+    })
+
 
     // render LocationList with LocationModel(s) and IngredientModel
     // if user not signed, prevent interaction with NewLocationForm component.
