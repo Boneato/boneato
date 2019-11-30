@@ -27,11 +27,15 @@ code {
   font-family: 'Open Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.content-container {
+  margin-top: 48px;
+  margin-bottom: 48px;
+}
 .page-title {
   font-size: 64px;
   border-bottom: 1px solid #D6D6D6;
   font-weight: bold;
-  padding: 3rem 0 24px 0;
+  padding: 0 0 24px 0;
   margin-bottom: 2.5rem;
 }
 
@@ -73,6 +77,9 @@ code {
 .MuiTab-wrapper:hover {
   text-decoration: underline;
 }
+.MuiToolbar-gutters {
+  padding: 0 !important;
+}
 
 
 /* HOME PAGE */
@@ -86,7 +93,6 @@ height: 100vh;
 .search-container {
   margin-right: auto;
   margin-left: auto;
-  width: 60%;
   padding-top: 10rem;
 }
 .search-label {
@@ -159,9 +165,20 @@ height: 100vh;
 }
 
 @media (min-width: 1337px) {
-  .content-container {
+  .content-container, .search-container, .nav-content {
     max-width: 1136px;
     margin-right: auto;
     margin-left: auto;
+  }
+}
+@media (max-width: 1336px) {
+  .content-container, .search-container {
+    width: 88%;
+    margin-right: 6%;
+    margin-left: 6%;
+  }
+  .MuiToolbar-gutters {
+    padding-left: 6% !important;
+    padding-right: 6% !important;
   }
 }
