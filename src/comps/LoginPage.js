@@ -22,7 +22,8 @@ export default function LoginPage(props) {
         <div className="content-container">
             <Grid container direction="row" justify="center" spacing={3}>
                 <Grid item xs={12}>
-                    <p>Please sign in with Google to continue.</p>
+                <div className="page-title">Sign In</div>
+                    <div>Please sign in with Google to continue.</div>
                     <Button variant="contained" className={classes.button} id="quickstart-sign-in" />
 
                     {/* Container where we'll display the user details */}

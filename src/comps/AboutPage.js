@@ -17,11 +17,11 @@ export default class AboutPage extends Component {
 
         let featuredCards = (
             <Grid container spacing={2} justify="flex-start">
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Anthony' LastName='Nguyen' Position='CEO' picture={Anthony} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Anthony' LastName='Nguyen' Position='Chief Executive Officer' picture={Anthony} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Brian' LastName='Uyeda' Position='Chief Technology Officer' picture={Brian} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Cate' LastName='Lyu' Position='Chief Technology Officer' picture={Cate} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Laura' LastName='Freeman' Position='Chief Design Officer' picture={Laura} /></Grid>
                 <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Lauren' LastName='Smith' Position='Project Manager' picture={Lauren} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Laura' LastName='Freeman' Position='Designer' picture={Laura} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Cate' LastName='Lyu' Position='CTO' picture={Cate} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Brian' LastName='Uyeda' Position='CTO' picture={Brian} /></Grid>
             </Grid>
         );
 
