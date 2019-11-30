@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import LocationsList from './modules/LocationsList';
 import LocationsController from '../cont/LocationsController';
@@ -15,14 +15,15 @@ require('firebase/firestore');
 // renders the SpecingPage for a specific ingredient
 export default function SpecingPage(props){
     let ingredientID = props.ingredientID;
-    let ingredientName = "";
     let locationIDList = [];
-
+    let [ingredientName, setIngred] = useState("");
     //Below is just for testing purpose
     ingredientID = "V5MFG9iQMnhIkRcs4PDV";
 
     //get ingredient name and locationIDLists
-    ingredientName = getNamebyIngredientID(ingredientID);
+    getNamebyIngredientID(ingredientID).onSnapshot(function(doc) {
+        setIngred(doc.data().name);
+    })
     locationIDList = getLocasbyIngredientID(ingredientID);
 
     // render LocationList with LocationModel(s) and IngredientModel

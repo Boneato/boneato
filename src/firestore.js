@@ -42,16 +42,11 @@ test = dbTest.ref('ingredients/');
 // }
 
 export function getNamebyIngredientID(ingredientID){
-    var ingredientName = '';
-    db.collection("ingredients").doc(ingredientID)
-    .onSnapshot(function(doc) {
-        console.log(doc.data().name);
-        ingredientName = doc.data().name;
-        console.log(ingredientName);
-        //ingredientName.push(doc.data().name);
-    });
-    return ingredientName;
+    //var test = 
+    return db.collection("ingredients").doc(ingredientID)
+    //return ingredientName;
     //return db.collection("ingredients").doc(ingredientID).name;
+    //console.log(test);    
 }
 
 export function getLocasbyIngredientID(ingredientID){
