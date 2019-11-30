@@ -10,21 +10,23 @@ import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import {getNamebyIngredientID} from '../firestore';
 import {getLocasbyIngredientID} from '../firestore';
+import {db} from '../firestore';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
 export default function SpecingPage(props){
     let ingredientID = props.ingredientID;
     let locationIDList = [];
+    let [currentLocationID, setLoca] = useState([]);
     let [ingredientName, setIngred] = useState("");
     //Below is just for testing purpose
     ingredientID = "V5MFG9iQMnhIkRcs4PDV";
 
     //get ingredient name and locationIDLists
-    getNamebyIngredientID(ingredientID).onSnapshot(function(doc) {
+    db.firestore().collection("ingredients").doc(ingredientID).onSnapshot(function(doc) {
         setIngred(doc.data().name);
     })
-    locationIDList = getLocasbyIngredientID(ingredientID);
+
 
     // render LocationList with LocationModel(s) and IngredientModel
     // if user not signed, prevent interaction with NewLocationForm component.

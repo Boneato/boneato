@@ -21,35 +21,11 @@ firebase.initializeApp(config);
 require('firebase/app');
 require('firebase/auth');
 require('firebase/database');
-const db = firebase.firestore();
-console.log('mounted')
-db.collection(test).get().then((snapshot)=>{
-    snapshot.docs.forEach(doc=>{
-        test = doc.data().name
-        console.log(doc.data().name)
-    })
-})
+
 
 const dbTest = firebase.database();
 test = dbTest.ref('ingredients/');
 
-// function addNewIngredients(ingreName, ) {
-    
-// }
+export const db = firebase;
 
-// function addNewLocation(){
-
-// }
-
-export function getNamebyIngredientID(ingredientID){
-    //var test = 
-    return db.collection("ingredients").doc(ingredientID)
-    //return ingredientName;
-    //return db.collection("ingredients").doc(ingredientID).name;
-    //console.log(test);    
-}
-
-export function getLocasbyIngredientID(ingredientID){
-    return [];
-}
 
