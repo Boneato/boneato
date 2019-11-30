@@ -26,9 +26,9 @@ export default class AboutPage extends Component {
         );
 
         return (
-            <div>
+            <div className="content-container">
                 <Grid container direction="row" justify="center" spacing={3}>
-                    <Grid item xs={10} xl={9}>
+                    <Grid item xs={12}>
                         <div className="page-title">About Us</div>
                         {featuredCards}
                         <p className="about-paragraph">

@@ -157,3 +157,11 @@ height: 100vh;
   color: #888888;
   padding-bottom: 16px;
 }
+
+@media (min-width: 1337px) {
+  .content-container {
+    max-width: 1136px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}

@@ -38,10 +38,10 @@ export default function SpecingPage(props){
 
 
     return (
-         <div>
+         <div className="content-container">
             <Grid container direction="row" justify="center" spacing={3}>
                     
-                <Grid item xs={10} xl={9}>
+                <Grid item xs={12}>
 
 
                     <div className="spec-ingredient-label">
