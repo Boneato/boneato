@@ -24,10 +24,10 @@ export default function UpVoteButton(props){
  // updates vote counter when clicked
  function componentDidUpdate() {
     if(!canVote(userID)){
-        return false;
+        voteRight =  false;
     }else{
         voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, true, false);
-        return true;
+        voteRight =  true;
     }
 }
 
