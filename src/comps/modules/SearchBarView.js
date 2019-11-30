@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 //import algoliasearch from 'algoliasearch/lite';
 //import { InstantSearch } from 'react-instantsearch-dom';
 import SearchResultsView from './SearchResultsView';
+import SearchBar from './SearchBar.js';
 
 // const searchClient = algoliasearch(
 //   'YourApplicationID',
 //   'YourSearchOnlyAPIKey'
 // );
 
-export class SearchBarView extends Component {
+export default class SearchBarView extends Component {
     constructor(props) {
       super(props);
     }
@@ -30,7 +31,9 @@ export class SearchBarView extends Component {
     // if list of ingredients for the SearchResultsView is empty, render link
     // allowing suggestion of new ingredient. Otherwise render list of suggested ingredients.
     render() {
-      return (<body/>);
+      return (<div>
+        <SearchBar />
+        </div>);
     }
 }
 
