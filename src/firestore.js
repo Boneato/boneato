@@ -16,14 +16,14 @@ var config = {
     appId: "1:49830494344:web:f4a868b361ec362f571f3d",
     measurementId: "G-683YLNRKFH"
   };
-var test;
+var test = 'ingredient';
 firebase.initializeApp(config);
 require('firebase/app');
 require('firebase/auth');
 require('firebase/database');
 const db = firebase.firestore();
 console.log('mounted')
-db.collection('ingredients').get().then((snapshot)=>{
+db.collection(test).get().then((snapshot)=>{
     snapshot.docs.forEach(doc=>{
         test = doc.data().name
         console.log(doc.data().name)
@@ -33,5 +33,28 @@ db.collection('ingredients').get().then((snapshot)=>{
 const dbTest = firebase.database();
 test = dbTest.ref('ingredients/');
 
+// function addNewIngredients(ingreName, ) {
+    
+// }
 
-export default test;
+// function addNewLocation(){
+
+// }
+
+export function getNamebyIngredientID(ingredientID){
+    var ingredientName = '';
+    db.collection("ingredients").doc(ingredientID)
+    .onSnapshot(function(doc) {
+        console.log(doc.data().name);
+        ingredientName = doc.data().name;
+        console.log(ingredientName);
+        //ingredientName.push(doc.data().name);
+    });
+    return ingredientName;
+    //return db.collection("ingredients").doc(ingredientID).name;
+}
+
+export function getLocasbyIngredientID(ingredientID){
+    return [];
+}
+

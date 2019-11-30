@@ -16,19 +16,16 @@ export default function DownVoteButton(props){
     // };
     
 
-    return(<button onclick="componentDidUpdate()"> {locationInfo.downVote} DIDN'T FIND</button>);
+    return(<button onclick="componentDidUpdate(locationInfo)"> {locationInfo.downVote} DIDN'T FIND</button>);
     
 }
 
  // updates vote counter when clicked
-function componentDidUpdate() {
-    if(!canVote(userID)){
-        voteRight = false;
-    }else{
+function componentDidUpdate(locationInfo) {
+    if(canVote(locationInfo.userID)){
         voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, false, true);
         voteRight = true;
     }
 }
 
-export default voteRight;
 
