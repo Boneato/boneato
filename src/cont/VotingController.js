@@ -1,4 +1,4 @@
-import {loggedIn} from './LoginController';
+//import {loggedIn} from './LoginController';
 
 // takes in locationID and returns list of upvotes and downvotes
 // if upvote/downvote is true, update database and return updated vote count as list
@@ -13,10 +13,10 @@ export function voteTotal(ingredientID, userID, locationID, upvote, downvote) {
 // takes in user id and location id
 // validates if user can vote
 export function canVote(userID) {
-    if(loggedIn(userID)){
+    //if(loggedIn(userID)){
         //if the userID hasn't voted for this location yet
         return true;
-    }
+    //}
     return false;
 }
 

@@ -1,7 +1,7 @@
 import React, {Component, useImperativeHandle} from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
-import {loggedIn} from '../../cont/LoginController';
+//import {loggedIn} from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
 
 export default function LocationInfo(props) {
@@ -19,9 +19,9 @@ export default function LocationInfo(props) {
     let upDownVoteRight = null;
     let errorWarning = null;
 
-    if(!loggedIn(locationInfo.userID)){
+   // if(!loggedIn(locationInfo.userID)){
         upDownVoteRight = <p>Please <Tab label="sign in with Google" href="../LoginPage" /> to share whether you foung this ingredient here. </p>
-    }
+   // }
 
     if(locationInfo.upVote>= 5){
         errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>

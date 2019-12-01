@@ -53,7 +53,7 @@ export default function NavTabs(props) {
         setValue(newValue);
     };
 
-    if (props.currentUser) {
+    if (props.currentUser.signedIn()) {
         loginlink =
             <FormControl className={classes.formControl}>
                 <InputLabel>Signed in as {props.currentUser.name}</InputLabel>

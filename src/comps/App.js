@@ -8,18 +8,19 @@ import ResultsPage from './ResultsPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
 import {Route, Switch, Redirect} from 'react-router-dom';
-import LoginController from '../cont/LoginController';
 import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
-
+import {LoginController} from '../cont/LoginController.js';
 // renders application with all neccesary components
 export default class App extends Component {
 
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     user: '',
-  //   }
-  // }
+  constructor(props) {
+    super(props);
+    var user = new LoginController();
+    this.state = {
+      user: user,
+      userLoggedIn: false
+    }
+  }
 
   componentDidMount() {
     // this.fetchData();
@@ -37,6 +38,7 @@ export default class App extends Component {
     //     this.setState({ user: null })
     //   }
     // })
+    
   }
 
   // if the user is signed-in, will log user out when exiting the web application
@@ -44,15 +46,24 @@ export default class App extends Component {
  //   this.authUnSubFunction()
   }
 
+  componentDidUpdate() {
+    this.setState({loggedIn: true});
+  }
+
   render() {
+    let navbar = (
+      <Navbar currentUser={this.state.user}/>
+    );
     return (
       <div>
         <main>
-        <Navbar currentUser={LoginController.user}/>
+          <Navbar currentUser={this.state.user}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/AboutPage" component={AboutPage} />
-            <Route path="/LoginPage" component={LoginPage} />
+            <Route path="/LoginPage" render={(routerProps) => (
+              <LoginPage {...routerProps} LoginController={this.state.user}/>
+            )} />
             <Route path="/ResultsPage" component={ResultsPage} />
             <Route path='/SpecIngPage' component={SpecingPage} />
           </Switch>
