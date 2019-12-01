@@ -4,7 +4,7 @@ import TeamCard from './modules/TeamCard';
 import Lauren from '../imgs/Lauren.jpg';
 import Cate from '../imgs/Cate.png';
 import Anthony from '../imgs/Anthony.jpg';
-import Laura from '../imgs/Laura.jpg';
+import Laura from '../imgs/Laura.PNG';
 import Brian from '../imgs/brian.jpg';
 import Grid from '@material-ui/core/Grid';
 
@@ -17,18 +17,18 @@ export default class AboutPage extends Component {
 
         let featuredCards = (
             <Grid container spacing={2} justify="flex-start">
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Anthony' LastName='Nguyen' Position='CEO' picture={Anthony} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Anthony' LastName='Nguyen' Position='Chief Executive Officer' picture={Anthony} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Brian' LastName='Uyeda' Position='Chief Technology Officer' picture={Brian} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Cate' LastName='Lyu' Position='Chief Technology Officer' picture={Cate} /></Grid>
+                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Laura' LastName='Freeman' Position='Chief Design Officer' picture={Laura} /></Grid>
                 <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Lauren' LastName='Smith' Position='Project Manager' picture={Lauren} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Laura' LastName='Freeman' Position='Designer' picture={Laura} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Cate' LastName='Lyu' Position='CTO' picture={Cate} /></Grid>
-                <Grid item xs={12} sm={6} md={4} xl><TeamCard FirstName='Brian' LastName='Uyeda' Position='CTO' picture={Brian} /></Grid>
             </Grid>
         );
 
         return (
-            <div>
+            <div className="content-container">
                 <Grid container direction="row" justify="center" spacing={3}>
-                    <Grid item xs={10} xl={9}>
+                    <Grid item xs={12}>
                         <div className="page-title">About Us</div>
                         {featuredCards}
                         <p className="about-paragraph">

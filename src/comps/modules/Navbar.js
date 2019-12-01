@@ -68,7 +68,7 @@ export default function NavTabs(props) {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none' }}>
+            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} className="nav-content">
                 <Toolbar>
                     <Typography variant="h6">
                         <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>

@@ -1,17 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import '../css/App.css';
 import Navbar from './modules/Navbar.js';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
-import ResultsPage from './ResultsPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
+<<<<<<< HEAD
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
 import {LoginController} from '../cont/LoginController.js';
+=======
+import { Route, Switch, Redirect } from 'react-router-dom';
+import LoginController from '../cont/LoginController';
+import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
+
+>>>>>>> 0660c54893a9f11df1217767ddf31a986aca6828
 // renders application with all neccesary components
 export default class App extends Component {
+	// constructor(props) {
+	//   super(props);
+	//   this.state = {
+	//     user: '',
+	//   }
+	// }
 
   constructor(props) {
     super(props);
@@ -22,9 +34,10 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount() {
-    // this.fetchData();
-    // this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+	// if the user is signed-in, will log user out when exiting the web application
+	componentWillUnmount() {
+		//   this.authUnSubFunction()
+	}
 
     //   if (firebaseUser) {
     //     this.setState(

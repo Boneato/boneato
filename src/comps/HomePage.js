@@ -3,7 +3,6 @@ import SearchBarView from './modules/SearchBarView';
 import TextField from '@material-ui/core/TextField';
 import { Input } from '@material-ui/core';
 
-import SearchBar from './modules/SearchBar.js';
 import LocationIcon from '@material-ui/icons/LocationOn';
 
 export default class HomePage extends Component {
@@ -21,7 +20,7 @@ export default class HomePage extends Component {
 			<div className="search-container">
 				<div className="search-label">Where can I buy</div>
 
-				<SearchBar />
+				<SearchBarView />
 
 				<div className="search-location"><LocationIcon style={{ height: '22px', width: '22px', paddingRight: '3px', marginBottom: '-3px' }} />Seattle, WA</div>
 				<div className="search-description">Source hard-to-find ingredients for your next home-cooked meal.</div>

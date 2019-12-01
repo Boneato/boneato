@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import LoginController from '../cont/LoginController';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles(theme => ({
     link: {
@@ -35,7 +36,9 @@ export default function LoginPage(props) {
                 <pre><code id="quickstart-account-details">null</code></pre>
                 {/* <div>Google OAuth Access Token:</div>
                 <pre><code id="quickstart-oauthtoken">null</code></pre> */}
-            </div>
+                    </div>
+                </Grid>
+            </Grid>
         </div>
     )
 }
