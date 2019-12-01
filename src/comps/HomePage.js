@@ -3,7 +3,6 @@ import SearchBarView from './modules/SearchBarView';
 import TextField from '@material-ui/core/TextField';
 import { Input } from '@material-ui/core';
 
-import SearchBar from './modules/SearchBar.js';
 import LocationIcon from '@material-ui/icons/LocationOn';
 
 export default class HomePage extends Component {
