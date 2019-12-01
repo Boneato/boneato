@@ -19,6 +19,9 @@ export default function LoginPage(props) {
     var handleLogIn = () => {
         props.LoginController.toggleSignIn();
     }
+    if (props.LoginController.signedIn()) {
+        //return 
+    }
     return (
         <div>
             <p>Please sign in with Google to continue.</p>
