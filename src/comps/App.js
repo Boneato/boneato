@@ -12,12 +12,12 @@ import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 
 // renders application with all neccesary components
 export default class App extends Component {
-	// constructor(props) {
-	//   super(props);
+	constructor(props) {
+	  super(props);
 	//   this.state = {
-	//     user: '',
+	// 	  locationIDList: [],
 	//   }
-	// }
+	}
 
 	componentDidMount() {
 		// this.fetchData();
