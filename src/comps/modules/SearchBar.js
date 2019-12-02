@@ -64,6 +64,9 @@ export default function CustomizedInputBase() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  React.useEffect({
+
+  });
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   const autoList = ["test1", "test2", "test3"];
