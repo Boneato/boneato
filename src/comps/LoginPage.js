@@ -36,9 +36,7 @@ export default function LoginPage(props) {
                 <pre><code id="quickstart-account-details">null</code></pre>
                 {/* <div>Google OAuth Access Token:</div>
                 <pre><code id="quickstart-oauthtoken">null</code></pre> */}
-                    </div>
-                </Grid>
-            </Grid>
+            </div>
         </div>
     )
 }

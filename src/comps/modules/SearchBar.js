@@ -16,8 +16,8 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 
 import { db, ingred } from '../../firestore';
+import axios from 'axios';
 require('firebase/firestore')
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,6 +42,71 @@ const useStyles = makeStyles(theme => ({
     color: '#0C9A89'
   },
 }));
+
+async function getNutrix(food) {
+  const response =
+    await axios.get("https://trackapi.nutritionix.com/v2/search/instant",
+      { headers: {'x-app-id': '3516d379', 'x-app-key': 'a1d35546e9db0d3f594443e8b5dcce9d'},
+        params: {'query': food, 'self': false, 'common_general': false, 'common_restaurant': false}}
+    )
+  console.log(response.data)
+};
+
+export default function CustomizedInputBase() {
+  const classes = useStyles();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+  const autoList = ["test1", "test2", "test3"];
+  return (
+    <div>
+      <Paper component="form" className={classes.root}>
+        <InputBase
+          className={classes.input}
+          placeholder="Bonito"
+          inputProps={{ 'aria-label': 'search bonito' }}
+          onChange={handleClick}
+        />
+        {/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
+          <SearchIcon className={classes.iconSearch} />
+        {/* </IconButton> */}
+      </Paper>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+      {
+        autoList.map(function(item, i) {
+          return ( 
+            <Typography className={classes.typography}>
+              {item}
+            </Typography>
+          )
+        })
+      }
+      </Popover>
+    </div>
+  );
+}
 
 // const suggestions = ingred;
 // // db.firestore().collection('ingredients');
@@ -168,58 +233,3 @@ const useStyles = makeStyles(theme => ({
 //     </div>
 //   );
 // }
-
-
-
-
-export default function CustomizedInputBase() {
-  const classes = useStyles();
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
-
-  return (
-    <div>
-      <Paper component="form" className={classes.root}>
-        <InputBase
-          className={classes.input}
-          placeholder="Bonito"
-          inputProps={{ 'aria-label': 'search bonito' }}
-          onChange={handleClick}
-        />
-        {/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
-          <SearchIcon className={classes.iconSearch} />
-        {/* </IconButton> */}
-      </Paper>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <Typography className={classes.typography}>
-          results will go here
-        </Typography>
-      </Popover>
-    </div>
-  );
-}
-

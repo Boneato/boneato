@@ -32,7 +32,7 @@ export default class App extends Component {
 		//   this.authUnSubFunction()
 	}
 
-    //   if (firebaseUser) {
+    //   i  f (firebaseUser) {
     //     this.setState(
     //       {
     //         user: firebaseUser
@@ -44,9 +44,6 @@ export default class App extends Component {
     //     this.setState({ user: null })
     //   }
     // })
-    
-  }
-
   // if the user is signed-in, will log user out when exiting the web application
   componentWillUnmount() {
  //   this.authUnSubFunction()
@@ -70,7 +67,6 @@ export default class App extends Component {
             <Route path="/LoginPage" render={(routerProps) => (
               <LoginPage {...routerProps} LoginController={this.state.user}/>
             )} />
-            <Route path="/ResultsPage" component={ResultsPage} />
             <Route path='/SpecIngPage' component={SpecingPage} />
           </Switch>
         </main>
