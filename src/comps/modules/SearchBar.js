@@ -12,41 +12,39 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Popover from '@material-ui/core/Popover';
+import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
 
 import { db, ingred } from '../../firestore';
-require('firebase/firestore')
-
+require('firebase/firestore');
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    height: 130,
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-    fontSize: '84px',
-    fontWeight: 'bold',
-    padding: '0px 20px',
-  },
-  iconButton: {
-    padding: '10px 20px 10px 10px',
-  },
-  iconSearch: {
-    width: '84px',
-    height: '84px',
-    color: '#0C9A89'
-  },
+	root: {
+		padding: '2px 4px',
+		display: 'flex',
+		alignItems: 'center',
+		height: 130
+	},
+	input: {
+		marginLeft: theme.spacing(1),
+		flex: 1,
+		fontSize: '84px',
+		fontWeight: 'bold',
+		padding: '0px 20px'
+	},
+	iconButton: {
+		padding: '10px 20px 10px 10px'
+	},
+	iconSearch: {
+		width: '84px',
+		height: '84px',
+		color: '#0C9A89'
+	}
 }));
 
 // const suggestions = ingred;
 // // db.firestore().collection('ingredients');
 // console.log(suggestions);
-
 
 // function renderInputComponent(inputProps) {
 //   const { classes, inputRef = () => {}, ref, ...other } = inputProps;
@@ -169,57 +167,53 @@ const useStyles = makeStyles(theme => ({
 //   );
 // }
 
-
-
-
 export default function CustomizedInputBase() {
-  const classes = useStyles();
+	const classes = useStyles();
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+	const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
-    setAnchorEl(event.currentTarget);
-  };
+	const handleClick = event => {
+		setAnchorEl(event.currentTarget);
+	};
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
 
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
 
-  return (
-    <div>
-      <Paper component="form" className={classes.root}>
-        <InputBase
-          className={classes.input}
-          placeholder="Bonito"
-          inputProps={{ 'aria-label': 'search bonito' }}
-          onChange={handleClick}
-        />
-        {/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
-          <SearchIcon className={classes.iconSearch} />
-        {/* </IconButton> */}
-      </Paper>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-        <Typography className={classes.typography}>
-          results will go here
-        </Typography>
-      </Popover>
-    </div>
-  );
+	return (
+		<div>
+			<Paper component="form" className={classes.root}>
+				<InputBase
+					className={classes.input}
+					placeholder="Bonito"
+					inputProps={{ 'aria-label': 'search bonito' }}
+					onChange={handleClick}
+				/>
+				{/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
+				<SearchIcon className={classes.iconSearch} />
+				{/* </IconButton> */}
+			</Paper>
+			<Popper
+				id={id}
+				open={open}
+				anchorEl={anchorEl}
+				/* onClose={handleClose} */
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'left'
+				}}
+				/* 				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'left'
+				}} */
+			>
+				<Typography className={classes.typography}>
+					results will go here
+				</Typography>
+			</Popper>
+		</div>
+	);
 }
-
