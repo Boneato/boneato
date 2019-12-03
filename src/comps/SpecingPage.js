@@ -30,18 +30,20 @@ export default class SpecingPage extends Component {
             ingredientName: "",
             locationID: ""
         }
+        // this.updateIngredName = this.updateIngredName.bind(this);
+        // this.updateLocations = this.updateLocations.bind(this);
     }
 
     updateIngredName = () => {
-        db.collection("ingredients").doc(this.ingredientID).onSnapshot(function (doc) {
+        db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {
             this.setState({ingredientName : doc.data().name})
-        })
+        }.bind(this))
     }
 
     // this.setState({locationID : doc.id})
 
-    functionname = () => {
-        var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID).collection("locations").get();
+    updateLocations = () => {
+        var locationQuery = db.firestore().collection("ingredients").doc(this.state.ingredientID).collection("locations").get();
 
         locationQuery.then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
@@ -49,12 +51,16 @@ export default class SpecingPage extends Component {
                 this.setState({
                     locationID : doc.id,
                     locationIDList: this.state.locationIDList.push(doc.id)
-                });
-            })
-        })
+                })
+            }.bind(this))
+        }.bind(this))
     }
 
-    
+    componentDidMount(){
+        this.updateIngredName();
+        this.updateLocations();
+    }
+
 
     render() {
 
