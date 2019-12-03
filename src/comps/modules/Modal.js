@@ -59,7 +59,6 @@ export function NewIngredientModal(props) {
         } else {
             return false;
         }
-        
     }
     var ingredItems = (
     <div>

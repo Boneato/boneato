@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -49,27 +49,34 @@ async function getNutrix(food) {
       { headers: {'x-app-id': '3516d379', 'x-app-key': 'a1d35546e9db0d3f594443e8b5dcce9d'},
         params: {'query': food, 'self': false, 'common_general': false, 'common_restaurant': false}}
     )
-  console.log(response.data)
+  return response.data;
 };
 
-export default function CustomizedInputBase() {
+export default function SearchBar() {
   const classes = useStyles();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const [userInput, setInput] = useState("");
+  const [autoList, setList] = [];
+  var autofilled = <div></div>;
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
+    
+    // autofilled = autoList.map(function(item, i) {
+    //   return ( 
+    //     <Typography className={classes.typography}>
+    //       {item}
+    //     </Typography>
+    //   )
+    // })
   };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
-  React.useEffect({
-
-  });
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-  const autoList = ["test1", "test2", "test3"];
+    getNutrix(userInput).then(function(data) {
+      setList(data)
+    }
   return (
     <div>
       <Paper component="form" className={classes.root}>
@@ -77,11 +84,11 @@ export default function CustomizedInputBase() {
           className={classes.input}
           placeholder="Bonito"
           inputProps={{ 'aria-label': 'search bonito' }}
-          onChange={handleClick}
+          onChange={event => setInput(event.target.value)}
         />
-        {/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
+        <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
           <SearchIcon className={classes.iconSearch} />
-        {/* </IconButton> */}
+        </IconButton>
       </Paper>
       <Popover
         id={id}
@@ -98,13 +105,7 @@ export default function CustomizedInputBase() {
         }}
       >
       {
-        autoList.map(function(item, i) {
-          return ( 
-            <Typography className={classes.typography}>
-              {item}
-            </Typography>
-          )
-        })
+        autofilled
       }
       </Popover>
     </div>

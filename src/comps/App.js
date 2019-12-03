@@ -11,13 +11,6 @@ import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
 import {LoginController} from '../cont/LoginController.js';
 // renders application with all neccesary components
 export default class App extends Component {
-	constructor(props) {
-	  super(props);
-	//   this.state = {
-	// 	  locationIDList: [],
-	//   }
-	}
-
   constructor(props) {
     super(props);
     var user = new LoginController();

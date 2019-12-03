@@ -54,8 +54,6 @@ export default class SpecingPage extends Component {
         })
     }
 
-    
-
     render() {
 
         // //get ingredient name and locationIDLists - works
