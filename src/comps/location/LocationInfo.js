@@ -50,7 +50,7 @@ export default class LocationInfo extends Component {
                 <span>
                     <p>{this.locationInfo.name}</p>
                     <p>{this.locationInfo.address}</p>
-                    <p>Reported By <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</p>
+                    <p>Reported by <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</p>
                 </span>
             </div>
         )

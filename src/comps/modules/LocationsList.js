@@ -8,6 +8,8 @@ import LoginPage from '../LoginPage';
 import { db } from '../../firestore';
 
 
+// NEED TO FIGURE OUT HOW TO ORDER THESE, think it's supposed to be ordered by most upvotes
+
 export default class LocationsList extends Component {
 
     constructor(props) {
@@ -36,7 +38,7 @@ export default class LocationsList extends Component {
 
         locationQuery.then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
                 let newData = doc.data();
                 let newAddress = newData.address;
                 let newDate = newData.date.toDate().toString(); // maybe we can format this later if we have tons of time
