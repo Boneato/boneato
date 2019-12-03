@@ -49,16 +49,10 @@ export default function SearchBar(props) {
   const [userInput, setInput] = useState("");
   const [goDirect, setDirect] = useState(false);
   const handleClick = (event) => {
+    event.preventDefault();
     setAnchorEl(event.currentTarget);
     props.grabSearchInput(userInput);
     setDirect(true);
-    // autofilled = autoList.map(function(item, i) {
-    //   return ( 
-    //     <Typography className={classes.typography}>
-    //       {item}
-    //     </Typography>
-    //   )
-    // })
   };
 
   const handleChange = (event) => {

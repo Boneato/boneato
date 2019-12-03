@@ -10,7 +10,6 @@ import Results from './Results';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
 import {LoginController} from '../cont/LoginController.js';
-import axios from 'axios';
 
 // renders application with all neccesary components
 export default class App extends Component {
@@ -53,17 +52,6 @@ export default class App extends Component {
 
   grabSearchInput = (input) => {
     this.setState({userInput: input});
-    async function getNutrix(food) {
-      const response =
-        await axios.get("https://trackapi.nutritionix.com/v2/search/instant",
-          { headers: {'x-app-id': '3e44cfbe', 'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'},
-            params: {'query': food, 'self': false, 'common_general': false, 'common_restaurant': false}}
-        )
-      return response.data;
-    };
-    getNutrix(input).then((data) => {
-      this.setState({ingredList: data});
-    });
   }
 
   // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
@@ -85,7 +73,7 @@ export default class App extends Component {
             )} />
             <Route path='/SpecIngPage' component={SpecingPage} />
             <Route path='/results' render={(routerProps) => (
-              <Results {...routerProps} ingredList={this.state.ingredList} userInput={this.state.userInput} />
+              <Results {...routerProps} userInput={this.state.userInput} />
             )} />
           </Switch>
         </main>
