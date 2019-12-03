@@ -44,6 +44,7 @@ export default class App extends Component {
 		return (
 			<div>
 				<main>
+					<NewIngredientModal />
 					<Navbar currentUser={LoginController.user} />
 					<Switch>
 						<Route exact path="/" component={HomePage} />
