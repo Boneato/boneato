@@ -5,18 +5,21 @@ var voteRight = false;
 
 export default function DownVoteButton(props){
 
+    //locationInfo includes:
+        // ingredientID
+        // locationID
+        // upvotes
+        // downvotes
+        // userID
+        // dateFirstReport
+        // lat
+        // long
+        // address
+        // name
     let locationInfo = props.locationInfo;
-    // let locationInfo = {
-    //     ingredientID: null,
-    //     locationID:null,
-    //     upVote: 0,
-    //     downVote: 0,
-    //     userID: null,
-    //     dateFirstReport:null,
-    // };
     
 
-    return(<button onclick="componentDidUpdate(locationInfo)"> {locationInfo.downVote} DIDN'T FIND</button>);
+    return(<button onClick="componentDidUpdate(locationInfo)"> {locationInfo.downVote} DIDN'T FIND</button>);
     
 }
 

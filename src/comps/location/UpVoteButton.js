@@ -16,7 +16,7 @@ export default function UpVoteButton(props){
     // };
     
 
-    return(<button onclick="componentDidUpdate(locationInfo)"> {locationInfo.upVote} CONFIRMED</button>);
+    return(<button onClick="componentDidUpdate(locationInfo)"> {locationInfo.upVote} CONFIRMED</button>);
     
 }
 

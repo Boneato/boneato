@@ -18,14 +18,14 @@ export default class SpecingPage extends Component {
         super(props);
         this.state = {
             // below ID is for testing purposes
-            ingredientID: "V5MFG9iQMnhIkRcs4PDV",  //props.ingredientID,
+            ingredientID: "V5MFG9iQMnhIkRcs4PDV",  //will eventually be props.ingredientID,
             //let locationIDList = props.locationIDList;
             test: "",
             j: 0,
             // let [locationIDList, setTheArray] = useState([]);
             // let [ingredientName, setIngred] = useState("");
             // let [locationID, setLoca] = useState("");
-            locationIDList: [],
+            locationIDList: [23],
             ingredientName: "",
             locationID: ""
         }
@@ -41,26 +41,26 @@ export default class SpecingPage extends Component {
 
     // this.setState({locationID : doc.id})
 
-    updateLocations = () => {
-        var locationQuery = db.firestore().collection("ingredients").doc(this.state.ingredientID).collection("locations").get();
+    // updateLocations = () => {
+    //     var locationQuery = db.firestore().collection("ingredients").doc(this.state.ingredientID).collection("locations").get();
 
-        locationQuery.then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                console.log(doc.id, " => ", doc.data());
-                let tempList = this.state.locationIDList;
-                tempList.push(doc.id);
-                this.setState({
-                    locationID : doc.id,
-                    locationIDList: tempList
-                })
-            }.bind(this))
-        }.bind(this))
-    }
+    //     locationQuery.then(function (querySnapshot) {
+    //         querySnapshot.forEach(function (doc) {
+    //             console.log(doc.id, " => ", doc.data());
+    //             let tempList = this.state.locationIDList;
+    //             tempList.push(doc.id);
+    //             this.setState({
+    //                 locationID : doc.id,
+    //                 locationIDList: tempList
+    //             })
+    //         }.bind(this))
+    //     }.bind(this))
+    // }
 
     componentDidMount(){
         console.log(this.state.locationIDList);
         this.updateIngredName();
-        this.updateLocations();
+        //this.updateLocations();
         console.log(this.state.locationIDList);
     }
 
@@ -93,7 +93,7 @@ export default class SpecingPage extends Component {
         console.log("locationIDlist type is ")
         console.log(typeof this.state.locationIDList)
 
-        if (this.state.locationIDList.length == 0) {
+        if (this.state.locationIDList.length == 0) { // this needs to be fixed
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
             console.log(this.state.locationIDList)
