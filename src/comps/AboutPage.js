@@ -7,6 +7,9 @@ import Anthony from '../imgs/Anthony.jpg';
 import Laura from '../imgs/Laura.PNG';
 import Brian from '../imgs/brian.jpg';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
+import NewIngredientForm from './modules/NewIngredientForm.js';
 
 
 export default class AboutPage extends Component {
@@ -29,18 +32,27 @@ export default class AboutPage extends Component {
             <div className="content-container">
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12}>
+
+                        {/* begin temporary stuff */}
+
+                        <NewIngredientForm />
+                        
+                        {/* end temporary stuff */}
+
                         <div className="page-title">About Us</div>
                         {featuredCards}
                         <p className="about-paragraph">
-                            Thanks to easily accessible online cookbooks, home cooks from all around the country are able to 
-                            quickly and efficiently explore recipes for foods that they've never tried before. However, a 
-                            consequence of all of these different recipes online is that cooks will see an interesting recipe 
-                            for a meal from a different culture, but that recipe will contain obscure and hard to obtain 
-                            ingredients. This barrier might be a big enough of an annoyance to deter amatuer chefs from creating 
-                            and experiencing other cultural cuisines. As of now, there is no direct solution that fixes this 
-                            issue of uncertainty. That's where Bonito comes in. Bonito provides a crowd-sourced space for fellow 
+                            Thanks to easily accessible online cookbooks, home cooks from all around the country are able to
+                            quickly and efficiently explore recipes for foods that they've never tried before. However, a
+                            consequence of all of these different recipes online is that cooks will see an interesting recipe
+                            for a meal from a different culture, but that recipe will contain obscure and hard to obtain
+                            ingredients. This barrier might be a big enough of an annoyance to deter amatuer chefs from creating
+                            and experiencing other cultural cuisines. As of now, there is no direct solution that fixes this
+                            issue of uncertainty. That's where Bonito comes in. Bonito provides a crowd-sourced space for fellow
                             home-cooks to share where they sourced hard-to-find ingredients.
                         </p>
+                        
+
                     </Grid>
                 </Grid>
             </div>
