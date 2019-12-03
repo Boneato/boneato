@@ -47,18 +47,22 @@ export default class SpecingPage extends Component {
 
         locationQuery.then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-                //console.log(doc.id, " => ", doc.data());
+                console.log(doc.id, " => ", doc.data());
+                let tempList = this.state.locationIDList;
+                tempList.push(doc.id);
                 this.setState({
                     locationID : doc.id,
-                    locationIDList: this.state.locationIDList.push(doc.id)
+                    locationIDList: tempList
                 })
             }.bind(this))
         }.bind(this))
     }
 
     componentDidMount(){
+        console.log(this.state.locationIDList);
         this.updateIngredName();
         this.updateLocations();
+        console.log(this.state.locationIDList);
     }
 
 
@@ -87,11 +91,14 @@ export default class SpecingPage extends Component {
         // render LocationList with LocationModel(s) and IngredientModel
         // if user not signed, prevent interaction with NewLocationForm component.
         let searchRes = null, i = null;
+        console.log("locationIDlist type is ")
+        console.log(typeof this.state.locationIDList)
 
         if (this.state.locationIDList.length == 0) {
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
-            searchRes = <LocationsList locationIDList={this.locationIDList} ingredientID={this.ingredientID} />
+            console.log(this.state.locationIDList)
+            searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID} />
         }
 
         return (
