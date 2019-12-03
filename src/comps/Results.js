@@ -19,6 +19,10 @@ export default class ResultsPage extends Component {
 	//      renders relevant search results provided by SearchBarView (AgoliaController)
 	//      Each relevant result will be linked to their respective SpecingPage.
 	render() {
+		let commonIngred = this.props.ingredList["common"];
+		let displayList = (
+			<div></div>
+		);
 		return (
 			<div className="content-container">
 				<Grid container direction="row" justify="center" spacing={3}>
@@ -26,17 +30,15 @@ export default class ResultsPage extends Component {
 						<div className="page-title">
 							"{' '}
 							<span className="search-query">
-								[[ingredient name]]
+								{this.props.userInput}
 							</span>{' '}
 							"
 						</div>
 						<div className="large-italic">
-							Found [[num results]] results for "[[ingredient
-							name]]":
+							Found {commonIngred.length} results for "{this.props.userInput}":
 						</div>
 						<List component="nav" aria-label="search results">
-							[[search results will go here]] will be able to
-							complete this once the controller is done
+							
 						</List>
 					</Grid>
 				</Grid>

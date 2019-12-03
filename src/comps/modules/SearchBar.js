@@ -12,11 +12,11 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Popper from '@material-ui/core/Popper';
+import {Popper, Popover} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import {Redirect} from 'react-router-dom';
 
 import { db, ingred } from '../../firestore';
-import axios from 'axios';
 require('firebase/firestore')
 
 const useStyles = makeStyles(theme => ({
@@ -43,24 +43,15 @@ const useStyles = makeStyles(theme => ({
 	}
 }));
 
-async function getNutrix(food) {
-  const response =
-    await axios.get("https://trackapi.nutritionix.com/v2/search/instant",
-      { headers: {'x-app-id': '3516d379', 'x-app-key': 'a1d35546e9db0d3f594443e8b5dcce9d'},
-        params: {'query': food, 'self': false, 'common_general': false, 'common_restaurant': false}}
-    )
-  return response.data;
-};
-
-export default function SearchBar() {
+export default function SearchBar(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userInput, setInput] = useState("");
-  const [autoList, setList] = [];
-  var autofilled = <div></div>;
-  const handleClick = event => {
+  const [goDirect, setDirect] = useState(false);
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    
+    props.grabSearchInput(userInput);
+    setDirect(true);
     // autofilled = autoList.map(function(item, i) {
     //   return ( 
     //     <Typography className={classes.typography}>
@@ -69,15 +60,16 @@ export default function SearchBar() {
     //   )
     // })
   };
+
+  const handleChange = (event) => {
+    
+  }
   const handleClose = () => {
     setAnchorEl(null);
   };
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
-    getNutrix(userInput).then(function(data) {
-      setList(data)
-    }
-  return (
+  var search = (
     <div>
       <Paper component="form" className={classes.root}>
         <InputBase
@@ -90,26 +82,12 @@ export default function SearchBar() {
           <SearchIcon className={classes.iconSearch} />
         </IconButton>
       </Paper>
-      <Popover
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'left',
-        }}
-      >
-      {
-        autofilled
-      }
-      </Popover>
     </div>
   );
+  if (goDirect) {
+    search = <Redirect to="/results"></Redirect>
+  }
+  return search;
 }
 
 // const suggestions = ingred;

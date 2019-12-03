@@ -6,9 +6,12 @@ import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
+import Results from './Results';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
 import {LoginController} from '../cont/LoginController.js';
+import axios from 'axios';
+
 // renders application with all neccesary components
 export default class App extends Component {
   constructor(props) {
@@ -16,7 +19,9 @@ export default class App extends Component {
     var user = new LoginController();
     this.state = {
       user: user,
-      userLoggedIn: false
+      userLoggedIn: false,
+      userInput: "",
+      ingredList: []
     }
   }
 
@@ -43,9 +48,25 @@ export default class App extends Component {
   }
 
   componentDidUpdate() {
-    this.setState({loggedIn: true});
+    //this.setState({loggedIn: true});
   }
 
+  grabSearchInput = (input) => {
+    this.setState({userInput: input});
+    async function getNutrix(food) {
+      const response =
+        await axios.get("https://trackapi.nutritionix.com/v2/search/instant",
+          { headers: {'x-app-id': '3e44cfbe', 'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'},
+            params: {'query': food, 'self': false, 'common_general': false, 'common_restaurant': false}}
+        )
+      return response.data;
+    };
+    getNutrix(input).then((data) => {
+      this.setState({ingredList: data});
+    });
+  }
+
+  // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
   render() {
     let navbar = (
       <Navbar currentUser={this.state.user}/>
@@ -55,12 +76,17 @@ export default class App extends Component {
         <main>
           <Navbar currentUser={this.state.user}/>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" render={(routerProps) => (
+              <HomePage {...routerProps} grabSearchInput={this.grabSearchInput} />
+            )}/>
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" render={(routerProps) => (
-              <LoginPage {...routerProps} LoginController={this.state.user}/>
+              <LoginPage {...routerProps} LoginController={this.state.user} />
             )} />
             <Route path='/SpecIngPage' component={SpecingPage} />
+            <Route path='/results' render={(routerProps) => (
+              <Results {...routerProps} ingredList={this.state.ingredList} userInput={this.state.userInput} />
+            )} />
           </Switch>
         </main>
       </div>
