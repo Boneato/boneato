@@ -9,7 +9,6 @@ import Brian from '../imgs/brian.jpg';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 
-import NewIngredientForm from './modules/NewIngredientForm.js';
 
 
 export default class AboutPage extends Component {
@@ -33,11 +32,6 @@ export default class AboutPage extends Component {
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12}>
 
-                        {/* begin temporary stuff */}
-
-                        <NewIngredientForm />
-                        
-                        {/* end temporary stuff */}
 
                         <div className="page-title">About Us</div>
                         {featuredCards}
