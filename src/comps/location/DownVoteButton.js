@@ -19,7 +19,7 @@ export default function DownVoteButton(props){
     let locationInfo = props.locationInfo;
     
 
-    return(<button onClick="componentDidUpdate(locationInfo)"> {locationInfo.downVote} DIDN'T FIND</button>);
+    return(<button onClick="componentDidUpdate(locationInfo)"> <b>{locationInfo.downvotes}</b> DIDN'T FIND</button>);
     
 }
 
