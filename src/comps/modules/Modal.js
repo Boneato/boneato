@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
-import { 
-    Dialog, DialogTitle, 
-    TextField, 
+import {
+    Dialog, DialogTitle,
+    TextField,
     DialogContent, DialogContentText, Tab
-    } from '@material-ui/core';
+} from '@material-ui/core';
 import checkmark from '../../assets/checkmark.svg';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import { classes } from 'istanbul-lib-coverage';
@@ -58,39 +58,39 @@ const BootstrapInput = withStyles(theme => ({
 
 const BootstrapButton = withStyles({
     root: {
-    borderRadius: 6,
-      boxShadow: 'none',
-      textTransform: 'none',
-      fontSize: 16,
-      fontWeight: 600,
-      width: '100%',
-      padding: '6px 12px',
-      border: 'none',
-      lineHeight: 1.5,
-      backgroundColor: '#0A8576',
-      fontFamily: [
-        'Open Sans',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-      ].join(','),
-      '&:hover': {
-        backgroundColor: '#087568',
+        borderRadius: 6,
         boxShadow: 'none',
-      },
-      '&:active': {
-        boxShadow: 'none',
-        backgroundColor: '#087568',
-      },
-      '&:focus': {
-        boxShadow: '0 0 0 0.2rem rgba(10, 133, 118,.5)',
-      },
+        textTransform: 'none',
+        fontSize: 16,
+        fontWeight: 600,
+        width: '100%',
+        padding: '6px 12px',
+        border: 'none',
+        lineHeight: 1.5,
+        backgroundColor: '#0A8576',
+        fontFamily: [
+            'Open Sans',
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+        ].join(','),
+        '&:hover': {
+            backgroundColor: '#087568',
+            boxShadow: 'none',
+        },
+        '&:active': {
+            boxShadow: 'none',
+            backgroundColor: '#087568',
+        },
+        '&:focus': {
+            boxShadow: '0 0 0 0.2rem rgba(10, 133, 118,.5)',
+        },
     },
-  })(Button);
+})(Button);
 
 
 const useStyles = makeStyles(theme => ({
@@ -101,6 +101,7 @@ const useStyles = makeStyles(theme => ({
     margin: {
         marginBottom: theme.spacing(2),
     },
+    
 }));
 
 const theme = createMuiTheme({
@@ -154,7 +155,7 @@ export function NewIngredientModal(props) {
         } else {
             return false;
         }
-        
+
     }
     var ingredItems = (
         <form className={classes.root} noValidate>
@@ -164,7 +165,7 @@ export function NewIngredientModal(props) {
                     <InputLabel shrink required htmlFor="bootstrap-input">
                         Ingredient Name
                     </InputLabel>
-                    <BootstrapInput id="bootstrap-input" />
+                    <BootstrapInput onChange={(e) => setIngredName(e.target.value)} id="bootstrap-input" />
                 </FormControl>
                 <FormControl fullWidth className={classes.margin}>
                     <InputLabel shrink htmlFor="bootstrap-input">
@@ -173,7 +174,7 @@ export function NewIngredientModal(props) {
                     <BootstrapInput id="bootstrap-input" />
                 </FormControl>
 
-                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin}>
+                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin} onClick={handleClose}>
                     Submit
                 </BootstrapButton>
 
@@ -194,9 +195,9 @@ export function NewIngredientModal(props) {
                     Submit
                 </BootstrapButton>
                 <div id="form-error-container">
-                <FormHelperText id="form-error-text">Please resolve the errors above.</FormHelperText>
+                    <FormHelperText id="form-error-text" className={classes.margin}>Please resolve the errors above.</FormHelperText>
                 </div>
-                
+
             </ThemeProvider>
         </form>
         /*
@@ -227,19 +228,51 @@ export function NewIngredientModal(props) {
     );
     if (submit) {
         ingredItems = (
-        <div>
-            <Tab icon={<img src={checkmark}></img>}/>
-        </div>
+            <div>
+                <Tab icon={<img src={checkmark}></img>} />
+            </div>
         )
     }
     return (
-        <Modal title={"Suggest a new ingredient"} content={ingredItems}/>
+        <Modal title={"Suggest a new ingredient"} content={ingredItems} />
     );
 }
 
 export function NewLocationModal(props) {
+    const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
     var locationItems = (
+        <form className={classes.root} noValidate>
+            <ThemeProvider theme={theme}>
+
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel shrink required htmlFor="bootstrap-input">
+                        Ingredient Name
+                    </InputLabel>
+                    <BootstrapInput onChange="" id="bootstrap-input" />
+                </FormControl>
+
+                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin} onClick={NewIngredientsController}>
+                    Submit
+                </BootstrapButton>
+
+                {/*error state for "Ingredient Name" field*/}
+                <FormControl fullWidth className={classes.margin}>
+                    <InputLabel shrink required>
+                        Ingredient Name
+                    </InputLabel>
+                    <BootstrapInput id="bootstrap-input" />
+                    <FormHelperText id="component-error-text">
+                        <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
+                        This field cannot be left blank.
+                    </FormHelperText>
+                </FormControl>
+
+
+            </ThemeProvider>
+        </form>
+
+        /*
         <div>
             <TextField
              id="filled-basic"
@@ -252,16 +285,17 @@ export function NewLocationModal(props) {
                 Submit
             </Button>
         </div>
+        */
     );
     if (submit) {
         locationItems = (
-        <div>
-            <Tab icon={<img src={checkmark}></img>}/>
-        </div>
+            <div>
+                <Tab icon={<img src={checkmark}></img>} />
+            </div>
         )
     }
     return (
-        <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems}/>
+        <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems} />
     );
 }
 
