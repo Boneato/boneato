@@ -5,8 +5,7 @@ import UpvoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
 import LoginPage from '../LoginPage';
-import {db} from '../../firestore';
-
+import { db } from '../../firestore';
 
 
 export default class LocationsList extends Component {
@@ -14,36 +13,22 @@ export default class LocationsList extends Component {
     constructor(props) {
         super(props);
         this.ingredientID = props.ingredientID;
-        // locationIDList = props.locationIDList;
         this.state = {
             searchRes: []
         }
     }
 
-    // updateLocationDetails = () => {
-    //     db.firestore().collection("ingredients").doc(ingredientID)
-    //         .collections("locations").onSnapshot(function (doc) {
-    //             console.log(doc.id, " => ", doc.data());
-    //             this.setState({
-    //                 detailedLoca : {
-    //                     locationID: "",
-    //                     locationName: "hi"
-    //                 }
-    //             })
-    //     }.bind(this))
-    // }
-
-//     //locationInfo includes:
-    //     // ingredientID
-    //     // locationID
-    //     // upvotes
-    //     // downvotes
-    //     // userID
-    //     // dateFirstReport
-    //     // lat
-    //     // long
-    //     // address
-    //     // name
+    //locationInfo includes:
+    // ingredientID
+    // locationID
+    // upvotes
+    // downvotes
+    // userID
+    // dateFirstReport
+    // lat
+    // long
+    // address
+    // name
 
     updateLocationDetails = () => {
         var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
@@ -63,17 +48,17 @@ export default class LocationsList extends Component {
                 let newUID = newData.userid;
 
                 let tempList = this.state.searchRes;
-                let newLocInfo ={
-                    address : newAddress, 
-                    date : newDate,
-                    downvotes : newDVotes,
-                    lat : newLat,
-                    long : newLong,
-                    name : newName,
-                    upvotes : newUVotes,
-                    userID : newUID
+                let newLocInfo = {
+                    address: newAddress,
+                    date: newDate,
+                    downvotes: newDVotes,
+                    lat: newLat,
+                    long: newLong,
+                    name: newName,
+                    upvotes: newUVotes,
+                    userID: newUID
                 }
-                tempList.push(<LocationInfo locationInfo = {newLocInfo}/>)
+                tempList.push(<LocationInfo locationInfo={newLocInfo} />)
                 this.setState({
                     searchRes: tempList
                 })
@@ -85,57 +70,6 @@ export default class LocationsList extends Component {
         this.updateLocationDetails()
     }
 
-
-
-    // function componentDidUpdate(locationID) {
-    //     let locationInfo = {
-    //         ingredientID: null,
-    //         locationID: null,
-    //         upVote: 0,
-    //         downVote: 0,
-    //         userID: null,
-    //         dateFirstReport: null,
-    //         lat: 0,
-    //         long: 0,
-    //         address: null,
-    //         name: null
-    //     };
-    //     //function to fetch other information in JSON file
-    //     //the ingredientID and locationID is given
-    //     return locationInfo
-    // }
-
-    // pre-conditions: 
-    //      props must have list of LocationModels with respective LocationItems
-    //      pass in boolean indicating user is signed-in or not.
-    // let locationIDList = props.locationIDList;
-    // //let ingredientID = props.ingredientID;
-    // let searchRes = [];
-
-    // for (let [index, locID] of locationIDList.entries()) {
-
-   
-    //     searchRes.push(<LocationInfo locationInfo={componentDidUpdate(locID)} index={index + 1} />)
-    // }
-
-
-
-    // if (props.currentUser) {
-    //     voteAllow = 
-    //     <span>
-    //         <div>
-    //             <UpvoteButton/>
-    //             <DownVoteButton/>
-    //         </div>
-    //         <LocationInfo locationInfo={this.locationInfo} index={i++}/>
-    //     </span>
-    // }else{
-    //     voteAllow = <div>
-    //         <p>You need to sign to see the result</p>
-    //     <LoginPage/>
-    //     </div>;
-    // }
-
     render() {
         return (
             <div>
@@ -144,16 +78,3 @@ export default class LocationsList extends Component {
         )
     }
 }
-
-
-
-    // Displays list of locations with subcomponents:
-    //      UpvoteButton, DownvoteButton, LocationInfo
-    // as well as vote count for upvotes and downvotes.
-    // Communicate with VotingController to check whether user can upvote or downvote.
-    // If VotingController indicates user has already voted, prevent user from voting.
-    // If user is not signed, disallow interaction with UpvoteButton,
-    // DownvoteButton.
-
-
-
