@@ -3,6 +3,7 @@ import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 //import {loggedIn} from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
+//import {db} from '../../firestore';
 
 export default function LocationInfo(props) {
     let locationInfo = props.locationInfo;
@@ -19,11 +20,17 @@ export default function LocationInfo(props) {
     let upDownVoteRight = null;
     let errorWarning = null;
 
+<<<<<<< HEAD
    // if(!loggedIn(locationInfo.userID)){
         upDownVoteRight = <p>Please <Tab label="sign in with Google" href="../LoginPage" /> to share whether you foung this ingredient here. </p>
    // }
+=======
+    if(!loggedIn(locationInfo.userID)){
+        upDownVoteRight = <p>Please <Tab label="sign in with Google" href="../LoginPage" /> to share whether you found this ingredient here. </p>
+    }
+>>>>>>> 76567df2bd34312c05a3a0b8baa30977a6bcdf9e
 
-    if(locationInfo.upVote>= 5){
+    if(locationInfo.downVote>= 5){
         errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
     }
 

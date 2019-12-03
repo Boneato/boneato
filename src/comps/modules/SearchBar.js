@@ -12,7 +12,7 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Popover from '@material-ui/core/Popover';
+import Popper from '@material-ui/core/Popper';
 import Typography from '@material-ui/core/Typography';
 
 import { db, ingred } from '../../firestore';
@@ -20,27 +20,27 @@ import axios from 'axios';
 require('firebase/firestore')
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    padding: '2px 4px',
-    display: 'flex',
-    alignItems: 'center',
-    height: 130,
-  },
-  input: {
-    marginLeft: theme.spacing(1),
-    flex: 1,
-    fontSize: '84px',
-    fontWeight: 'bold',
-    padding: '0px 20px',
-  },
-  iconButton: {
-    padding: '10px 20px 10px 10px',
-  },
-  iconSearch: {
-    width: '84px',
-    height: '84px',
-    color: '#0C9A89'
-  },
+	root: {
+		padding: '2px 4px',
+		display: 'flex',
+		alignItems: 'center',
+		height: 130
+	},
+	input: {
+		marginLeft: theme.spacing(1),
+		flex: 1,
+		fontSize: '84px',
+		fontWeight: 'bold',
+		padding: '0px 20px'
+	},
+	iconButton: {
+		padding: '10px 20px 10px 10px'
+	},
+	iconSearch: {
+		width: '84px',
+		height: '84px',
+		color: '#0C9A89'
+	}
 }));
 
 async function getNutrix(food) {
@@ -115,7 +115,6 @@ export default function SearchBar() {
 // const suggestions = ingred;
 // // db.firestore().collection('ingredients');
 // console.log(suggestions);
-
 
 // function renderInputComponent(inputProps) {
 //   const { classes, inputRef = () => {}, ref, ...other } = inputProps;

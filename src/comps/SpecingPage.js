@@ -30,30 +30,45 @@ export default class SpecingPage extends Component {
             ingredientName: "",
             locationID: ""
         }
+        // this.updateIngredName = this.updateIngredName.bind(this);
+        // this.updateLocations = this.updateLocations.bind(this);
     }
 
     updateIngredName = () => {
-        db.collection("ingredients").doc(this.ingredientID).onSnapshot(function (doc) {
+        db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {
             this.setState({ingredientName : doc.data().name})
-        })
+        }.bind(this))
     }
 
     // this.setState({locationID : doc.id})
 
-    functionname = () => {
-        var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID).collection("locations").get();
+    updateLocations = () => {
+        var locationQuery = db.firestore().collection("ingredients").doc(this.state.ingredientID).collection("locations").get();
 
         locationQuery.then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
-                //console.log(doc.id, " => ", doc.data());
+                console.log(doc.id, " => ", doc.data());
+                let tempList = this.state.locationIDList;
+                tempList.push(doc.id);
                 this.setState({
                     locationID : doc.id,
-                    locationIDList: this.state.locationIDList.push(doc.id)
-                });
-            })
-        })
+                    locationIDList: tempList
+                })
+            }.bind(this))
+        }.bind(this))
     }
 
+    componentDidMount(){
+        console.log(this.state.locationIDList);
+        this.updateIngredName();
+        this.updateLocations();
+        console.log(this.state.locationIDList);
+    }
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 76567df2bd34312c05a3a0b8baa30977a6bcdf9e
     render() {
 
         // //get ingredient name and locationIDLists - works
@@ -79,11 +94,14 @@ export default class SpecingPage extends Component {
         // render LocationList with LocationModel(s) and IngredientModel
         // if user not signed, prevent interaction with NewLocationForm component.
         let searchRes = null, i = null;
+        console.log("locationIDlist type is ")
+        console.log(typeof this.state.locationIDList)
 
         if (this.state.locationIDList.length == 0) {
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
-            searchRes = <LocationsList locationIDList={this.locationIDList} ingredientID={this.ingredientID} />
+            console.log(this.state.locationIDList)
+            searchRes = <LocationsList locationIDList={this.state.locationIDList} ingredientID={this.state.ingredientID} />
         }
 
         return (

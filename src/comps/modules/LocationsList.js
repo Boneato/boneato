@@ -5,6 +5,7 @@ import UpvoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 import LoginController from '../../cont/LoginController';
 import LoginPage from '../LoginPage';
+//import {db} from '../../firestore';
 
 
 
@@ -13,7 +14,7 @@ export default function LocationsList(props){
     // pre-conditions: 
     //      props must have list of LocationModels with respective LocationItems
     //      pass in boolean indicating user is signed-in or not.
-    let locationIDList = props.locationIDList
+    let locationIDList = props.locationIDList;
     let ingredientID = props.ingredientID;
     let searchRes = [];
 
