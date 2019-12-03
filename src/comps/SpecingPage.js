@@ -5,7 +5,6 @@ import LocationsController from '../cont/LocationsController';
 import EmbeddedMap from './modules/EmbeddedMap';
 import Modal from './modules/Modal';
 import firebase from 'firebase';
-import NewLocationForm from './location/NewLocationForm';
 import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import { db } from '../firestore';
