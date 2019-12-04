@@ -53,7 +53,7 @@ export function voteTotal(ingredientID, locationID, locationInfo, upvote) {
 export function canVote(userID) {
     //if(loggedIn(userID)){
         //if the userID hasn't voted for this location yet
-        return true;
+      //  return true;
     //}
     return false;
 }

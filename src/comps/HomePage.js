@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchBarView from './modules/SearchBarView';
+import SearchBar from './modules/SearchBar';
 import TextField from '@material-ui/core/TextField';
 import { Input } from '@material-ui/core';
 
@@ -12,6 +12,10 @@ export default class HomePage extends Component {
 		super(props);
 	}
 
+	grabSearchInputInter = (input) => {
+		this.props.grabSearchInput(input);
+	};
+
 	// post-conditions:
 	//      if user signed in, render "Signed in as 'username'" link
 	//      otherwise render "Sign In" link.
@@ -20,8 +24,7 @@ export default class HomePage extends Component {
 			<div className="search-container">
 				<div className="search-label">Where can I buy</div>
 
-				<SearchBarView />
-
+				<SearchBar grabSearchInput={this.grabSearchInputInter}/>
 				<div className="search-location"><LocationIcon style={{ height: '22px', width: '22px', paddingRight: '3px', marginBottom: '-3px' }} />Seattle, WA</div>
 				<div className="search-description">Source hard-to-find ingredients for your next home-cooked meal.</div>
 

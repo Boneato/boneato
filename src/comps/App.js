@@ -15,18 +15,27 @@ import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    var user = new LoginController();
+    this.signedIn = this.signedIn.bind(this);
+    var user = new LoginController(this.signedIn);
     this.state = {
       user: user,
-      userLoggedIn: false
+      userLoggedIn: false,
+      userInput: "",
+      ingredList: []
     }
   }
 
-  componentDidMount() {
-    // this.fetchData();
-    // this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+  signedIn = () => {
+    console.log("signed In called: ")
+    console.log(this.state.userLoggedIn);
+    this.setState({userLoggedIn: true});
+  } 
+	// if the user is signed-in, will log user out when exiting the web application
+	componentWillUnmount() {
+		//   this.authUnSubFunction()
+	}
 
-    //   if (firebaseUser) {
+    //   i  f (firebaseUser) {
     //     this.setState(
     //       {
     //         user: firebaseUser
@@ -38,7 +47,9 @@ export default class App extends Component {
     //     this.setState({ user: null })
     //   }
     // })
-    
+  // if the user is signed-in, will log user out when exiting the web application
+  componentWillUnmount() {
+ //   this.authUnSubFunction()
   }
 
 	// if the user is signed-in, will log user out when exiting the web application
@@ -47,10 +58,16 @@ export default class App extends Component {
 	}
 
   componentDidUpdate() {
-    this.setState({loggedIn: true});
+    //this.setState({loggedIn: true});
   }
 
+  grabSearchInput = (input) => {
+    this.setState({userInput: input});
+  }
+
+  // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
   render() {
+    console.log(this.state.userLoggedIn);
     let navbar = (
       <Navbar currentUser={this.state.user}/>
     );
@@ -59,13 +76,17 @@ export default class App extends Component {
         <main>
           <Navbar currentUser={this.state.user}/>
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" render={(routerProps) => (
+              <HomePage {...routerProps} grabSearchInput={this.grabSearchInput} />
+            )}/>
             <Route path="/AboutPage" component={AboutPage} />
             <Route path="/LoginPage" render={(routerProps) => (
-              <LoginPage {...routerProps} LoginController={this.state.user}/>
+              <LoginPage {...routerProps} LoginController={this.state.user} />
             )} />
-            <Route path="/ResultsPage" component={ResultsPage} />
             <Route path='/SpecIngPage' component={SpecingPage} />
+            <Route path='/results' render={(routerProps) => (
+              <ResultsPage {...routerProps} userInput={this.state.userInput} />
+            )} />
           </Switch>
         </main>
       </div>
