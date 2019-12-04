@@ -101,7 +101,7 @@ const useStyles = makeStyles(theme => ({
     margin: {
         marginBottom: theme.spacing(2),
     },
-    
+
 }));
 
 const theme = createMuiTheme({
@@ -165,16 +165,16 @@ export function NewIngredientModal(props) {
                     <InputLabel shrink required htmlFor="bootstrap-input">
                         Ingredient Name
                     </InputLabel>
-                    <BootstrapInput onChange={(e) => setIngredName(e.target.value)} id="bootstrap-input" />
+                    <BootstrapInput inputProps={{ maxLength: 150 }} aria-label="ingredient name to submit" onChange={(e) => setIngredName(e.target.value)} id="bootstrap-input" />
                 </FormControl>
                 <FormControl fullWidth className={classes.margin}>
                     <InputLabel shrink htmlFor="bootstrap-input">
                         Comments
                     </InputLabel>
-                    <BootstrapInput id="bootstrap-input" />
+                    <BootstrapInput inputProps={{ maxLength: 1000 }} aria-label="comments on ingredient submission" id="bootstrap-input" />
                 </FormControl>
 
-                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin} onClick={handleClose}>
+                <BootstrapButton aria-label="submit the new ingredient form" variant="contained" color="primary" disableRipple className={classes.margin} onClick={handleClose}>
                     Submit
                 </BootstrapButton>
 
@@ -183,7 +183,7 @@ export function NewIngredientModal(props) {
                     <InputLabel shrink required>
                         Ingredient Name
                     </InputLabel>
-                    <BootstrapInput id="bootstrap-input" />
+                    <BootstrapInput inputProps={{ maxLength: 150 }} aria-label="ingredient name to input" id="bootstrap-input" />
                     <FormHelperText id="component-error-text">
                         <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
                         This field cannot be left blank.
@@ -191,7 +191,7 @@ export function NewIngredientModal(props) {
                 </FormControl>
 
                 {/* error state for "Submit" button*/}
-                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin}>
+                <BootstrapButton aria-label="submit the new ingredient form" variant="contained" color="primary" disableRipple className={classes.margin}>
                     Submit
                 </BootstrapButton>
                 <div id="form-error-container">
@@ -247,21 +247,21 @@ export function NewLocationModal(props) {
 
                 <FormControl fullWidth className={classes.margin}>
                     <InputLabel shrink required htmlFor="bootstrap-input">
-                        Ingredient Name
+                        Ingredient Location
                     </InputLabel>
-                    <BootstrapInput onChange="" id="bootstrap-input" />
+                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} aria-label="ingredient location to be reported" onChange="" id="bootstrap-input" />
                 </FormControl>
 
-                <BootstrapButton variant="contained" color="primary" disableRipple className={classes.margin} onClick={NewIngredientsController}>
+                <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" disableRipple className={classes.margin} onClick={NewIngredientsController}>
                     Submit
                 </BootstrapButton>
 
                 {/*error state for "Ingredient Name" field*/}
                 <FormControl fullWidth className={classes.margin}>
                     <InputLabel shrink required>
-                        Ingredient Name
+                        Ingredient Location
                     </InputLabel>
-                    <BootstrapInput id="bootstrap-input" />
+                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} aria-label="ingredient location to be reported" id="bootstrap-input" />
                     <FormHelperText id="component-error-text">
                         <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
                         This field cannot be left blank.
