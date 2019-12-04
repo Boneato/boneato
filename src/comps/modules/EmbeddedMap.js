@@ -1,24 +1,82 @@
-import React, { Component } from 'react';
-import Modal from '../modules/Modal';
-import MapsController from '../../cont/MapsController';
+import React, { Component, useState } from 'react';
+import { compose, withProps, renderComponent } from "recompose"
+import { Map, InfoWindow, GoogleApiWrapper, Marker, google, map} from "google-maps-react"
+import { db } from '../../firestore';
 
-export default class EmbeddedMaps extends Component {
-    
-    // Takes in avaliable LocationModel(s)
-    constructor(props) {
-        super(props);
+export class EmbeddedMap extends Component{
+
+    constructor(props){
+      super(props);
+      this.ingredientID = "V5MFG9iQMnhIkRcs4PDV";  //will eventually be props.ingredientID,
+      this.state={
+        res: []
+      }
     }
 
-    // Communicates with the MapsController to display
-    // avaliable locations on the map.
-    componentDidMount() {
+    // It is also tested that if the search result is empty, the map will still shows up but without the markers
+    // Takes locationIDlist and returns back with a list of lat and lng
+    updateLocationDetails = () => {
+      var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
+          .collection("locations").get();
 
+      locationQuery.then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+              let newData = doc.data();
+              let newLat = newData.lat;
+              let newName = newData.name;
+              let newLong = newData.long;         
+              let tempList = this.state.res;
+              let newObj = {
+                "latitude": newLat,
+                "longitude": newLong,
+                "name": newName
+              }
+              tempList.push(newObj)
+              this.setState({
+                  res: tempList
+              })
+          }.bind(this))
+      }.bind(this))
+  }
+
+
+
+  componentDidMount() {
+    this.updateLocationDetails()
+  }
+
+
+
+    displayMarkers = () =>{
+      return this.state.res.map((store,index)=>{
+        console.log(store.name);
+        return <Marker key={index} id={index} 
+        position={{
+          lat: store.latitude,
+          lng: store.longitude
+        }}
+        label= {{ color: 'black', fontWeight: 'bold', fontSize: '14px', text:store.name }}/>
+      })
     }
 
-    // If locationModels exist, render a map that has POIs marked
-    // otherwise, show default map of Seattle as determined by the
-    // MapsController
-    render() {
-        return (<div>the map will be here</div>);
+
+
+
+    render(){
+      //console.log(this.state.res)
+      return(
+        <Map
+          google={this.props.google}
+          zoom={8}
+          className="map"
+          initialCenter={{lat:47.444, lng:-122.176}}
+        >
+        {this.displayMarkers()}
+        </Map>
+      )
     }
 }
+
+export default GoogleApiWrapper({
+  apiKey:'AIzaSyA0nwL7k4fGjV-btDTLTse8funRLitd_UM'
+})(EmbeddedMap);

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     padding: '8px 16px 16px 16px',
   },
   name: {
-    fontWeight: 600,
+    fontWeight: 'bold',
     fontFamily: 'Open Sans',
     fontSize: '20px',
   },

@@ -1,31 +1,39 @@
-import React, {Component} from 'react';
-import { voteTotal, canVote} from '../../cont/VotingController';
+import React, { Component } from 'react';
+import { voteTotal, canVote } from '../../cont/VotingController';
 
-var voteRight = false;
+//var voteRight = true;
 
-export default function DownVoteButton(props){
+export default class DownVoteButton extends Component {
 
-    let locationInfo = props.locationInfo;
-    // let locationInfo = {
-    //     ingredientID: null,
-    //     locationID:null,
-    //     upVote: 0,
-    //     downVote: 0,
-    //     userID: null,
-    //     dateFirstReport:null,
-    // };
-    
+    //locationInfo includes:
+    // ingredientID
+    // locationID
+    // upvotes
+    // downvotes
+    // userID
+    // dateFirstReport
+    // lat
+    // long
+    // address
+    // name
+    constructor(props) {
+        super(props);
 
-    return(<button onclick="componentDidUpdate(locationInfo)"> {locationInfo.downVote} DIDN'T FIND</button>);
-    
-}
+        this.state = {
+            locationInfo: props.locationInfo
+        }
 
- // updates vote counter when clicked
-function componentDidUpdate(locationInfo) {
-    if(canVote(locationInfo.userID)){
-        voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, false, true);
-        voteRight = true;
+    }
+
+    handleClick = () => {
+        voteTotal(this.props.ingredID, this.props.locID, this.state.locationInfo, false)
+    }    
+
+    render() {
+        return (
+            <button onClick={this.handleClick}>
+                <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
+            </button>
+        )
     }
 }
-
-

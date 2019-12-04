@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+  line-height: 1.5 !important;
 }
 html, body {
   height: 100%;
@@ -24,17 +24,52 @@ a:hover {
   text-decoration: underline;
 }
 code {
-  font-family: 'Open Sans', source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+  font-family: 'Open Sans', sans-serif;
+}
+.content-container {
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 .page-title {
   font-size: 64px;
   border-bottom: 1px solid #D6D6D6;
   font-weight: bold;
-  padding: 3rem 0 24px 0;
+  padding: 0 0 24px 0;
   margin-bottom: 2.5rem;
 }
+.mat-ripple-element {
+  display: none;
+}
+.MuiFormLabel-root {
+  font-family: 'Open Sans', sans-serif !important;
+  color: #000000 !important;
+  font-size: 16pt !important;
+  font-weight: 600 !important;
+}
+#component-error-text {
+  color: #d90922 !important;
+}
+#form-error-text {
+  color: #d90922 !important;
+  margin-top: -6px !important;
+}
+#form-error-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#form-dialog-title.MuiDialogTitle-root {
+  border-bottom: 1px solid #D6D6D6 !important;
+  margin-bottom: 16px;
+  padding: 24px;
+}
 
+.MuiTypography-h6 {
+  font-family: 'Open Sans', sans-serif !important;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
 
 /* NAVIGATION */
 .makeStyles-root-1 {
@@ -43,7 +78,9 @@ code {
 .homepage-body .makeStyles-root-1 {
   background-color: transparent !important;
 }
-
+.MuiToolbar-regular {
+  height: 136px !important;
+}
 .bonito-logo {
   height: 28px;
   display: flex;
@@ -55,12 +92,13 @@ code {
 .MuiTab-wrapper {
   text-transform: none !important;
   font-size: .875rem;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
   align-items: flex-end !important;
 }
 .MuiTab-root {
   padding: 6px 0px !important;
+  font-family: 'Open Sans', sans-serif;
 }
 @media (min-width: 600px) {
   .MuiTab-root {
@@ -73,21 +111,23 @@ code {
 .MuiTab-wrapper:hover {
   text-decoration: underline;
 }
+.MuiToolbar-gutters {
+  padding: 0 !important;
+}
 
 
 /* HOME PAGE */
 .homepage-body {
   background-color: #024595 !important;
   background: radial-gradient(60% 50% at 60% 45%, rgba(64,118,182,.8) 0%, rgba(130,130,130,0) 100%);
-background-repeat: no-repeat;
-margin-top: -64px;
-height: 100vh;
+  background-repeat: no-repeat;
+  margin-top: -136px;
+  height: 100vh;
 }
 .search-container {
   margin-right: auto;
   margin-left: auto;
-  width: 60%;
-  padding-top: 10rem;
+  padding-top: 14rem;
 }
 .search-label {
   font-weight: 300;
@@ -121,7 +161,6 @@ height: 100vh;
 /* ABOUT PAGE */
 .about-paragraph {
   padding-top: 2rem;
-  margin-bottom: 10rem;
 }
 
 /* SPECIFIC INGREDIENT PAGE */
@@ -145,7 +184,37 @@ height: 100vh;
 .map-container {
   margin: 2rem 0 1.5rem 0;
 }
-
+.map {
+  width: 436px !important;
+  height: 436px !important;
+  position: relative !important;
+}
+.loc-info-container {
+  border-bottom: 1px solid #D6D6D6;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.button-vote {
+  width: 100%;
+}
+.location-alert {
+  padding-bottom: 1rem;
+}
+.location-name {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: -6px;
+  padding-bottom: .25rem;
+}
+.location-address {
+  font-size: 20px;
+}
+.location-reported-by {
+  font-size: 12px;
+}
+.location-author {
+  font-weight: 600;
+}
 
 /* RESULTS PAGE */
 .search-query {
@@ -156,4 +225,35 @@ height: 100vh;
   font-style: italic;
   color: #888888;
   padding-bottom: 16px;
+}
+
+@media (min-width: 1337px) {
+  .content-container, .search-container, .nav-content {
+    max-width: 1136px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media (max-width: 1336px) {
+  .content-container, .search-container {
+    width: 88%;
+    margin-right: 6%;
+    margin-left: 6%;
+  }
+  .MuiToolbar-gutters {
+    padding-left: 6% !important;
+    padding-right: 6% !important;
+  }
+  .map {
+    width: 32vw !important;
+    height: 32vw !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .map {
+    width: 85.5vw !important;
+    height: 85.5vw !important;
+    margin-top: -3rem !important;
+  }
 }

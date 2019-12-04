@@ -1,18 +1,18 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import logo from '../assets/logo.svg';
 import '../css/App.css';
 import Navbar from './modules/Navbar.js';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
-import ResultsPage from './ResultsPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
-import {LoginController} from '../cont/LoginController.js';
+import ResultsPage from './ResultsPage';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import LoginController from '../cont/LoginController';
+import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
+
 // renders application with all neccesary components
 export default class App extends Component {
-
   constructor(props) {
     super(props);
     var user = new LoginController();
@@ -41,10 +41,10 @@ export default class App extends Component {
     
   }
 
-  // if the user is signed-in, will log user out when exiting the web application
-  componentWillUnmount() {
- //   this.authUnSubFunction()
-  }
+	// if the user is signed-in, will log user out when exiting the web application
+	componentWillUnmount() {
+		//   this.authUnSubFunction()
+	}
 
   componentDidUpdate() {
     this.setState({loggedIn: true});
