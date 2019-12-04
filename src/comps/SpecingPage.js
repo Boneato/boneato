@@ -76,11 +76,11 @@ export default class SpecingPage extends Component {
                         </div>
 
                         <Grid container spacing={8} justify="flex-start">
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={7}>
                                 <div className="locations-container" />{searchRes}
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={5}>
                                 <div className="map-container">
                                     <EmbeddedMap locationIDList={this.state.locationIDList}/>
                                 </div>
