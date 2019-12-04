@@ -21,8 +21,6 @@ export default class LocationsList extends Component {
     }
 
     //locationInfo includes:
-    // ingredientID
-    // locationID
     // upvotes
     // downvotes
     // userID
@@ -32,6 +30,11 @@ export default class LocationsList extends Component {
     // address
     // name
 
+    // if user is not logged in
+    //            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
+    //            href="../LoginPage" /> to share whether you found this ingredient. </p>;
+
+
     updateLocationDetails = () => {
         var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
             .collection("locations").get();
@@ -39,6 +42,7 @@ export default class LocationsList extends Component {
         locationQuery.then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
                 // console.log(doc.id, " => ", doc.data());
+                let locationID = doc.id;
                 let newData = doc.data();
                 let newAddress = newData.address;
                 let newDate = newData.date.toDate().toString(); // maybe we can format this later if we have tons of time
@@ -60,7 +64,7 @@ export default class LocationsList extends Component {
                     upvotes: newUVotes,
                     userID: newUID
                 }
-                tempList.push(<LocationInfo locationInfo={newLocInfo} />)
+                tempList.push(<LocationInfo ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)
                 this.setState({
                     searchRes: tempList
                 })
@@ -75,6 +79,7 @@ export default class LocationsList extends Component {
     render() {
         return (
             <div>
+                {/* updownvoteright */}
                 {this.state.searchRes}
             </div>
         )

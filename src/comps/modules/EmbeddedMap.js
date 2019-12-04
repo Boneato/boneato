@@ -1,38 +1,74 @@
 import React, { Component, useState } from 'react';
 import { compose, withProps, renderComponent } from "recompose"
-  import { Map, GoogleApiWrapper, Marker} from "google-maps-react"
+import { Map, InfoWindow, GoogleApiWrapper, Marker, google, map} from "google-maps-react"
+import { db } from '../../firestore';
 
 export class EmbeddedMap extends Component{
 
     constructor(props){
       super(props);
+      this.ingredientID = "V5MFG9iQMnhIkRcs4PDV";  //will eventually be props.ingredientID,
       this.state={
-        locationIDlist: props.locationIDlist,
-        stores:[{lat:47.49855629475769, lng:-122.14184416996333},
-                {latitude:47.359423, longitude:-122.021071},
-                {latitude:47.5524695, longitude: -122.0425407}]
+        res: []
       }
     }
 
-    //MapsControllers some function here
-    //Takes locationIDlist and returns back with a list of lat and lng
+    // It is also tested that if the search result is empty, the map will still shows up but without the markers
+    // Takes locationIDlist and returns back with a list of lat and lng
+    updateLocationDetails = () => {
+      var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
+          .collection("locations").get();
+
+      locationQuery.then(function (querySnapshot) {
+          querySnapshot.forEach(function (doc) {
+              let newData = doc.data();
+              let newLat = newData.lat;
+              let newName = newData.name;
+              let newLong = newData.long;         
+              let tempList = this.state.res;
+              let newObj = {
+                "latitude": newLat,
+                "longitude": newLong,
+                "name": newName
+              }
+              tempList.push(newObj)
+              this.setState({
+                  res: tempList
+              })
+          }.bind(this))
+      }.bind(this))
+  }
+
+
+
+  componentDidMount() {
+    this.updateLocationDetails()
+  }
+
+
 
     displayMarkers = () =>{
-      return this.state.stores.map((store,index)=>{
-        return <Marker key={index} id={index} position={{
+      return this.state.res.map((store,index)=>{
+        console.log(store.name);
+        return <Marker key={index} id={index} 
+        position={{
           lat: store.latitude,
           lng: store.longitude
         }}
-        onClick={()=>console.log("You clicked me!")}/>
+        label= {{ color: 'black', fontWeight: 'bold', fontSize: '14px', text:store.name }}/>
       })
     }
 
+
+
+
     render(){
+      //console.log(this.state.res)
       return(
         <Map
           google={this.props.google}
           zoom={8}
-          style={{width: '40%',height:'40%'}}
+          className="map"
           initialCenter={{lat:47.444, lng:-122.176}}
         >
         {this.displayMarkers()}

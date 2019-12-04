@@ -5,7 +5,6 @@ import LocationsController from '../cont/LocationsController';
 import EmbeddedMap from './modules/EmbeddedMap';
 import Modal from './modules/Modal';
 import firebase from 'firebase';
-import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import { db } from '../firestore';
 import { fbind } from 'q';
@@ -72,16 +71,15 @@ export default class SpecingPage extends Component {
                             {this.state.ingredientName}
                         </div>
                         <div className="spec-ingredient-subtext">
-                            <span>Know where to buy this? </span>
-                            <Tab label="Report a new location." href="location/NewLocationForm" />
+                            <span>Know where to buy this? <a href="location/NewLocationForm">Report a new location</a>.</span>
                         </div>
 
                         <Grid container spacing={8} justify="flex-start">
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={7}>
                                 <div className="locations-container" />{searchRes}
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={5}>
                                 <div className="map-container">
                                     <EmbeddedMap locationIDList={this.state.locationIDList}/>
                                 </div>

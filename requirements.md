@@ -59,25 +59,25 @@
 ### Repeated Components
 1. Forms & Buttons
     1. Upon clicking or tapping a button, there will always be visual feedback:
-        1. All buttons will have a visually differentiated active, inactive, and focused state.
+        1. `complete - meets requirement` All buttons will have a visually differentiated active, inactive, and focused state.
         2. If error(s) occur as a result of clicking or tapping a button, there will be a descriptive textual error message within close proximity (less than 50px away) to the button, AND if resolving the error(s) requires user input or interaction with content that is farther than 50px away from the button, there will be an additional context-specific error message within 50px of that content.
-    2. All form fields will have a descriptive aria label as well as a textual label that is visible regardless of the form field’s state.
-    3. Clicking or tapping any non-inactive form field will enable the user to modify that form field’s input.
+    2. `complete - meets requirement` All form fields will have a descriptive aria label as well as a textual label that is visible regardless of the form field’s state.
+    3. `complete - meets requirement` Clicking or tapping any non-inactive form field will enable the user to modify that form field’s input.
     4. For location form fields (an address or place), input that overflows the form field’s bounds will be denoted with an ellipses. Text will not scroll in either horizontal direction.
         1. For all other single-lined form fields, text that overflows the form field’s bounds will scroll horizontally.
-    5. For multi-lined form fields, text that overflows the form field’s bounds will scroll vertically.
+    5. `complete - meets requirement` For multi-lined form fields, text that overflows the form field’s bounds will scroll vertically.
 
 2. Links
     1. `revised - we decided that it is easier to identify links when the hover state is set to "underline", and the normal state is visually differentiated by heavier font weight and/or font color.` All text anchor links will be ~~500~~ _600_ font weight and ~~underlined~~ _underlined on hover._
     2. `complete - meets requirement` Hovering over a link will change the cursor to a pointer. Removing the cursor from the link will change the cursor back to the default.
 
 3. Modals
-    1. The entire page outside of the modal area will be covered with a 30% opacity black overlay.
-    2. All content outside of the modal area will be inactive.
-    3. Modals will only be closed by clicking or tapping the “x” icon in the top right corner of the modal window, or by clicking or tapping a button that redirects the user.
-    4. All modal content will be contained within the modal area.
-    5. The modal’s height cannot extend beyond the screen’s width or height. If the modal content extends beyond the screen’s width or height, it will overflow by allowing the user to scroll vertically and/or horizontally respective to which axis the content overflows.
-    6. Closing the modal will cause the modal area and its content to disappear and become non-interactive. The black overlay will also disappear, and content outside of the modal will once again be fully interactive.
+    1. `complete - meets requirement` The entire page outside of the modal area will be covered with a 20% opacity black overlay.
+    2. `complete - meets requirement` All content outside of the modal area will be inactive.
+    3. `revised - we decided not to include an 'x' icon, and instead make the modal closable by clicking outside of the modal content area. This improves the user experience by making the modal easier to close or dismiss if mistakenly opend.` Modals will ~~only be closed by clicking or tapping the “x” icon in the top right corner of the modal window,~~ _be closed by clicking outside of the modal's content area,_ or by clicking or tapping a button that redirects the user.
+    4. `complete - meets requirement` All modal content will be contained within the modal area.
+    5. `complete - meets requirement` The modal’s height cannot extend beyond the screen’s width or height. If the modal content extends beyond the screen’s width or height, it will overflow by allowing the user to scroll vertically and/or horizontally respective to which axis the content overflows.
+    6. `complete - meets requirement` Closing the modal will cause the modal area and its content to disappear and become non-interactive. The black overlay will also disappear, and content outside of the modal will once again be fully interactive.
 
 4. Images
     1. `complete - meets requirement` All images will maintain their original, source file aspect ratio; they will not be distorted disproportionately, however, they may be clipped.
@@ -101,17 +101,17 @@
 ## Search process
 1. `complete - meets requirement` When there is nothing typed in the search box, there will be placeholder text reading ‘Bonito’ in the search box. Once the user inputs something in the search box, the placeholder text will disappear and be replaced with the user’s input.
 
-2. While the user is typing in the search box, the question mark character will always follow immediately after the last character typed in the input field.
+2. `revised - we decided to remove the autofill (search as user types a query) feature because it was deemed impossibly given API call limits. As a result, this requirement is no longer necessary.` While the user is typing in the search box, the question mark character will always follow immediately after the last character typed in the input field.
 
 3. `complete - meets requirement` If the query exceeds the length of the input field, the text in the search field will scroll to the left.
 
-4. While the user is typing in the search box, the top six search results will be provided under the input field. If there are less than six relevant results, all of the search results will appear below the input field. The order that the relevant search results appear in will be listed in descending order by which ingredients have the total number of “confirmed” votes, the highest “confirmed” voted item being first.
+4. `impossible - the free version of the Nutritionx API only allows a limited number of calls. With autofill, every user keystroke and all the corresponding search results each count as an API call, so we would run out of API calls far too quickly. Instead, users must hit ENTER on their keyboard to view a list of search results.` While the user is typing in the search box, the top six search results will be provided under the input field. If there are less than six relevant results, all of the search results will appear below the input field. The order that the relevant search results appear in will be listed in descending order by which ingredients have the total number of “confirmed” votes, the highest “confirmed” voted item being first.
 
-5. The user can click on any of the six provided search results to navigate to that ingredient’s page.
+5. `impossible - see "Search process" > #4` The user can click on any of the six provided search results to navigate to that ingredient’s page.
 
 6. While the input field is active and the user has inputted a search query, the user can either press the “Enter” key or click the Search icon on the right side of the input field to be redirected to the search results page.
 
-7. At the top of the content area on the search results page, the user’s search query will be displayed.
+7. `complete - meets requirement`At the top of the content area on the search results page, the user’s search query will be displayed.
 
 8. Below the search query, all matching results will be listed in descending order of total “confirmed” votes. If the list of search results extends beyond the bottom of the screen, there will be a scrollbar, and the list items will overflow vertically.
 
@@ -119,7 +119,7 @@
 
 10. Clicking on any of the listed search results redirects the user to that ingredient’s page.
 
-11. If there are no search results matching the user’s query, there will not be search result page, either. Instead, a message ‘No results found’ will appear under the input field.
+11. `revised - see "Search process" > #4` If there are no search results matching the user’s query, ~~there will not be search result page, either. Instead,~~ a message ‘No results found’ will appear ~~under the input field.~~ on the search results page, in place of the search results.
 
 12. Below the “No results found” message, there will be another message, “Try again or suggest a new ingredient”. “Suggest a new ingredient” will be a hyperlink. Clicking the link will open a modal on the same page. The modal will contain a form to submit a new ingredient suggestion (see the next section for more details).
 
@@ -127,11 +127,11 @@
 ## Suggest a new ingredient
 1. Suggesting a new ingredient to be added to the database and is displayed in the form of a modal that displays on top of the search bar.
 
-2. “Suggest a new ingredient” will be the header at the top of the modal.
+2. `complete - meets requirement` “Suggest a new ingredient” will be the header at the top of the modal.
 
-3. There will be two input areas in the form.
-    1. The name textbox has “Ingredient name” on top of it left-aligned and in bold weight. This textbox is a single line of input of any kind of text. Any text that is written in the textbox will be in a normal weight. This textbox must be populated before the “Submit” button may be clicked. There is a limit of 150 characters for a submission.
-    2. The comments textbox has “Comments (optional)” on top of it left-aligned and in bold weight. This textbox is a full box that grows with input, with a limit of 1000 characters. Any text that is written in the textbox will be in a normal weight. This textbox does not have to be populated at all before the “Submit” button may be clicked.
+3. `complete - meets requirement` There will be two input areas in the form.
+    1. `revised - we decided to show error messages instead of making the "Submit" button inactive until the textbox is populated. This way, error handling is more informative.` The name textbox has “Ingredient name” on top of it left-aligned and in bold weight. This textbox is a single line of input of any kind of text. Any text that is written in the textbox will be in a normal weight. ~~This textbox must be populated before the “Submit” button may be clicked.~~ There is a limit of 150 characters for a submission.
+    2. `complete - meets requirement` The comments textbox has “Comments (optional)” on top of it left-aligned and in bold weight. This textbox is a full box that grows with input, with a limit of 1000 characters. Any text that is written in the textbox will be in a normal weight. This textbox does not have to be populated at all before the “Submit” button may be clicked.
 
 4. Below the comments textbox will be a button labeled “Submit” that must be clicked for the user inputs to a firebase table that must be manually reviewed by one of the team members before being added to the ingredients database.
 
@@ -181,9 +181,9 @@ Once the submission has occurred and the user’s inputs are placed into the fir
 
 
 ## Report a new location
-1. The modal window will read “Report a new \[ingredient name\] location” with a search box underneath. The search box will have a button to the right of it that reads “Submit.” Before the user starts typing in it, the search box will read “Store name or address…”
+1. `revised - we decided to move the "Submit" button to below the search box, in order to improve responsiveness and consistency with the "Report a New Ingredient" form` The modal window will read “Report a new \[ingredient name\] location” with a search box underneath. The search box will have a button ~~to the right of it~~ below the search box that reads “Submit.” Before the user starts typing in it, the search box will read “Store name or address…”
 
-2. If the user clicks the X icon in the top right corner of the modal, it will close the modal.
+2. `revised - we decided not to include an 'x' icon, and instead make the modal closable by clicking outside of the modal content area. This improves the user experience by making the modal easier to close or dismiss if mistakenly opend.` If the user clicks the ~~X icon in the top right corner of the modal,~~ _outside of the modal content area, the modal will close_
 
 3. Once the user begins typing the name of a location, the “Store name or address” text will disappear and search results will begin to populate in a list below. The top 5 search results will appear as the user types the location name or address. If there are less than 5 results, all search results will appear. If there are no search results, the text “No results found. Please try again.” will appear.
 
