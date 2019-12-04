@@ -8,57 +8,73 @@ import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
 import ResultsPage from './ResultsPage';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import LoginController from '../cont/LoginController';
+//import LoginController from '../cont/LoginController';
 import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
+import {CircularProgress} from '@material-ui/core';
+import firebase from 'firebase';
+require("firebase/firestore");
 
 // renders application with all neccesary components
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.signedIn = this.signedIn.bind(this);
-    var user = new LoginController(this.signedIn);
+    //this.signedIn = this.signedIn.bind(this);
+    //var user = new LoginController(this.signedIn);
     this.state = {
-      user: user,
-      userLoggedIn: false,
+      user: null,
       userInput: "",
-      ingredList: []
+      ingredList: [],
+      loading: false
     }
   }
 
-  signedIn = () => {
-    console.log("signed In called: ")
-    console.log(this.state.userLoggedIn);
-    this.setState({userLoggedIn: true});
-  } 
-	// if the user is signed-in, will log user out when exiting the web application
-	componentWillUnmount() {
-		//   this.authUnSubFunction()
-	}
+  handleSignIn = () => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    // TODO: WHY IS THEN() NOT CALLED?
+    var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
+      console.log(result);
+      this.setState({user: result.user})
+    }).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+    });
+  }
 
-    //   i  f (firebaseUser) {
-    //     this.setState(
-    //       {
-    //         user: firebaseUser
-    //       }
-    //     )
+  handleSignOut = () => {
+    firebase.auth().signOut().then(function() {
+      console.log("sign out successfull")
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
 
-    //   }
-    //   else {
-    //     this.setState({ user: null })
-    //   }
-    // })
-  // if the user is signed-in, will log user out when exiting the web application
-  componentWillUnmount() {
- //   this.authUnSubFunction()
+  componentDidMount() {
+    this.authUnsubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
+      if (firebaseUser) {
+        this.setState({user: firebaseUser, loading: false});
+      } else {
+        this.setState({user: null, loading: false});
+      }
+    });
   }
 
 	// if the user is signed-in, will log user out when exiting the web application
-	componentWillUnmount() {
-		//   this.authUnSubFunction()
-	}
-
   componentDidUpdate() {
-    //this.setState({loggedIn: true});
+  }
+
+  componentWillUnmount(){
+    this.authUnsubFunction();
+
+    this.setState({errorMessage: null});
+    firebase.auth().signOut().catch(
+      (error) => {
+        this.setState({errorMessage : error.message});
+      }
+    );
   }
 
   grabSearchInput = (input) => {
@@ -67,29 +83,35 @@ export default class App extends Component {
 
   // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
   render() {
-    console.log(this.state.userLoggedIn);
-    let navbar = (
-      <Navbar currentUser={this.state.user}/>
-    );
-    return (
-      <div>
-        <main>
-          <Navbar currentUser={this.state.user}/>
-          <Switch>
-            <Route exact path="/" render={(routerProps) => (
-              <HomePage {...routerProps} grabSearchInput={this.grabSearchInput} />
-            )}/>
-            <Route path="/AboutPage" component={AboutPage} />
-            <Route path="/LoginPage" render={(routerProps) => (
-              <LoginPage {...routerProps} LoginController={this.state.user} />
-            )} />
-            <Route path='/SpecIngPage' component={SpecingPage} />
-            <Route path='/results' render={(routerProps) => (
-              <ResultsPage {...routerProps} userInput={this.state.userInput} />
-            )} />
-          </Switch>
-        </main>
-      </div>
+    // if (this.state.loading) {
+    //   return <CircularProgress />;
+    // } else {
+      let navbar = (
+        <Navbar loggedIn={false} />
       );
-  }
+      if (this.state.user) {
+        navbar = <Navbar loggedIn={true} handleSignOut={this.handleSignOut}/>
+      }
+        return (
+          <div>
+            {navbar}
+            <main>
+              <Switch>
+                <Route exact path="/" render={(routerProps) => (
+                  <HomePage {...routerProps} grabSearchInput={this.grabSearchInput} />
+                )}/>
+                <Route path="/AboutPage" component={AboutPage} />
+                <Route path="/LoginPage" render={(routerProps) => (
+                  <LoginPage {...routerProps} signInCallback={this.handleSignIn} />
+                )} />
+                <Route path='/SpecIngPage' component={SpecingPage} />
+                <Route path='/results' render={(routerProps) => (
+                  <ResultsPage {...routerProps} userInput={this.state.userInput} />
+                )} />
+              </Switch>
+            </main>
+          </div>
+        );
+      }
+
 }

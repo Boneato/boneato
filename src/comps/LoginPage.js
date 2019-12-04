@@ -17,11 +17,10 @@ export default function LoginPage(props) {
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
     const classes = useStyles();
-    var handleLogIn = () => {
-        props.LoginController.toggleSignIn();
-    }
-    if (props.LoginController.signedIn()) {
-        //return 
+
+    const handleLogIn = (event) => {
+        event.preventDefault();
+        props.signInCallback();
     }
     return (
         <div>
@@ -32,7 +31,7 @@ export default function LoginPage(props) {
             <div class="quickstart-user-details-container">
                 {/* Sign in status */}
                 <span id="quickstart-sign-in-status">Unknown</span>
-                <div>Firebase auth <code>{props.LoginController.signedIn()}</code> object value:</div>
+                <div>Firebase auth <code>{}</code> object value:</div>
                 <pre><code id="quickstart-account-details">null</code></pre>
             </div>
         </div>
