@@ -208,3 +208,59 @@ export default function SearchBar(props) {
 //     </div>
 //   );
 // }
+<<<<<<< HEAD
+=======
+
+export default function CustomizedInputBase() {
+	const classes = useStyles();
+
+	const [anchorEl, setAnchorEl] = React.useState(null);
+
+	const handleClick = event => {
+		setAnchorEl(event.currentTarget);
+	};
+
+	const handleClose = () => {
+		setAnchorEl(null);
+	};
+
+	const open = Boolean(anchorEl);
+	const id = open ? 'simple-popover' : undefined;
+
+	return (
+		<div>
+			<Paper component="form" className={classes.root}>
+				<InputBase
+					className={classes.input}
+					placeholder="Bonito"
+					inputProps={{ 'aria-label': 'search bonito' }}
+					onChange={handleClick}
+				/>
+				{/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
+				<SearchIcon className={classes.iconSearch} />
+				{/* </IconButton> */}
+			</Paper>
+			{
+				/* <Popper
+				id={id}
+				open={open}
+				anchorEl={anchorEl}
+				/* onClose={handleClose} */
+				// 	anchorOrigin={{
+				// 		vertical: 'bottom',
+				// 		horizontal: 'left'
+				// 	}}
+				// 	/* 				transformOrigin={{
+				// 		vertical: 'top',
+				// 		horizontal: 'left'
+				// 	}} */
+				// >
+				// 	<Typography className={classes.typography}>
+				// 		results will go here
+				// 	</Typography>
+				// </Popper> */}
+			}
+		</div>
+	);
+}
+>>>>>>> caf43c984510f84043aea47942bf86fbbe371967

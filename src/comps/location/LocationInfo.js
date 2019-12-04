@@ -1,6 +1,7 @@
-import React, {Component, useImperativeHandle} from 'react';
+import React, { Component, useImperativeHandle } from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
+<<<<<<< HEAD
 //import {loggedIn} from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
 //import {db} from '../../firestore';
@@ -23,37 +24,60 @@ export default function LocationInfo(props) {
    // if(!loggedIn(locationInfo.userID)){
         upDownVoteRight = <p>Please <Tab label="sign in with Google" href="../LoginPage" /> to share whether you found this ingredient here. </p>
     //}
+=======
+import { loggedIn } from '../../cont/LoginController';
+import Tab from '@material-ui/core/Tab';
+import { db } from '../../firestore';
 
-    if(locationInfo.downVote>= 5){
-        errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
+export default class LocationInfo extends Component {
+    constructor(props) {
+        super(props);
+
+        //locationInfo includes:
+        // ingredientID
+        // locationID
+        // upVote
+        // downVote
+        // userID
+        // dateFirstReport
+        // lat
+        // long
+        // address
+        // name
+        this.locationInfo = props.locationInfo
+
+    }
+>>>>>>> caf43c984510f84043aea47942bf86fbbe371967
+
+    // let upDownVoteRight = null;
+
+    componentDidMount() {
     }
 
+    render() {
 
-    return(
-        <div>
-            {upDownVoteRight}
-            {errorWarning}
-            <span>
-                <UpVoteButton locationInfo={locationInfo}/>
-                <DownVoteButton locationInfo={locationInfo}/>
-            </span>
-            <span>
-                <p><a>{index}</a>detailedLoca.locationName</p>
-                <p>detailedLoca.locationAddress</p>
-                <p>Reported By {detailedLoca.UserName} on {locationInfo.dateFirstReport}.</p>
-            </span>
-        </div>
+        // if (!loggedIn(this.locationInfo.userID)) {
+            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
+            href="../LoginPage" /> to share whether you found this ingredient here. </p>;
+        //}
+        if (this.locationInfo.downVote >= 5) {
+            var errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
+        }
+
+        return (
+            <div>
+                {upDownVoteRight}
+                {errorWarning}
+                <span>
+                    <UpVoteButton locationInfo={this.locationInfo} />
+                    <DownVoteButton locationInfo={this.locationInfo} />
+                </span>
+                <span>
+                    <p>{this.locationInfo.name}</p>
+                    <p>{this.locationInfo.address}</p>
+                    <p>Reported by <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</p>
+                </span>
+            </div>
         )
-    
-}
-
-function getDetailedLocation(locationID) {
-    let detailedLoca = {
-        locationID: null,
-        locationName: null,
-        locationAddress: null,
-        UserName: null,
-    };
-    //function to fetch other location infomation in location model
-    return detailedLoca
+    }
 }

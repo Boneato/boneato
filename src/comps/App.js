@@ -6,10 +6,10 @@ import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
-import Results from './Results';
-import {Route, Switch, Redirect} from 'react-router-dom';
-import {Modal, NewIngredientModal, NewLocationModal} from './modules/Modal';
-import {LoginController} from '../cont/LoginController.js';
+import ResultsPage from './ResultsPage';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import LoginController from '../cont/LoginController';
+import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 
 // renders application with all neccesary components
 export default class App extends Component {
