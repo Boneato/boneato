@@ -32,7 +32,7 @@ export default class DownVote extends Component {
     render() {
         return (
             <button onClick={this.handleClick}>
-                <b>{this.state.locationInfo.downvotes}</b> CONFIRMED
+                <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
             </button>
         )
     }
