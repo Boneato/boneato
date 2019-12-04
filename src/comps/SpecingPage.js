@@ -21,6 +21,8 @@ export default class SpecingPage extends Component {
             isEmpty : true,
             ingredientName : ""
         }
+
+        this.updatefunction = this.checkLocations.bind(this);
     }
 
     // updates ingredient name 
