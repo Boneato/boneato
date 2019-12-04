@@ -23,6 +23,8 @@ export default class UpVoteButton extends Component {
             locationInfo: props.locationInfo
         }
 
+        this.votable = props.signedIn != null
+        // look up if user has already voted on this and disable
     }
 
     handleClick = () => {
@@ -30,9 +32,8 @@ export default class UpVoteButton extends Component {
     }    
 
     render() {
-
         return (
-            <button className="button-upvote" onClick={this.handleClick}>
+            <button disabled={!this.votable} className="button-upvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.upvotes}</b> CONFIRMED
             </button>
         )

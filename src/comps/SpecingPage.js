@@ -60,11 +60,11 @@ export default class SpecingPage extends Component {
         if (this.state.isEmpty) { 
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
-            searchRes = <LocationsList ingredientID={this.state.ingredientID} />
+            searchRes = <LocationsList signedIn={this.props.signedIn} ingredientID={this.state.ingredientID} />
         }
 
+        console.log(this.props.signedIn)
         if (!this.props.signedIn) {
-            console.log(LoginController.signedIn)
             cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
         }
 

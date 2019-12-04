@@ -72,7 +72,7 @@ export default class LocationsList extends Component {
                     userID: newUID,
                     dvcounter: newDVC
                 }
-                tempList.push(<LocationInfo updatefunction={this.updatefunction} 
+                tempList.push(<LocationInfo signedIn={this.props.signedIn} updatefunction={this.updatefunction} 
                     ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)
                 this.setState({
                     searchRes: tempList
