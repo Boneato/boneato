@@ -28,7 +28,8 @@ export class EmbeddedMap extends Component{
               let tempList = this.state.res;
               let newObj = {
                 "latitude": newLat,
-                "longitude": newLong
+                "longitude": newLong,
+                "name": newName
               }
               tempList.push(newObj)
               this.setState({
@@ -45,18 +46,10 @@ export class EmbeddedMap extends Component{
   }
 
 
-  onMapClicked = () => {
-    if (this.state.showingInfoWindow)
-      this.setState({
-        activeMarker: null,
-        showingInfoWindow: false
-      });
-  };
-
-
 
     displayMarkers = () =>{
       return this.state.res.map((store,index)=>{
+        console.log(store.name);
         return <Marker key={index} id={index} 
         position={{
           lat: store.latitude,
