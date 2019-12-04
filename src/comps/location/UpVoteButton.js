@@ -26,10 +26,11 @@ export default class UpVoteButton extends Component {
     }
 
     handleClick = () => {
-        voteTotal(this.props.ingredID, this.props.locID, this.state.locationInfo, true)
+        voteTotal(this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, true)
     }    
 
     render() {
+
         return (
             <button onClick={this.handleClick}>
                 <b>{this.state.locationInfo.upvotes}</b> CONFIRMED

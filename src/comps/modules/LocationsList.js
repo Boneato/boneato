@@ -18,6 +18,8 @@ export default class LocationsList extends Component {
         this.state = {
             searchRes: []
         }
+
+        this.updatefunction = this.updateLocationDetails.bind(this);
     }
 
     //locationInfo includes:
@@ -36,10 +38,12 @@ export default class LocationsList extends Component {
 
 
     updateLocationDetails = () => {
+        console.log("the update function is being called")
         var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
             .collection("locations").get();
 
         locationQuery.then(function (querySnapshot) {
+            this.setState({searchRes : []})
             querySnapshot.forEach(function (doc) {
                 // console.log(doc.id, " => ", doc.data());
                 let locationID = doc.id;
@@ -53,6 +57,8 @@ export default class LocationsList extends Component {
                 let newUVotes = newData.upvotes;
                 let newUID = newData.userid;
 
+                console.log("in the LOCLIST method " + newUVotes);
+
                 let tempList = this.state.searchRes;
                 let newLocInfo = {
                     address: newAddress,
@@ -64,7 +70,8 @@ export default class LocationsList extends Component {
                     upvotes: newUVotes,
                     userID: newUID
                 }
-                tempList.push(<LocationInfo ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)
+                tempList.push(<LocationInfo updatefunction={this.updatefunction} 
+                    ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)
                 this.setState({
                     searchRes: tempList
                 })
@@ -77,6 +84,8 @@ export default class LocationsList extends Component {
     }
 
     render() {
+        console.log("render locations list")
+        
         return (
             <div>
                 {/* updownvoteright */}
