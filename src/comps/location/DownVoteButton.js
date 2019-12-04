@@ -31,7 +31,7 @@ export default class DownVote extends Component {
 
     render() {
         return (
-            <button onClick={this.handleClick}>
+            <button className="button-downvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
             </button>
         )

@@ -7,6 +7,7 @@ import Tab from '@material-ui/core/Tab';
 
 import { db } from '../../firestore';
 import Grid from '@material-ui/core/Grid';
+import ErrorIcon from '@material-ui/icons/ErrorOutline';
 
 export default class LocationInfo extends Component {
     constructor(props) {
@@ -30,7 +31,7 @@ export default class LocationInfo extends Component {
     render() {
 
         if (this.locationInfo.downvotes >= 5) {
-            var errorWarning = <div className="location-alert">The 5 most recent voters reported that they didn't find this ingredient here.</div>
+            var errorWarning = <div className="location-alert"><ErrorIcon style={{ height: '20px', width: '20px', paddingRight: '2px', marginBottom: '-4px' }} /> The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
         console.log("location info rendering")
         console.log(this.locationInfo.upvotes)

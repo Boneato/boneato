@@ -32,7 +32,7 @@ export default class UpVoteButton extends Component {
     render() {
 
         return (
-            <button onClick={this.handleClick}>
+            <button className="button-upvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.upvotes}</b> CONFIRMED
             </button>
         )
