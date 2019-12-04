@@ -184,6 +184,12 @@ code {
 .map-container {
   margin: 2rem 0 1.5rem 0;
 }
+.loc-info-container {
+  border-bottom: 1px solid #D6D6D6;
+}
+.button-vote {
+  width: 100%;
+}
 
 
 /* RESULTS PAGE */

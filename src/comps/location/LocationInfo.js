@@ -2,8 +2,8 @@ import React, { Component, useImperativeHandle } from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 import { loggedIn } from '../../cont/LoginController';
-import Tab from '@material-ui/core/Tab';
 import { db } from '../../firestore';
+import Grid from '@material-ui/core/Grid';
 
 export default class LocationInfo extends Component {
     constructor(props) {
@@ -32,26 +32,30 @@ export default class LocationInfo extends Component {
     render() {
 
         // if (!loggedIn(this.locationInfo.userID)) {
-            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
-            href="../LoginPage" /> to share whether you found this ingredient here. </p>;
+        var upDownVoteRight = <div>Please <a href="../LoginPage">sign in with Google</a> to share whether you found this ingredient here. </div>;
         //}
         if (this.locationInfo.downVote >= 5) {
-            var errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
+            var errorWarning = <div>The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
 
         return (
-            <div>
+            <div className="loc-info-container">
                 {upDownVoteRight}
                 {errorWarning}
-                <span>
-                    <UpVoteButton locationInfo={this.locationInfo} />
-                    <DownVoteButton locationInfo={this.locationInfo} />
-                </span>
-                <span>
-                    <p>{this.locationInfo.name}</p>
-                    <p>{this.locationInfo.address}</p>
-                    <p>Reported by <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</p>
-                </span>
+
+                <Grid container direction="row" justify="center" spacing={3}>
+                    <Grid item xs={12} md={5} lg={4}>
+                            <UpVoteButton locationInfo={this.locationInfo} />
+                            <DownVoteButton locationInfo={this.locationInfo} />
+                    </Grid>
+                    <Grid item xs={12} md={7} lg={8}>
+                    <span>
+                        <div>{this.locationInfo.name}</div>
+                        <div>{this.locationInfo.address}</div>
+                        <div>Reported by <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</div>
+                    </span>
+                    </Grid>
+                </Grid >
             </div>
         )
     }
