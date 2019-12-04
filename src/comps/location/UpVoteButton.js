@@ -30,9 +30,6 @@ export default class UpVoteButton extends Component {
     }    
 
     render() {
-        console.log("upvote button rendering")
-        console.log(this.state.locationInfo.upvotes)
-
 
         return (
             <button onClick={this.handleClick}>

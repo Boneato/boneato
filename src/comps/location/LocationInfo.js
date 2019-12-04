@@ -29,7 +29,7 @@ export default class LocationInfo extends Component {
 
     render() {
 
-        if (this.locationInfo.downVote >= 5) {
+        if (this.locationInfo.downvotes >= 5) {
             var errorWarning = <div className="location-alert">The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
         console.log("location info rendering")
@@ -44,7 +44,7 @@ export default class LocationInfo extends Component {
                     <Grid item xs={12} md={5} lg={4}>
                         
                         <UpVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
-                        <DownVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <DownVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
                     </Grid>
                     <Grid item xs={12} md={7} lg={8}>
                         <span>
