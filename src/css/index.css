@@ -184,7 +184,37 @@ code {
 .map-container {
   margin: 2rem 0 1.5rem 0;
 }
-
+.map {
+  width: 436px !important;
+  height: 436px !important;
+}
+.loc-info-container {
+  border-bottom: 1px solid #D6D6D6;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.button-vote {
+  width: 100%;
+}
+.location-alert {
+  padding-bottom: 1rem;
+}
+.location-name {
+  font-weight: bold;
+  font-size: 20px;
+  color: #888888;
+  margin-top: -6px;
+  padding-bottom: .25rem;
+}
+.location-address {
+  font-size: 20px;
+}
+.location-reported-by {
+  font-size: 12px;
+}
+.location-author {
+  font-weight: 600;
+}
 
 /* RESULTS PAGE */
 .search-query {
@@ -213,5 +243,16 @@ code {
   .MuiToolbar-gutters {
     padding-left: 6% !important;
     padding-right: 6% !important;
+  }
+  .map {
+    width: 33vw !important;
+    height: 33vw !important;
+  }
+}
+
+@media (max-width: 960px) {
+  .map {
+    width: 88vw !important;
+    height: 88vw !important;
   }
 }
