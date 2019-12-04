@@ -172,7 +172,6 @@ code {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 20px;
-  padding-top: 3rem;
 }
 .spec-ingredient-subtext {
   font-size: 14px;
@@ -194,11 +193,55 @@ code {
   padding-bottom: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.button-vote {
+.button-upvote {
+  background-color: #CAE1C1;
+}
+.button-downvote {
+  background-color: #E1C1C1;
+}
+.button-upvote, .button-downvote {
   width: 100%;
+  padding: 6px 12px;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  box-shadow: none;
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: .5rem;
+}
+.button-upvote:hover, .button-upvote:active {
+  background-color: #BADBAE;
+  box-shadow: none;
+  cursor: pointer;
+}
+.button-downvote:hover, .button-downvote:active {
+  background-color: #DAB2B2;
+  box-shadow: none;
+  cursor: pointer;
+}
+.button-upvote:focus, .button-downvote:focus {
+  box-shadow: 0 0 0 0.2rem rgba(212, 212, 212,.5);
+  outline: 0;
 }
 .location-alert {
   padding-bottom: 1rem;
+  font-size: 14px;
+  color: #d90922;
+}
+.cannot-vote-alert {
+  padding: 3rem 0 5rem 0;
+  font-size: 20px;
+  color: #999999;
+  text-align: center;
+  font-style: oblique;
+}
+.cannot-vote-alert a {
+  color: #999999;
+  text-decoration: underline;
 }
 .location-name {
   font-weight: bold;
@@ -210,7 +253,7 @@ code {
   font-size: 20px;
 }
 .location-reported-by {
-  font-size: 12px;
+  font-size: 13px;
 }
 .location-author {
   font-weight: 600;

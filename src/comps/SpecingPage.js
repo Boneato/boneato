@@ -60,11 +60,16 @@ export default class SpecingPage extends Component {
             searchRes = <LocationsList ingredientID={this.state.ingredientID} />
         }
 
+        // if (!loggedIn(this.locationInfo.userID)) {
+            var cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
+        //}
+
         return (
             <div className="content-container">
                 <Grid container direction="row" justify="center" spacing={3}>
 
                     <Grid item xs={12}>
+                        {cannotVote}
                         <div className="spec-ingredient-label">
                             Ingredient
                         </div>
