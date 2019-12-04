@@ -1,13 +1,15 @@
 import firebase from 'firebase';
 require("firebase/firestore");
+
 export default class LoginController {
-    constructor() {
+    constructor(triggerState) {
         this.uid = "";
         this.token = "";
         this.name = "";
         this.user = "";
         this.toggleSignIn = this.toggleSignIn.bind(this);
         this.signedIn = this.signedIn.bind(this);
+        this.triggerState = triggerState;
     };
 
     // pre-conditions: Only used within the LoginPage.
@@ -23,15 +25,19 @@ export default class LoginController {
      */
     // [START buttoncallback]
     toggleSignIn() {
-        if (!firebase.auth().currentUser) {
+        console.log("toggleSignIn method called: ")
+        //if (!firebase.auth().currentUser) {
             // [START createprovider]
             var provider = new firebase.auth.GoogleAuthProvider();
+            // TODO: WHY IS THEN() NOT CALLED?
             var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
                 this.token = result.credential.accessToken;
                 this.uid = result.user.uid;
                 this.name = result.user.name;
                 this.user = result.user;
                 console.log(this.user);
+                console.log("controller method called: ")
+                this.triggerState();
             }).catch(function(error) {
                 var errorCode = error.code;
                 var errorMessage = error.message;
@@ -40,9 +46,9 @@ export default class LoginController {
                 // The firebase.auth.AuthCredential type that was used.
                 var credential = error.credential;
             });
-        } else {
-            firebase.auth().signOut();
-        }
+       // } else {
+         //   firebase.auth().signOut();
+       // }
     }
 
     /**

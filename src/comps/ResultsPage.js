@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 const NutrixURL =  "https://trackapi.nutritionix.com/v2/search/instant";
-					 
+
+// takes in ingredientID and ingredientname and creates ListItem with Link to
+// respective SpecIngPage
 function ListItemLink(props) {
-	return <ListItem button component="a" {...props} />;
-}
+	let link = "/SpecingPage/" + props.ingredientID;
+	const to = {
+		"pathname": link,
+		"state": {
+			"ingredientID": props.ingredientID,
+			"name": props.name
+		}
+	}
+	const renderLink = React.useMemo(
+	  () =>
+		React.forwardRef((linkProps, ref) => (
+		  <Link to={to} {...linkProps} ref={ref} />
+		)),
+	  [to],
+	);
+	return (
+	  <li>
+		<ListItem button component={renderLink}>
+		  <ListItemText primary={props.name} />
+		</ListItem>
+	  </li>
+	);
+  }
+  
 export default function ResultsPage(props) {
 	const [ingredList, setList] = useState([]);
 	const [fetchingData, setFetch] = useState(false);
@@ -33,17 +57,13 @@ export default function ResultsPage(props) {
 	let displayList = "";
 	if (ingredList.length > 0) {
 		displayList = ingredList.map(function(item, i) {
-			return ( 
-				<ListItem button>
-					<ListItemText primary={item["food_name"]} />
-				</ListItem>
+			return (
+				<ListItemLink name={item["food_name"]} ingredientID={"123"} />
 			)
 		})
 	} else {
 		displayList = (
-		<ListItem button>
-			<ListItemText primary="loading" />
-		</ListItem>
+			<ListItemLink name={"test"} ingredientID={"234"} />
 		)
 	}
 	return (

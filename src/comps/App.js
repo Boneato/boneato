@@ -15,7 +15,8 @@ import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    var user = new LoginController();
+    this.signedIn = this.signedIn.bind(this);
+    var user = new LoginController(this.signedIn);
     this.state = {
       user: user,
       userLoggedIn: false,
@@ -24,6 +25,11 @@ export default class App extends Component {
     }
   }
 
+  signedIn = () => {
+    console.log("signed In called: ")
+    console.log(this.state.userLoggedIn);
+    this.setState({userLoggedIn: true});
+  } 
 	// if the user is signed-in, will log user out when exiting the web application
 	componentWillUnmount() {
 		//   this.authUnSubFunction()
@@ -56,6 +62,7 @@ export default class App extends Component {
 
   // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
   render() {
+    console.log(this.state.userLoggedIn);
     let navbar = (
       <Navbar currentUser={this.state.user}/>
     );
