@@ -86,11 +86,13 @@ export default class App extends Component {
     // if (this.state.loading) {
     //   return <CircularProgress />;
     // } else {
+      let signedIn = false;
       let navbar = (
         <Navbar loggedIn={false} />
       );
       if (this.state.user) {
         navbar = <Navbar loggedIn={true} handleSignOut={this.handleSignOut}/>
+        signedIn = true;
       }
         return (
           <div>
@@ -104,7 +106,9 @@ export default class App extends Component {
                 <Route path="/LoginPage" render={(routerProps) => (
                   <LoginPage {...routerProps} signInCallback={this.handleSignIn} />
                 )} />
-                <Route path='/SpecIngPage' component={SpecingPage} />
+                <Route path='/SpecIngPage' render={(routerProps) => (
+                  <SpecingPage {...routerProps} signedIn={signedIn} />
+                )} />
                 <Route path='/results' render={(routerProps) => (
                   <ResultsPage {...routerProps} userInput={this.state.userInput} />
                 )} />

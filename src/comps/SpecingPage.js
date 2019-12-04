@@ -8,6 +8,8 @@ import firebase from 'firebase';
 import Grid from '@material-ui/core/Grid';
 import { db } from '../firestore';
 import { fbind } from 'q';
+// import signedIn from '../cont/LoginController';
+import LoginController from '../cont/LoginController';
 import {NewLocationModal} from '../comps/modules/Modal';
 require('firebase/firestore');
 
@@ -53,6 +55,7 @@ export default class SpecingPage extends Component {
     render() {
 
         let searchRes = null, i = null;
+        let cannotVote = null;
 
         if (this.state.isEmpty) { 
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
@@ -60,9 +63,10 @@ export default class SpecingPage extends Component {
             searchRes = <LocationsList ingredientID={this.state.ingredientID} />
         }
 
-        // if (!loggedIn(this.locationInfo.userID)) {
-            var cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
-        //}
+        if (!this.props.signedIn) {
+            console.log(LoginController.signedIn)
+            cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
+        }
 
         return (
             <div className="content-container">
