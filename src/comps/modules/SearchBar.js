@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
@@ -12,11 +12,12 @@ import parse from 'autosuggest-highlight/parse';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-import Popper from '@material-ui/core/Popper';
+import {Popper, Popover} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import {Redirect} from 'react-router-dom';
 
 import { db, ingred } from '../../firestore';
-require('firebase/firestore');
+require('firebase/firestore')
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -42,6 +43,47 @@ const useStyles = makeStyles(theme => ({
 		padding: '10px 20px 10px 20px'
 	}
 }));
+
+export default function SearchBar(props) {
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [userInput, setInput] = useState("");
+  const [goDirect, setDirect] = useState(false);
+  const handleClick = (event) => {
+    event.preventDefault();
+    setAnchorEl(event.currentTarget);
+    props.grabSearchInput(userInput);
+    setDirect(true);
+  };
+
+  const handleChange = (event) => {
+    
+  }
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+  var search = (
+    <div>
+      <Paper component="form" className={classes.root}>
+        <InputBase
+          className={classes.input}
+          placeholder="Bonito"
+          inputProps={{ 'aria-label': 'search bonito' }}
+          onChange={event => setInput(event.target.value)}
+        />
+        <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
+          <SearchIcon className={classes.iconSearch} />
+        </IconButton>
+      </Paper>
+    </div>
+  );
+  if (goDirect) {
+    search = <Redirect to="/results"></Redirect>
+  }
+  return search;
+}
 
 // const suggestions = ingred;
 // // db.firestore().collection('ingredients');
@@ -167,56 +209,3 @@ const useStyles = makeStyles(theme => ({
 //     </div>
 //   );
 // }
-
-export default function CustomizedInputBase() {
-	const classes = useStyles();
-
-	const [anchorEl, setAnchorEl] = React.useState(null);
-
-	const handleClick = event => {
-		setAnchorEl(event.currentTarget);
-	};
-
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
-
-	const open = Boolean(anchorEl);
-	const id = open ? 'simple-popover' : undefined;
-
-	return (
-		<div>
-			<Paper component="form" className={classes.root}>
-				<InputBase
-					className={classes.input}
-					placeholder="Bonito"
-					inputProps={{ 'aria-label': 'search bonito' }}
-					onChange={handleClick}
-				/>
-				{/* <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}> */}
-				<SearchIcon className={classes.iconSearch} />
-				{/* </IconButton> */}
-			</Paper>
-			{
-				/* <Popper
-				id={id}
-				open={open}
-				anchorEl={anchorEl}
-				/* onClose={handleClose} */
-				// 	anchorOrigin={{
-				// 		vertical: 'bottom',
-				// 		horizontal: 'left'
-				// 	}}
-				// 	/* 				transformOrigin={{
-				// 		vertical: 'top',
-				// 		horizontal: 'left'
-				// 	}} */
-				// >
-				// 	<Typography className={classes.typography}>
-				// 		results will go here
-				// 	</Typography>
-				// </Popper> */}
-			}
-		</div>
-	);
-}

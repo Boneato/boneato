@@ -1,6 +1,7 @@
 import React, { Component, useImperativeHandle } from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
+//import {loggedIn} from '../../cont/LoginController';
 import { loggedIn } from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
 
@@ -23,24 +24,27 @@ export default class LocationInfo extends Component {
         this.ingredID = props.ingredID
         this.locationInfo = props.locationInfo
     }
-
     componentDidMount() {
     }
 
     render() {
 
-        if (this.locationInfo.downVote >= 5) {
+        if (this.locationInfo.downvotes >= 5) {
             var errorWarning = <div className="location-alert">The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
+        console.log("location info rendering")
+        console.log(this.locationInfo.upvotes)
 
         return (
+
             <div className="loc-info-container">
                 {errorWarning}
 
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12} md={5} lg={4}>
-                        <UpVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
-                        <DownVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        
+                        <UpVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <DownVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
                     </Grid>
                     <Grid item xs={12} md={7} lg={8}>
                         <span>

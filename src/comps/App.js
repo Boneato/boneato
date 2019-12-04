@@ -13,47 +13,83 @@ import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 
 // renders application with all neccesary components
 export default class App extends Component {
-	constructor(props) {
-		super(props);
-		//   this.state = {
-		// 	  locationIDList: [],
-		//   }
+  constructor(props) {
+    super(props);
+    this.signedIn = this.signedIn.bind(this);
+    var user = new LoginController(this.signedIn);
+    this.state = {
+      user: user,
+      userLoggedIn: false,
+      userInput: "",
+      ingredList: []
+    }
+  }
+
+  signedIn = () => {
+    console.log("signed In called: ")
+    console.log(this.state.userLoggedIn);
+    this.setState({userLoggedIn: true});
+  } 
+	// if the user is signed-in, will log user out when exiting the web application
+	componentWillUnmount() {
+		//   this.authUnSubFunction()
 	}
 
-	componentDidMount() {
-		// this.fetchData();
-		// this.authUnSubFunction = firebase.auth().onAuthStateChanged((firebaseUser) => {
-		//   if (firebaseUser) {
-		//     this.setState(
-		//       {
-		//         user: firebaseUser
-		//       }
-		//     )
-		//   }
-		//   else {
-		//     this.setState({ user: null })
-		//   }
-		// })
-	}
+    //   i  f (firebaseUser) {
+    //     this.setState(
+    //       {
+    //         user: firebaseUser
+    //       }
+    //     )
+
+    //   }
+    //   else {
+    //     this.setState({ user: null })
+    //   }
+    // })
+  // if the user is signed-in, will log user out when exiting the web application
+  componentWillUnmount() {
+ //   this.authUnSubFunction()
+  }
 
 	// if the user is signed-in, will log user out when exiting the web application
 	componentWillUnmount() {
 		//   this.authUnSubFunction()
 	}
 
-	render() {
-		return (
-			<div>
-				<main>
-					<Navbar currentUser={LoginController.user} />
-					<Switch>
-						<Route exact path="/" component={HomePage} />
-						<Route path="/AboutPage" component={AboutPage} />
-						<Route path="/LoginPage" component={LoginPage} />
-						<Route path="/SpecIngPage" component={SpecingPage} />
-					</Switch>
-				</main>
-			</div>
-		);
-	}
+  componentDidUpdate() {
+    //this.setState({loggedIn: true});
+  }
+
+  grabSearchInput = (input) => {
+    this.setState({userInput: input});
+  }
+
+  // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
+  render() {
+    console.log(this.state.userLoggedIn);
+    let navbar = (
+      <Navbar currentUser={this.state.user}/>
+    );
+    return (
+      <div>
+        <main>
+          <Navbar currentUser={this.state.user}/>
+          <Switch>
+            <Route exact path="/" render={(routerProps) => (
+              <HomePage {...routerProps} grabSearchInput={this.grabSearchInput} />
+            )}/>
+            <Route path="/AboutPage" component={AboutPage} />
+            <Route path="/LoginPage" render={(routerProps) => (
+              <LoginPage {...routerProps} LoginController={this.state.user} />
+            )} />
+            <Route path='/SpecIngPage' component={SpecingPage} />
+            <Route path='/results' render={(routerProps) => (
+              <ResultsPage {...routerProps} userInput={this.state.userInput} />
+            )} />
+          </Switch>
+        </main>
+      </div>
+      );
+  }
 }

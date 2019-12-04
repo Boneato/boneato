@@ -3,7 +3,7 @@ import { voteTotal, canVote } from '../../cont/VotingController';
 
 //var voteRight = true;
 
-export default class DownVoteButton extends Component {
+export default class DownVote extends Component {
 
     //locationInfo includes:
     // ingredientID
@@ -26,7 +26,7 @@ export default class DownVoteButton extends Component {
     }
 
     handleClick = () => {
-        voteTotal(this.props.ingredID, this.props.locID, this.state.locationInfo, false)
+        voteTotal(this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, false)
     }    
 
     render() {

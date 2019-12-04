@@ -155,7 +155,6 @@ export function NewIngredientModal(props) {
         } else {
             return false;
         }
-
     }
     var ingredItems = (
         <form className={classes.root} noValidate>
