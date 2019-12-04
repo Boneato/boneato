@@ -155,10 +155,6 @@ export function NewIngredientModal(props) {
         } else {
             return false;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> caf43c984510f84043aea47942bf86fbbe371967
     }
     var ingredItems = (
         <form className={classes.root} noValidate>

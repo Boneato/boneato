@@ -1,30 +1,6 @@
 import React, { Component, useImperativeHandle } from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
-<<<<<<< HEAD
-//import {loggedIn} from '../../cont/LoginController';
-import Tab from '@material-ui/core/Tab';
-//import {db} from '../../firestore';
-
-export default function LocationInfo(props) {
-    let locationInfo = props.locationInfo;
-    // let locationInfo = {
-    //     ingredientID: null,
-    //     locationID:null,
-    //     upVote: 0,
-    //     downVote: 0,
-    //     userID: null,
-    //     dateFirstReport:null,
-    // };
-    let detailedLoca = getDetailedLocation(locationInfo.locationID)
-    let index = props.index;
-    let upDownVoteRight = null;
-    let errorWarning = null;
-
-   // if(!loggedIn(locationInfo.userID)){
-        upDownVoteRight = <p>Please <Tab label="sign in with Google" href="../LoginPage" /> to share whether you found this ingredient here. </p>
-    //}
-=======
 import { loggedIn } from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
 import { db } from '../../firestore';
@@ -47,7 +23,6 @@ export default class LocationInfo extends Component {
         this.locationInfo = props.locationInfo
 
     }
->>>>>>> caf43c984510f84043aea47942bf86fbbe371967
 
     // let upDownVoteRight = null;
 

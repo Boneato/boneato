@@ -73,7 +73,7 @@ export default class App extends Component {
             )} />
             <Route path='/SpecIngPage' component={SpecingPage} />
             <Route path='/results' render={(routerProps) => (
-              <Results {...routerProps} userInput={this.state.userInput} />
+              <ResultsPage {...routerProps} userInput={this.state.userInput} />
             )} />
           </Switch>
         </main>

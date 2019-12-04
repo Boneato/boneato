@@ -1,7 +1,6 @@
 import firebase from 'firebase';
 require("firebase/firestore");
-export class LoginController {
-    
+export default class LoginController {
     constructor() {
         this.uid = "";
         this.token = "";

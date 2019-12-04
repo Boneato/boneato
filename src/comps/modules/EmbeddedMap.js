@@ -1,6 +1,6 @@
 import React, { Component, useState } from 'react';
 import { compose, withProps, renderComponent } from "recompose"
-import { Map, GoogleApiWrapper, Marker} from "google-maps-react"
+  import { Map, GoogleApiWrapper, Marker} from "google-maps-react"
 
 export class EmbeddedMap extends Component{
 
