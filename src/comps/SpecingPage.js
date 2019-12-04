@@ -8,6 +8,7 @@ import firebase from 'firebase';
 import Grid from '@material-ui/core/Grid';
 import { db } from '../firestore';
 import { fbind } from 'q';
+import {NewLocationModal} from '../comps/modules/Modal';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
@@ -64,8 +65,6 @@ export default class SpecingPage extends Component {
                 <Grid container direction="row" justify="center" spacing={3}>
 
                     <Grid item xs={12}>
-
-
                         <div className="spec-ingredient-label">
                             Ingredient
                         </div>
@@ -73,7 +72,7 @@ export default class SpecingPage extends Component {
                             {this.state.ingredientName}
                         </div>
                         <div className="spec-ingredient-subtext">
-                            <span>Know where to buy this? <a href="location/NewLocationForm">Report a new location</a>.</span>
+                            <span>Know where to buy this? <a href='NewLocationModal'>Report a new location</a>.</span>
                         </div>
 
                         <Grid container spacing={8} justify="flex-start">
