@@ -54,10 +54,10 @@ export function voteTotal(updatefunction, ingredientID, locationID, locationInfo
 // takes in user id and location id
 // validates if user can vote
 export function canVote(userID) {
-    if (loggedIn) {
+    //if(loggedIn(userID)){
         //if the userID hasn't voted for this location yet
-        return true;
-    }
+      //  return true;
+    //}
     return false;
 }
 

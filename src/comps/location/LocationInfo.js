@@ -1,6 +1,7 @@
 import React, { Component, useImperativeHandle } from 'react';
 import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
+//import {loggedIn} from '../../cont/LoginController';
 import { loggedIn } from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
 
@@ -23,7 +24,6 @@ export default class LocationInfo extends Component {
         this.ingredID = props.ingredID
         this.locationInfo = props.locationInfo
     }
-
     componentDidMount() {
     }
 

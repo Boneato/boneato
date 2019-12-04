@@ -49,7 +49,6 @@ export default class SpecingPage extends Component {
         this.checkLocations();
     }
 
-
     render() {
 
         let searchRes = null, i = null;

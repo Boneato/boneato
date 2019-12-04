@@ -17,26 +17,24 @@ export default function LoginPage(props) {
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
     const classes = useStyles();
-
+    var handleLogIn = () => {
+        props.LoginController.toggleSignIn();
+    }
+    if (props.LoginController.signedIn()) {
+        //return 
+    }
     return (
-        <div className="content-container">
-            <Grid container direction="row" justify="center" spacing={3}>
-                <Grid item xs={12}>
-                <div className="page-title">Sign In</div>
-                    <div>Please sign in with Google to continue.</div>
-                    <Button variant="contained" className={classes.button} id="quickstart-sign-in" />
+        <div>
+            <p>Please sign in with Google to continue.</p>
+            <Button variant="contained" className={classes.button} id="quickstart-sign-in" onClick={handleLogIn}/>
 
-                    {/* Container where we'll display the user details */}
-                    <div class="quickstart-user-details-container">
-                        {/* Sign in status */}
-                        <span id="quickstart-sign-in-status">Unknown</span>
-                        <div>Firebase auth <code>currentUser</code> object value:</div>
-                        <pre><code id="quickstart-account-details">null</code></pre>
-                        {/* <div>Google OAuth Access Token:</div>
-                <pre><code id="quickstart-oauthtoken">null</code></pre> */}
-                    </div>
-                </Grid>
-            </Grid>
+            {/* Container where we'll display the user details */}
+            <div class="quickstart-user-details-container">
+                {/* Sign in status */}
+                <span id="quickstart-sign-in-status">Unknown</span>
+                <div>Firebase auth <code>{props.LoginController.signedIn()}</code> object value:</div>
+                <pre><code id="quickstart-account-details">null</code></pre>
+            </div>
         </div>
     )
 }
