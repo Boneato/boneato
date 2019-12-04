@@ -196,24 +196,26 @@ export default function CustomizedInputBase() {
 				<SearchIcon className={classes.iconSearch} />
 				{/* </IconButton> */}
 			</Paper>
-			<Popper
+			{
+				/* <Popper
 				id={id}
 				open={open}
 				anchorEl={anchorEl}
 				/* onClose={handleClose} */
-				anchorOrigin={{
-					vertical: 'bottom',
-					horizontal: 'left'
-				}}
-				/* 				transformOrigin={{
-					vertical: 'top',
-					horizontal: 'left'
-				}} */
-			>
-				<Typography className={classes.typography}>
-					results will go here
-				</Typography>
-			</Popper>
+				// 	anchorOrigin={{
+				// 		vertical: 'bottom',
+				// 		horizontal: 'left'
+				// 	}}
+				// 	/* 				transformOrigin={{
+				// 		vertical: 'top',
+				// 		horizontal: 'left'
+				// 	}} */
+				// >
+				// 	<Typography className={classes.typography}>
+				// 		results will go here
+				// 	</Typography>
+				// </Popper> */}
+			}
 		</div>
 	);
 }

@@ -3,15 +3,15 @@ import UpVoteButton from '../location/UpVoteButton';
 import DownVoteButton from '../location/DownVoteButton';
 import { loggedIn } from '../../cont/LoginController';
 import Tab from '@material-ui/core/Tab';
+
 import { db } from '../../firestore';
+import Grid from '@material-ui/core/Grid';
 
 export default class LocationInfo extends Component {
     constructor(props) {
         super(props);
 
         //locationInfo includes:
-        // ingredientID
-        // locationID
         // upVote
         // downVote
         // userID
@@ -20,38 +20,36 @@ export default class LocationInfo extends Component {
         // long
         // address
         // name
+        this.ingredID = props.ingredID
         this.locationInfo = props.locationInfo
-
     }
-
-    // let upDownVoteRight = null;
 
     componentDidMount() {
     }
 
     render() {
 
-        // if (!loggedIn(this.locationInfo.userID)) {
-            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
-            href="../LoginPage" /> to share whether you found this ingredient here. </p>;
-        //}
         if (this.locationInfo.downVote >= 5) {
-            var errorWarning = <p>The 5 most recent voters reported that they didn't find this ingredient here.</p>
+            var errorWarning = <div className="location-alert">The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
 
         return (
-            <div>
-                {upDownVoteRight}
+            <div className="loc-info-container">
                 {errorWarning}
-                <span>
-                    <UpVoteButton locationInfo={this.locationInfo} />
-                    <DownVoteButton locationInfo={this.locationInfo} />
-                </span>
-                <span>
-                    <p>{this.locationInfo.name}</p>
-                    <p>{this.locationInfo.address}</p>
-                    <p>Reported by <i>~a person with id {this.locationInfo.userID}~</i> on {this.locationInfo.date}.</p>
-                </span>
+
+                <Grid container direction="row" justify="center" spacing={3}>
+                    <Grid item xs={12} md={5} lg={4}>
+                        <UpVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <DownVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                    </Grid>
+                    <Grid item xs={12} md={7} lg={8}>
+                        <span>
+                            <div className="location-name">{this.locationInfo.name}</div>
+                            <div className="location-address">{this.locationInfo.address}</div>
+                            <div className="location-reported-by">Reported by <span className="location-author">~a person with id {this.locationInfo.userID}~</span> on {this.locationInfo.date}.</div>
+                        </span>
+                    </Grid>
+                </Grid >
             </div>
         )
     }

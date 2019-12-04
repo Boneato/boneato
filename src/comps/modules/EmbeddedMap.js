@@ -75,7 +75,7 @@ export class EmbeddedMap extends Component{
         <Map
           google={this.props.google}
           zoom={8}
-          style={{width: '40%',height:'40%'}}
+          className="map"
           initialCenter={{lat:47.444, lng:-122.176}}
         >
         {this.displayMarkers()}

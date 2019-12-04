@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { voteTotal, canVote } from '../../cont/VotingController';
 
-var voteRight = false;
+//var voteRight = true;
 
-export default function DownVoteButton(props) {
+export default class DownVoteButton extends Component {
 
     //locationInfo includes:
     // ingredientID
@@ -16,20 +16,24 @@ export default function DownVoteButton(props) {
     // long
     // address
     // name
-    let locationInfo = props.locationInfo;
+    constructor(props) {
+        super(props);
 
-    return (<button onClick={componentDidUpdate(locationInfo)}> <b>{locationInfo.downvotes}</b> DIDN'T FIND</button>);
+        this.state = {
+            locationInfo: props.locationInfo
+        }
 
-}
+    }
 
-// updates vote counter when clicked
-function componentDidUpdate(locationInfo) {
-    //this right now is taking in the user's ID that initially logged the location.
-    //we need to pass the CURRENT user's ID as a prop somehow
-    if (canVote(locationInfo.userID)) {
-        voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, false, true);
-        voteRight = true;
+    handleClick = () => {
+        voteTotal(this.props.ingredID, this.props.locID, this.state.locationInfo, false)
+    }    
+
+    render() {
+        return (
+            <button onClick={this.handleClick}>
+                <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
+            </button>
+        )
     }
 }
-
-
