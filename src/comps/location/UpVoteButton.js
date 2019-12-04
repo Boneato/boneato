@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { voteTotal, canVote } from '../../cont/VotingController';
 
-var voteRight = true;
+//var voteRight = true;
 
-export default function UpVoteButton(props) {
+export default class UpVoteButton extends Component {
 
     //locationInfo includes:
     // ingredientID
@@ -16,18 +16,36 @@ export default function UpVoteButton(props) {
     // long
     // address
     // name
-    let locationInfo = props.locationInfo;
+    constructor(props) {
+        super(props);
 
-    return (<button onClick={componentDidUpdate(locationInfo)}> <b>{locationInfo.upvotes}</b> CONFIRMED</button>);
+        this.state = {
+            locationInfo: props.locationInfo
+        }
 
-}
+    }
 
-// updates vote counter when clicked
-function componentDidUpdate(locationInfo) {
-    //this right now is taking in the user's ID that initially logged the location.
-    //we need to pass the CURRENT user's ID as a prop somehow
-    if (canVote(locationInfo.userID)) { 
-        voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, true, false);
-        voteRight = true;
+    handleClick = () => {
+        voteTotal(this.props.ingredID, this.props.locID, this.state.locationInfo, true)
+    }    
+
+    render() {
+        return (
+            <button onClick={this.handleClick}>
+                <b>{this.state.locationInfo.upvotes}</b> CONFIRMED
+            </button>
+        )
     }
 }
+
+
+// updates vote counter when clicked
+// componentDidUpdate(locationInfo) {
+//     //this right now is taking in the user's ID that initially logged the location.
+//     //we need to pass the CURRENT user's ID as a prop somehow
+
+//     //if (canVote(locationInfo.userID)) {
+//     voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, true, false);
+//     voteRight = true;
+//     }
+// }

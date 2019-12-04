@@ -3,7 +3,7 @@ import { voteTotal, canVote } from '../../cont/VotingController';
 
 var voteRight = false;
 
-export default function DownVoteButton(props) {
+export default class DownVoteButton extends Component {
 
     //locationInfo includes:
     // ingredientID
@@ -16,9 +16,18 @@ export default function DownVoteButton(props) {
     // long
     // address
     // name
-    let locationInfo = props.locationInfo;
+    constructor(props) {
+        super(props);
 
-    return (<button onClick={componentDidUpdate(locationInfo)}> <b>{locationInfo.downvotes}</b> DIDN'T FIND</button>);
+        this.locationInfo = props.locationInfo;
+    }
+    
+    render() {
+        return (
+            <button>work in ~progress~</button>
+            //<button onClick={componentDidUpdate(locationInfo)}> <b>{locationInfo.downvotes}</b> DIDN'T FIND</button>
+        )
+    }
 
 }
 
