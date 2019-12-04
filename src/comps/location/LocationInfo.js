@@ -22,6 +22,7 @@ export default class LocationInfo extends Component {
         // long
         // address
         // name
+        // dv counter
         this.ingredID = props.ingredID
         this.locationInfo = props.locationInfo
     }
@@ -30,7 +31,7 @@ export default class LocationInfo extends Component {
 
     render() {
 
-        if (this.locationInfo.downvotes >= 5) {
+        if (this.locationInfo.dvcounter >= 5) {
             var errorWarning = <div className="location-alert"><ErrorIcon style={{ height: '20px', width: '20px', paddingRight: '2px', marginBottom: '-4px' }} /> The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
         console.log("location info rendering")
