@@ -29,7 +29,7 @@ export default class LocationInfo extends Component {
 
     render() {
 
-        if (this.locationInfo.downvotes >= 5) {
+        if (this.locationInfo.dvcounter >= 5) {
             var errorWarning = <div className="location-alert">The 5 most recent voters reported that they didn't find this ingredient here.</div>
         }
         console.log("location info rendering")

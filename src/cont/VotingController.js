@@ -20,7 +20,8 @@ export function voteTotal(updatefunction, ingredientID, locationID, locationInfo
             .collection("locations").doc(locID);
 
         return locRef.update({
-            upvotes: newUpvotes
+            upvotes: newUpvotes,
+            dvcounter: 0
         })
             .then(function () {
                 updatefunction();
@@ -33,12 +34,14 @@ export function voteTotal(updatefunction, ingredientID, locationID, locationInfo
 
     } else {
         var newDownvotes = locationInfo.downvotes + 1;
+        var newDVC = locationInfo.dvcounter + 1;
 
         var locRef = db.firestore().collection("ingredients").doc(ingredID)
             .collection("locations").doc(locID);
 
         return locRef.update({
-            downvotes: newDownvotes
+            downvotes: newDownvotes,
+            dvcounter: newDVC
         })
             .then(function () {
                 updatefunction();
