@@ -82,7 +82,7 @@ export default class SpecingPage extends Component {
 
                             <Grid item xs={12} md={5}>
                                 <div className="map-container">
-                                    <EmbeddedMap locationIDList={this.state.locationIDList}/>
+                                    <EmbeddedMap ingredientID={this.state.ingredientID}/>
                                 </div>
 
                             </Grid>

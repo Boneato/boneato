@@ -7,8 +7,9 @@ export class EmbeddedMap extends Component{
 
     constructor(props){
       super(props);
-      this.ingredientID = "V5MFG9iQMnhIkRcs4PDV";  //will eventually be props.ingredientID,
+      //will eventually be props.ingredientID,
       this.state={
+        ingredientID: props.ingredientID,
         res: []
       }
     }
@@ -16,7 +17,7 @@ export class EmbeddedMap extends Component{
     // It is also tested that if the search result is empty, the map will still shows up but without the markers
     // Takes locationIDlist and returns back with a list of lat and lng
     updateLocationDetails = () => {
-      var locationQuery = db.firestore().collection("ingredients").doc(this.ingredientID)
+      var locationQuery = db.firestore().collection("ingredients").doc(this.state.ingredientID)
           .collection("locations").get();
 
       locationQuery.then(function (querySnapshot) {
