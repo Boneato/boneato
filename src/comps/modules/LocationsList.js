@@ -56,6 +56,7 @@ export default class LocationsList extends Component {
                 let newName = newData.name;
                 let newUVotes = newData.upvotes;
                 let newUID = newData.userid;
+                let newDVC = newData.dvcounter;
 
                 console.log("in the LOCLIST method " + newUVotes);
 
@@ -68,7 +69,8 @@ export default class LocationsList extends Component {
                     long: newLong,
                     name: newName,
                     upvotes: newUVotes,
-                    userID: newUID
+                    userID: newUID,
+                    dvcounter: newDVC
                 }
                 tempList.push(<LocationInfo updatefunction={this.updatefunction} 
                     ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)
