@@ -72,7 +72,7 @@ export default class SpecingPage extends Component {
                             {this.state.ingredientName}
                         </div>
                         <div className="spec-ingredient-subtext">
-                            <span>Know where to buy this? <a href='NewLocationModal'>Report a new location</a>.</span>
+                            <span>Know where to buy this? <a href={NewLocationModal}>Report a new location</a>.</span>
                         </div>
 
                         <Grid container spacing={8} justify="flex-start">
