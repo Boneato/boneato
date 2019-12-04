@@ -37,15 +37,3 @@ export default class UpVoteButton extends Component {
         )
     }
 }
-
-
-// updates vote counter when clicked
-// componentDidUpdate(locationInfo) {
-//     //this right now is taking in the user's ID that initially logged the location.
-//     //we need to pass the CURRENT user's ID as a prop somehow
-
-//     //if (canVote(locationInfo.userID)) {
-//     voteTotal(locationInfo.ingredientID, locationInfo.userID, locationInfo.locationID, true, false);
-//     voteRight = true;
-//     }
-// }

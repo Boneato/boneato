@@ -35,20 +35,19 @@ export default class LocationInfo extends Component {
 
         return (
             <div className="loc-info-container">
-                {/*upDownVoteRight*/}
                 {errorWarning}
 
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12} md={5} lg={4}>
-                            <UpVoteButton locationInfo={this.locationInfo} />
-                            <DownVoteButton locationInfo={this.locationInfo} />
+                        <UpVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <DownVoteButton locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
                     </Grid>
                     <Grid item xs={12} md={7} lg={8}>
-                    <span>
-                        <div className="location-name">{this.locationInfo.name}</div>
-                        <div className="location-address">{this.locationInfo.address}</div>
-                        <div className="location-reported-by">Reported by <span className="location-author">~a person with id {this.locationInfo.userID}~</span> on {this.locationInfo.date}.</div>
-                    </span>
+                        <span>
+                            <div className="location-name">{this.locationInfo.name}</div>
+                            <div className="location-address">{this.locationInfo.address}</div>
+                            <div className="location-reported-by">Reported by <span className="location-author">~a person with id {this.locationInfo.userID}~</span> on {this.locationInfo.date}.</div>
+                        </span>
                     </Grid>
                 </Grid >
             </div>

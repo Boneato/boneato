@@ -6,12 +6,14 @@ import { db } from '../firestore';
 export function voteTotal(ingredientID, locationID, locationInfo, upvote) {
 
     // first check if user is logged in before any changes made
+    var ingredID = ingredientID;
+    var locID = locationID;
+    console.log(ingredID)
+    console.log(locID)
 
     if (upvote) {
 
         var newUpvotes = locationInfo.upvotes + 1;
-        var ingredID = ingredientID;
-        var locID = locationID;
 
         var locRef = db.firestore().collection("ingredients").doc(ingredID)
             .collection("locations").doc(locID);
@@ -28,15 +30,21 @@ export function voteTotal(ingredientID, locationID, locationInfo, upvote) {
             });
 
     } else {
-        var newDownvotes = {
-            downvotes: locationInfo.downvotes + 1
-        };
-        var ingredID = locationInfo.ingredientID;
-        var locID = locationInfo.locationID;
-        var updates = {};
-        updates['/ingredients/' + ingredID + 'locations/' + locID + 'upvotes/'] = newDownvotes;
+        var newDownvotes = locationInfo.downvotes + 1;
 
-        return db.update(updates);
+        var locRef = db.firestore().collection("ingredients").doc(ingredID)
+            .collection("locations").doc(locID);
+
+        return locRef.update({
+            downvotes: newDownvotes
+        })
+            .then(function () {
+                console.log("Document successfully updated! (but need to refresh to see changes)");
+            })
+            .catch(function (error) {
+                // The document probably doesn't exist.
+                console.error("Error updating document: ", error);
+            });
     }
 }
 
