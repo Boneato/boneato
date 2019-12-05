@@ -34,13 +34,12 @@ const useStyles = makeStyles(theme => ({
 		padding: '0px 20px'
 	},
 	iconButton: {
-		padding: '10px 20px 10px 20px'
+		margin: '10px 20px 10px 20px'
 	},
 	iconSearch: {
 		width: '84px',
 		height: '84px',
 		color: '#0C9A89',
-		padding: '10px 20px 10px 20px'
 	}
 }));
 

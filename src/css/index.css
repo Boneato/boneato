@@ -30,6 +30,7 @@ code {
   margin-top: 48px;
   margin-bottom: 48px;
 }
+
 .page-title {
   font-size: 64px;
   border-bottom: 1px solid #D6D6D6;
@@ -73,15 +74,17 @@ code {
 
 /* NAVIGATION */
 
-/*
+
 .makeStyles-root-1 {
+  background-color: #024595 !important;
+}
+
+/*
+.MuiAppBar-root {
   background-color: #024595 !important;
 }
 */
 
-.MuiAppBar-root {
-  background-color: #024595 !important;
-}
 .homepage-body .makeStyles-root-1 {
   background-color: transparent !important;
 }
@@ -178,6 +181,7 @@ code {
 .about-paragraph {
   padding-top: 2rem;
 }
+
 
 /* SPECIFIC INGREDIENT PAGE */
 .spec-ingredient-title {

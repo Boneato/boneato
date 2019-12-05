@@ -27,7 +27,7 @@ export default function LoginPage(props) {
         <div className="content-container"> 
             <div className="page-title">Sign In</div>
             <p>Please sign in with Google to continue.</p>
-            <Button onClick={handleLogIn}>
+            <Button variant="outlined" onClick={handleLogIn}>
            LOGIN WITH GOOGLE</Button>     
         </div>
     )
