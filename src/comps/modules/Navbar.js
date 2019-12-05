@@ -43,7 +43,7 @@ TabPanel.propTypes = {
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
+        
     },
 
 }));
@@ -123,9 +123,7 @@ export function NavTabs(props) {
             </Tabs>
         </Grid>
     )
-    var chevronDownIcon = (
-        <KeyboardArrowDownIcon />
-    );
+
     
     if (props.loggedIn) {
         loginLink = (
@@ -137,20 +135,22 @@ export function NavTabs(props) {
                 >   
                     <Tab label="Find Ingredients" component={Link} to="/" />
                     <Tab label="About"component={Link} to='/AboutPage' />
-                    <Tab label={"Signed in as " + localStorage.getItem("userName") }
-                    ref={anchorRef}
-                    aria-controls={open ? 'menu-list-grow' : undefined}
-                    aria-haspopup="true"
-                    onClick={handleToggle} />
-                </Tabs>
-                {/* <Button
+                
+                <Tab
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle} 
-                >
-                    Hello! {localStorage.getItem("userName")}
-                </Button> */}
+                label={localStorage.getItem("userName") + " "}
+                />
+                <KeyboardArrowDownIcon 
+                ref={anchorRef}
+                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-haspopup="true"
+                onClick={handleToggle}
+                className="chevron-down"
+                />
+                </Tabs>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
                     <Grow
@@ -170,12 +170,12 @@ export function NavTabs(props) {
             </Grid>
         );
     }
-    console.log("pathname : " + props.location.pathname)
+    //console.log("pathname : " + window.location.pathname)
     return (
-        <div className={classes.root}>
-            <AppBar position="static" style={props.location.pathname == "" ?
-             {background: "transparent", boxShadow: "none"} : 
-             {backgroundColor: "#024595"}} className="nav-content">
+        <div className={classes.root} style={window.location.pathname === "/" ?
+        {background: "transparent", boxShadow: "none"} : 
+        {backgroundColor: "#024595", boxShadow: "none"}}>
+            <AppBar position="static" style={{background: "transparent", boxShadow: "none"}} className="nav-content">
                 <Toolbar>
                     <Typography variant="h6">
                         <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>
