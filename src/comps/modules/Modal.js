@@ -239,6 +239,7 @@ export function NewLocationModal(props) {
     const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
     const [userInput, setInput] = React.useState("");
+    const [location, setLocation] = React.useState("");
     var autocompletionRequest = {
         bounds: [
             { lat: 47.720255, lng: -122.402083 },
@@ -257,6 +258,12 @@ export function NewLocationModal(props) {
                 This field cannot be left blank.
         </FormHelperText>
     );
+
+    const handleSelectLoc = (input) => {
+        setLocation(input);
+        console.log(input["description"]);
+    }
+
     var locationItems = (
         <form className={classes.root} noValidate>
             <ThemeProvider theme={theme}>
@@ -265,6 +272,7 @@ export function NewLocationModal(props) {
                     <GooglePlacesAutocomplete
                         onSelect={console.log} placeholder="Store name or address..."
                         autocompletionRequest={autocompletionRequest}
+                        onSelect={handleSelectLoc}
                     />
                     <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} 
                     aria-label="ingredient location to be reported" onChange={setInput} id="bootstrap-input" />
