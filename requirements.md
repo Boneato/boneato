@@ -87,7 +87,7 @@
 
 
 ## Log in process
-1. Users can sign in using their Google account by clicking the “Log in with Google” button on the “Sign In” page.
+1. `complete - meets requirement` Users can sign in using their Google account by clicking the “Log in with Google” button on the “Sign In” page.
 
 2. If the Google account log in fails, the error message “We were unable to get your profile information from Google. Please try again.” will appear right below the “Log in with Google” button
 
@@ -169,15 +169,17 @@ Once the submission has occurred and the user’s inputs are placed into the fir
 ## Voting process
 1. If a user attempts to vote “Confirmed” or “Didn’t Find” for an entry before first signing in, an error message will appear above the first location: “Please sign in with Google to share whether you found this ingredient here.” Clicking the “sign in with Google” link will take the user to the Sign In page.
 
-2. To vote “Confirmed” or “Didn’t Find,” a user clicks on the button that indicates their intended option that is positioned to the left of the store name on the ingredient page.
+2. `complete - meets requirement` To vote “Confirmed” or “Didn’t Find,” a user clicks on the button that indicates their intended option that is positioned to the left of the store name on the ingredient page.
 
-3. “Confirmed” and “Didn’t Find” buttons must indicate how many people voted for each respective option in the button. So button should read e.g. “3 Confirmed” if 3 people had confirmed that the indicated ingredient had been found in that location.
+3. `complete - meets requirement` “Confirmed” and “Didn’t Find” buttons must indicate how many people voted for each respective option in the button. So button should read e.g. “3 Confirmed” if 3 people had confirmed that the indicated ingredient had been found in that location.
 
-4. Once a user selects either “Confirmed” or “Didn’t Find,” the button will darken in color to indicate that it has been selected. The count of the selected option will also increase by one.
+4. Once a user selects either “Confirmed” or “Didn’t Find,” the button will darken in color to indicate that it has been selected. 
 
-5. To remove a previously cast vote, a user can click the darkened button and it will restore to its standard color and the number of votes for the previously selected option will decrease by one.
+5. `complete - meets requirement` The count of the selected option will also increase by one.
 
-6. Users can only vote for “Confirmed” OR “Didn’t Find”- cannot have a registered vote for both at the same time.
+6. To remove a previously cast vote, a user can click the darkened button and it will restore to its standard color and the number of votes for the previously selected option will decrease by one.
+
+7. `complete - meets requirement` Users can only vote for “Confirmed” OR “Didn’t Find”- cannot have a registered vote for both at the same time.
 
 
 ## Report a new location
@@ -211,25 +213,25 @@ Once the submission has occurred and the user’s inputs are placed into the fir
 ## Data & Architecture (ingredient data, user data, etc)
 1. Ingredient data with attached locations must be stored in firebase (firestore) and be publicly accessible to guest users and registered users upon submitting a search query. The data displayed to users will be defined by the search query results.
 
-2. Ingredient data not found in the database will be HTTP requested from NutritionixAPI when going to the results page.
+2. `complete - meets requirement` Ingredient data not found in the database will be HTTP requested from NutritionixAPI when going to the results page.
 
-3. Voting on a location will increase the respective counter(s) inside the database, and the updated count will be visibly reflected on the website within 5 seconds.
+3. `complete - meets requirement` Voting on a location will increase the respective counter(s) inside the database, and the updated count will be visibly reflected on the website within 5 seconds.
 
 4. Removing a vote on a location will decrease the respective counter(s) inside the database, and the updated count will be visibly reflected on the website within 5 seconds.
 
-5. Suggested locations for an ingredient must have an address that has Seattle as the city and Washington as the state. This will be confirmed using the Google Maps API.
+5. `revised - we didn't want to limit our project if we wanted to expand the scope to outside of Seattle later on` Suggested locations for an ingredient must have an address that has Seattle as the city and Washington as the state. This will be confirmed using the Google Maps API.
 
-6. Website’s front end will be built using HTML, CSS, JavaScript, React.js.
+6. `complete - meets requirement` Website’s front end will be built using HTML, CSS, JavaScript, React.js.
 
-7. The website’s backend technology consists of Google’s Firebase and Algolia.
+7. `impossible - making a reasonable number of requests with Algolia is expensive` The website’s backend technology consists of Google’s Firebase and Algolia.
 
-8. NutritionixAPI will be used for ingredients data, and Google Maps API will be used for map data.
+8. `complete - meets requirement` NutritionixAPI will be used for ingredients data, and Google Maps API will be used for map data.
 
 9. Suggested ingredients will be stored as a temporary key pair in Firebase/Firestore to be reviewed by an administrator (the bonito team). This key pair is only accessible to administrators.
 
-10. Every time an ingredient is clicked on by a user in the search results section, if the ingredient was not in the database, it will be stored onto the database.
+10. `complete - meets requirement` Every time an ingredient is clicked on by a user in the search results section, if the ingredient was not in the database, it will be stored onto the database.
 
-11. An ingredient item will consist of these key value pairs, only the short description and location id(s) are optional:
+11. `complete - meets requirement` An ingredient item will consist of these key value pairs, only the short description and location id(s) are optional:
     1. Item Id
     2. Short description
     3. Location id(s)
@@ -237,19 +239,19 @@ Once the submission has occurred and the user’s inputs are placed into the fir
         2. User id (of the person who suggested the location)
         3. Downvote counter
     4. Item name
-    5. Algolia id
+    5. ~~Algolia id~~ 
 
-12. Full text search for ingredients will be handled by Algolia, the suggested ingredients will update dynamically as Algolia returns the first six relevant ingredient names. The order the relevant search results appear in will be ordered by the total number of “confirmed” votes, the highest voted item being first.
+12. `impossible - making a reasonable number of requests with Algolia is expensive` Full text search for ingredients will be handled by Algolia, the suggested ingredients will update dynamically as Algolia returns the first six relevant ingredient names. The order the relevant search results appear in will be ordered by the total number of “confirmed” votes, the highest voted item being first.
 
-13. When moving to the results page, query Algolia for all relevant ingredients, add any ingredients not found 
+13. `impossible - making a reasonable number of requests with Algolia is expensive` When moving to the results page, query Algolia for all relevant ingredients, add any ingredients not found 
 
-14. User data will be managed by firebase through Google authentication.
+14. `complete - meets requirement` User data will be managed by firebase through Google authentication.
 
 15. If no ingredients are found from a query (both from NutritionixAPI and our database) return a NotFoundException. The client side will display a textual error message stating that no relevant ingredients were found.
 
 16. Navigating to a new page by clicking on a link within the Bonito website (excluding the login) will dynamically change the page instead of completely refreshing the website.
 
-17. Uses Google’s Map JavaScript API to display all locations for an ingredient.
+17. `complete - meets requirement` Uses Google’s Map JavaScript API to display all locations for an ingredient.
 
 18. Each marker on the map, on selection, will display Google’s default description and information (as determined by the Google Maps API).
 
