@@ -137,7 +137,7 @@ export function NavTabs(props) {
                 >   
                     <Tab label="Find Ingredients" component={Link} to="/" />
                     <Tab label="About"component={Link} to='/AboutPage' />
-                    <Tab label={localStorage.getItem("userName")}
+                    <Tab label={"Signed in as " + localStorage.getItem("userName") }
                     ref={anchorRef}
                     aria-controls={open ? 'menu-list-grow' : undefined}
                     aria-haspopup="true"
