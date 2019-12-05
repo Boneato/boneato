@@ -98,7 +98,6 @@ export default class App extends Component {
         return (
           <div>
             {navbar}
-            <NewLocationModal/>
             <main>
               <Switch>
                 <Route exact path="/" render={(routerProps) => (
