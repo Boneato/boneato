@@ -48,8 +48,6 @@ export default class SpecingPage extends Component {
 
     checkIngredDB = () => {
         let stored = false;
-        let id = db.firestore().doc();
-        console.log(id);
         db.firestore().collection("ingredients").where("name", "==", "invalid name")
         .get().then(function(querySnapshot) {
             querySnapshot.forEach(function(doc) {
@@ -66,8 +64,8 @@ export default class SpecingPage extends Component {
     }
 
     storeIngred = () => {
-     
-        db.firestore().collection("ingredients").add(
+        const ingredID = db.firestore().collection('ingredients').doc().id;
+        db.firestore().collection("ingredients").doc(ingredID).set(
             {
                 name: this.props.ingredientName,
                 locations: {}
