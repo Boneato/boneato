@@ -36,7 +36,7 @@ export default class LocationsList extends Component {
     //            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
     //            href="../LoginPage" /> to share whether you found this ingredient. </p>;
     getUserName = () => {
-        
+
     }
 
     updateLocationDetails = () => {
@@ -59,6 +59,7 @@ export default class LocationsList extends Component {
                 let newUVotes = newData.upvotes;
                 let newUID = newData.userid;
                 let newDVC = newData.dvcounter;
+                let newUserName = newData.userName;
 
                 console.log("in the LOCLIST method " + newUVotes);
 
@@ -72,7 +73,8 @@ export default class LocationsList extends Component {
                     name: newName,
                     upvotes: newUVotes,
                     userID: newUID,
-                    dvcounter: newDVC
+                    dvcounter: newDVC,
+                    newUserName: newUserName
                 }
                 tempList.push(<LocationInfo signedIn={this.props.signedIn} updatefunction={this.updatefunction} 
                     ingredID= {this.ingredientID} locID={locationID} locationInfo={newLocInfo} />)

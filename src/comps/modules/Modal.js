@@ -290,7 +290,8 @@ export function NewLocationModal(props) {
                 id: input["id"],
                 time: firebase.firestore.FieldValue.serverTimestamp(),
                 lat: latLng["lat"],
-                long: latLng["lng"]
+                long: latLng["lng"],
+                userName: props.user.displayName
             }
         ).then(function() {
             console.log("ingredient location has been stored")
