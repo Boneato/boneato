@@ -1,8 +1,8 @@
 ---
 name: Minor Bug Report
-about: Create a report to help us improve
-title: "[Minor] Bug Report:"
-labels: ''
+about: If you must...
+title: "[Minor]"
+labels: minor, pending review
 assignees: ''
 
 ---

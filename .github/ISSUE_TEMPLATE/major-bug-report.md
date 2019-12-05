@@ -1,8 +1,8 @@
 ---
-name: Major Bug report
-about: Create a report to help us improve
-title: "[MAJOR] Bug Report: "
-labels: ''
+name: Major Bug Report
+about: Do your worst!!!
+title: "[MAJOR]"
+labels: major, pending review
 assignees: ''
 
 ---
