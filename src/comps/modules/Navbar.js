@@ -15,6 +15,7 @@ import bonito_logo from '../../imgs/bonito_logo-03.png';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
 import {Link} from 'react-router-dom';
+import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -46,6 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
 
 }));
+
 
 export default function NavTabs(props) {
     const classes = useStyles();
@@ -103,6 +105,10 @@ export default function NavTabs(props) {
             </Tabs>
         </Grid>
     )
+    var chevronDownIcon = (
+        <KeyboardArrowDownIcon />
+    );
+    
     if (props.loggedIn) {
         loginLink = (
             <Grid container alignItems="flex-start" justify="flex-end" direction="row">
