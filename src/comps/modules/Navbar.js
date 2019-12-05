@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
     Button, Popper, Grow, Paper, 
@@ -14,7 +14,7 @@ import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import bonito_logo from '../../imgs/bonito_logo-03.png';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 
 function TabPanel(props) {
@@ -48,8 +48,26 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+class Navbar extends Component {
+    constructor(props) {
+        super(props);
+    }
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    }
+    render() {
+        const { match, location, history } = this.props;
+    
+        return <NavTabs location={location.pathname} loggedIn={this.props.loggedIn} handleSignOut={this.props.handleSignOut} />;
+      }
+}
 
-export default function NavTabs(props) {
+export default withRouter(Navbar);
+
+export function NavTabs(props) {
+   
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const [open, setOpen] = React.useState(false);
@@ -119,22 +137,20 @@ export default function NavTabs(props) {
                 >   
                     <Tab label="Find Ingredients" component={Link} to="/" />
                     <Tab label="About"component={Link} to='/AboutPage' />
-                
-                <Tab
+                    <Tab label={"Signed in as " + localStorage.getItem("userName") }
+                    ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle} />
+                </Tabs>
+                {/* <Button
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle} 
-                label={localStorage.getItem("userName") + " "}
-                />
-                <KeyboardArrowDownIcon 
-                ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                aria-haspopup="true"
-                onClick={handleToggle}
-                className="chevron-down"
-                />
-                </Tabs>
+                >
+                    Hello! {localStorage.getItem("userName")}
+                </Button> */}
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
                     <Grow
@@ -154,9 +170,12 @@ export default function NavTabs(props) {
             </Grid>
         );
     }
+    console.log("pathname : " + props.location.pathname)
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} className="nav-content">
+            <AppBar position="static" style={props.location.pathname == "" ?
+             {background: "transparent", boxShadow: "none"} : 
+             {backgroundColor: "#024595"}} className="nav-content">
                 <Toolbar>
                     <Typography variant="h6">
                         <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>

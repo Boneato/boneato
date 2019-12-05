@@ -90,6 +90,7 @@ code {
 }
 .MuiToolbar-regular {
   height: 136px !important;
+  background-color: #3f51b5;
 }
 .bonito-logo {
   height: 28px;

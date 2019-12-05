@@ -7,7 +7,7 @@ import LoginPage from './LoginPage';
 import SpecingPage from './SpecingPage';
 import AboutPage from './AboutPage';
 import ResultsPage from './ResultsPage';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 //import LoginController from '../cont/LoginController';
 import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 import {CircularProgress} from '@material-ui/core';
@@ -92,12 +92,13 @@ export default class App extends Component {
     // } else {
       let signedIn = false;
       let navbar = (
-        <Navbar loggedIn={false} />
+        <Navbar loggedIn={false} handleSignOut={this.handleSignOut}/>
       );
       if (this.state.user) {
         navbar = <Navbar loggedIn={true} handleSignOut={this.handleSignOut}/>
         signedIn = true;
       }
+
         return (
           <div>
             {navbar}
