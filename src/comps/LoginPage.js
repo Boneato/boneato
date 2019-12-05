@@ -16,24 +16,18 @@ export default function LoginPage(props) {
     // if user is signed in, redirects user to homePage
     // if LoginController determines login credentials are invalid,
     // render an error message displaying login was unsuccessful.
-    const classes = useStyles();
+
 
     const handleLogIn = (event) => {
         event.preventDefault();
         props.signInCallback();
     }
     return (
-        <div>
+        <div className="content-container"> 
+            <div className="page-title">Sign In</div>
             <p>Please sign in with Google to continue.</p>
-            <Button variant="contained" className={classes.button} id="quickstart-sign-in" onClick={handleLogIn}/>
-
-            {/* Container where we'll display the user details */}
-            <div class="quickstart-user-details-container">
-                {/* Sign in status */}
-                <span id="quickstart-sign-in-status">Unknown</span>
-                <div>Firebase auth <code>{}</code> object value:</div>
-                <pre><code id="quickstart-account-details">null</code></pre>
-            </div>
+            <Button onClick={handleLogIn}>
+           LOGIN WITH GOOGLE</Button>     
         </div>
     )
 }
