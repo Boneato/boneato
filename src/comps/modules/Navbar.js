@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
     Button, Popper, Grow, Paper, 
@@ -14,7 +14,7 @@ import { FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
 import bonito_logo from '../../imgs/bonito_logo-03.png';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
-import {Link} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -47,7 +47,26 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
+export class Navbar extends Component {
+    constructor(props) {
+        super(props);
+    }
+    static propTypes = {
+        match: PropTypes.object.isRequired,
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired
+    }
+    render() {
+        const { match, location, history } = this.props;
+    
+        return <NavTabs loggedIn={this.props.loggedIn} handleSignOut={this.props.handleSignOut} />;
+      }
+}
+
+
+
 export default function NavTabs(props) {
+   
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
     const [open, setOpen] = React.useState(false);
@@ -143,7 +162,7 @@ export default function NavTabs(props) {
     }
     return (
         <div className={classes.root}>
-            <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}} className="nav-content">
+            <AppBar position="static" className="nav-content">
                 <Toolbar>
                     <Typography variant="h6">
                         <a href="/"><img src={bonito_logo} className="bonito-logo" /></a>
