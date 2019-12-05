@@ -40,13 +40,9 @@ export class EmbeddedMap extends Component{
       }.bind(this))
   }
 
-
-
   componentDidMount() {
     this.updateLocationDetails()
   }
-
-
 
     displayMarkers = () =>{
       return this.state.res.map((store,index)=>{

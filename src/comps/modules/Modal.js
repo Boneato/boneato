@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import NewIngredientsController from '../../cont/NewIngredientsController';
 import {
     Dialog, DialogTitle,
@@ -22,6 +22,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import ErrorIcon from '@material-ui/icons/ErrorOutline';
 import Button from '@material-ui/core/Button';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
 const BootstrapInput = withStyles(theme => ({
     root: {
@@ -111,9 +112,6 @@ const theme = createMuiTheme({
         }
     },
 });
-
-//////////////////////////////////////////////////////
-
 
 // pre-conditions: 
 //      props must be filled with a Header text 
@@ -240,37 +238,46 @@ export function NewIngredientModal(props) {
 export function NewLocationModal(props) {
     const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
+    const [userInput, setInput] = React.useState("");
+    var autocompletionRequest = {
+        bounds: [
+            { lat: 47.720255, lng: -122.402083 },
+            { lat: 47.589166, lng: -122.286779 }
+          ],
+        location: { lat: 47.6062, lng: -122.3321 },
+        componentRestrictions: {
+            country: ["us"]
+        },
+      }
+    // TODO: RENDER ONLY WHEN USERINPUT IS EMPTY
+    let error = (
+        <FormHelperText id="component-error-text" error={userInput === ""}>
+            <ErrorIcon style={{ height: '16px', width: '16px', 
+            paddingRight: '3px', marginBottom: '-3px' }} />
+                This field cannot be left blank.
+        </FormHelperText>
+    );
     var locationItems = (
         <form className={classes.root} noValidate>
             <ThemeProvider theme={theme}>
 
                 <FormControl fullWidth className={classes.margin}>
-                    <InputLabel shrink required htmlFor="bootstrap-input">
-                        Ingredient Location
-                    </InputLabel>
-                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} aria-label="ingredient location to be reported" onChange="" id="bootstrap-input" />
+                    <GooglePlacesAutocomplete
+                        onSelect={console.log} placeholder="Store name or address..."
+                        autocompletionRequest={autocompletionRequest}
+                    />
+                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} 
+                    aria-label="ingredient location to be reported" onChange={setInput} id="bootstrap-input" />
+                    {error}
                 </FormControl>
 
-                <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" disableRipple className={classes.margin} onClick={NewIngredientsController}>
+                <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" 
+                disableRipple className={classes.margin} onClick={NewIngredientsController}>
                     Submit
                 </BootstrapButton>
-
-                {/*error state for "Ingredient Name" field*/}
-                <FormControl fullWidth className={classes.margin}>
-                    <InputLabel shrink required>
-                        Ingredient Location
-                    </InputLabel>
-                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} aria-label="ingredient location to be reported" id="bootstrap-input" />
-                    <FormHelperText id="component-error-text">
-                        <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
-                        This field cannot be left blank.
-                    </FormHelperText>
-                </FormControl>
-
-
             </ThemeProvider>
         </form>
-
+    )
         /*
         <div>
             <TextField
@@ -285,7 +292,6 @@ export function NewLocationModal(props) {
             </Button>
         </div>
         */
-    );
     if (submit) {
         locationItems = (
             <div>
@@ -297,5 +303,4 @@ export function NewLocationModal(props) {
         <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems} />
     );
 }
-
 export default Modal;

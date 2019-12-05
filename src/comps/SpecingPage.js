@@ -15,7 +15,6 @@ require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
 export default class SpecingPage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -27,7 +26,7 @@ export default class SpecingPage extends Component {
 
         this.updatefunction = this.checkLocations.bind(this);
     }
-
+    
     // updates ingredient name 
     updateIngredName = () => {
         db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {

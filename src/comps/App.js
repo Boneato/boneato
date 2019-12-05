@@ -12,6 +12,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 import {CircularProgress} from '@material-ui/core';
 import firebase from 'firebase';
+import {GoogleSearch} from '../cont/PlacesController';
 require("firebase/firestore");
 
 // renders application with all neccesary components
@@ -97,6 +98,7 @@ export default class App extends Component {
         return (
           <div>
             {navbar}
+            <NewLocationModal/>
             <main>
               <Switch>
                 <Route exact path="/" render={(routerProps) => (
