@@ -28,7 +28,7 @@ export default class DownVote extends Component {
     }
 
     handleClick = () => {
-        voteTotal(this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, false)
+        voteTotal(this.props.signedIn, this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, false)
     }    
 
     render() {
