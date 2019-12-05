@@ -113,15 +113,20 @@ export default function NavTabs(props) {
                 >   
                     <Tab label="Find Ingredients" component={Link} to="/" />
                     <Tab label="About"component={Link} to='/AboutPage' />
+                    <Tab label={localStorage.getItem("userName")}
+                    ref={anchorRef}
+                    aria-controls={open ? 'menu-list-grow' : undefined}
+                    aria-haspopup="true"
+                    onClick={handleToggle} />
                 </Tabs>
-                <Button
+                {/* <Button
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle} 
                 >
                     Hello! {localStorage.getItem("userName")}
-                </Button>
+                </Button> */}
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
                     <Grow
