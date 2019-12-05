@@ -184,7 +184,7 @@ export default function ResultsPage(props) {
 					pathname: "/SpecIngPage/" + ingredID,
 					state: { 
 						ingredientName : stateName,
-						ingredientID: ingredID 
+						ingredientID: ingredID
 			}}} ></Redirect>
 			
 		);

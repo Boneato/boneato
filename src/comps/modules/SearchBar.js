@@ -80,7 +80,7 @@ export default function SearchBar(props) {
     </div>
   );
   if (goDirect) {
-    search = <Redirect to="/results"></Redirect>
+    search = <div><Redirect to="/results"></Redirect></div>
   }
   return search;
 }

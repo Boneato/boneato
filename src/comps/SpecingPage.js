@@ -21,7 +21,8 @@ export default class SpecingPage extends Component {
         this.state = {
             ingredientID : this.props.location.state.ingredientID,
             ingredientName : this.props.location.state.ingredientName,
-            isEmpty : true
+            isEmpty : true,
+            modalOpen: false
         }
         this.updatefunction = this.checkLocations.bind(this);
     }
@@ -45,15 +46,30 @@ export default class SpecingPage extends Component {
         }.bind(this))
     }
 
+    handleLoc = () => {
+        this.setState({modalOpen : true});
+    }
+
+    handleClose = () => {
+        this.setState({modalOpen : false});
+    }
+
+    // TODO: update location list when new location is submitted
+    handleMap = () => {
+    }
 
     componentDidMount(){
         this.checkLocations();
     }
 
+    componentDidUpdate() {
+
+    }
     render() {
 
         let searchRes = null, i = null;
         let cannotVote = null;
+        let suggestLoc = null;
         if (this.state.isEmpty) { 
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
@@ -63,12 +79,18 @@ export default class SpecingPage extends Component {
         console.log(this.props.signedIn)
         if (!this.props.signedIn) {
             cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
+        } else {
+            
         }
-
+        suggestLoc = (
+            <span>Know where to buy this? <span id="location-report" onClick={this.handleLoc}>Report a new location</span>.</span>
+        );
         return (
             <div className="content-container">
-                <Grid container direction="row" justify="center" spacing={3}>
-                    <Grid item xs={12}>
+                <NewLocationModal open={this.state.modalOpen} onClose={this.handleClose} 
+                user={this.props.signedIn} mapUpdated={this.handleMap}/>
+                <Grid container direction="row" justify="center" spacing={3} >
+                    <Grid item xs={12} >
                         {cannotVote}
                         <div className="spec-ingredient-label">
                             Ingredient
@@ -77,17 +99,19 @@ export default class SpecingPage extends Component {
                             {this.state.ingredientName}
                         </div>
                         <div className="spec-ingredient-subtext">
-                            <span>Know where to buy this? <a href={NewLocationModal}>Report a new location</a>.</span>
+                            {suggestLoc}
                         </div>
 
                         <Grid container spacing={8} justify="flex-start">
-                            <Grid item xs={12} md={7}>
+                            <Grid item xs={12} md={7} id="spec-ingredient-grid-block">
                                 <div className="locations-container" />{searchRes}
                             </Grid>
 
-                            <Grid item xs={12} md={5}>
+                            <Grid item xs={12} md={5 } >
                                 <div className="map-container">
+                                    {this.state.modalOpen ? <p></p> : 
                                     <EmbeddedMap ingredientID={this.state.ingredientID}/>
+                                    }
                                 </div>
 
                             </Grid>

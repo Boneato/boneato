@@ -247,9 +247,8 @@ export function NewLocationModal(props) {
     const [userInput, setInput] = React.useState("");
     // {lat: number, lng: number}
      const [latLng, setLatLng] = React.useState({});
-    const [open, setOpen] = React.useState(true);
     const handleClose = () => {
-        setOpen(false);
+        props.onClose(false);
     }
     // const [input, setLocationInput] = React.useState({
     //     id: "your"
@@ -279,14 +278,14 @@ export function NewLocationModal(props) {
     const addNewLocation = (input, latLng) => {
         console.log("INPUT ID " + input["id"])
         console.log("Lat: " + " " + latLng["lat"])
-        db.firestore().collection("ingredients").doc("tasBRdZmi4IVrO1IZww0").collection("locations")
+        db.firestore().collection("ingredients").doc("fdZmHYK4ARcA87HRcDrZ").collection("locations")
         .doc(input["id"]).set(
             {
                 name: input["structured_formatting"]["main_text"],
                 address: input["description"],
                 downvotes: 0,
                 upvotes: 0,
-                userid: "TODO, USE PROPS",
+                userid: props.user.uid,
                 dvcounter: 0,
                 id: input["id"],
                 time: firebase.firestore.FieldValue.serverTimestamp(),
@@ -370,7 +369,7 @@ export function NewLocationModal(props) {
         )
     }
     return (
-        <Modal open={open} title={"Report a new " + props.ingredName + " location"} content={locationItems} handleClose={handleClose}/>
+        <Modal open={props.open} title={"Report a new " + props.ingredName + " location"} content={locationItems} handleClose={handleClose}/>
     );
 }
 export default Modal;

@@ -35,7 +35,9 @@ export default class LocationsList extends Component {
     // if user is not logged in
     //            var upDownVoteRight = <p>Please <Tab label="sign in with Google" 
     //            href="../LoginPage" /> to share whether you found this ingredient. </p>;
-
+    getUserName = () => {
+        
+    }
 
     updateLocationDetails = () => {
         console.log("the update function is being called")
