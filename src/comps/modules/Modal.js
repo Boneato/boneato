@@ -23,6 +23,11 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import ErrorIcon from '@material-ui/icons/ErrorOutline';
 import Button from '@material-ui/core/Button';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+import firebase from 'firebase';
+import { db } from '../../firestore';
+import { geocodeByAddress, getLatLng } from 'react-google-places-autocomplete';
+
+require('firebase/firestore');
 
 const BootstrapInput = withStyles(theme => ({
     root: {
@@ -131,7 +136,7 @@ export function Modal(props) {
     }
     // renders given DOM elements inside of modal
     return (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={props.open} onClose={props.handleClose}>
             <DialogTitle id="form-dialog-title">{props.title}</DialogTitle>
             <DialogContent>
                 {props.content}
@@ -235,10 +240,20 @@ export function NewIngredientModal(props) {
     );
 }
 
+// props must contain ingredientID
 export function NewLocationModal(props) {
     const classes = useStyles();
     const [submit, setSubmit] = React.useState(false);
     const [userInput, setInput] = React.useState("");
+    // {lat: number, lng: number}
+     const [latLng, setLatLng] = React.useState({});
+    const [open, setOpen] = React.useState(true);
+    const handleClose = () => {
+        setOpen(false);
+    }
+    // const [input, setLocationInput] = React.useState({
+    //     id: "your"
+    // });
     var autocompletionRequest = {
         bounds: [
             { lat: 47.720255, lng: -122.402083 },
@@ -248,7 +263,10 @@ export function NewLocationModal(props) {
         componentRestrictions: {
             country: ["us"]
         },
-      }
+        types: ['establishment']
+    }
+
+    
     // TODO: RENDER ONLY WHEN USERINPUT IS EMPTY
     let error = (
         <FormHelperText id="component-error-text" error={userInput === ""}>
@@ -257,14 +275,66 @@ export function NewLocationModal(props) {
                 This field cannot be left blank.
         </FormHelperText>
     );
+    
+    const addNewLocation = (input, latLng) => {
+        console.log("INPUT ID " + input["id"])
+        console.log("Lat: " + " " + latLng["lat"])
+        db.firestore().collection("ingredients").doc("V5MFG9iQMnhIkRcs4PDV").collection("locations")
+        .doc(input["id"]).set(
+            {
+                name: input["structured_formatting"]["main_text"],
+                address: input["description"],
+                downvotes: 0,
+                upvotes: 0,
+                userid: "TODO, USE PROPS",
+                dvcounter: 0,
+                id: input["id"],
+                time: firebase.firestore.FieldValue.serverTimestamp(),
+                lat: latLng["lat"],
+                long: latLng["lng"]
+            }
+        ).then(function() {
+            console.log("ingredient location has been stored")
+        }).catch(function(error) {
+            console.log("error in addNewLocation: " + error)
+        });
+    }
+
+    const handleSelectLoc = (input) => {
+        console.log("INPUT ID AFTER SET" + input["id"]);
+        setInput(input);
+        geocodeByAddress(input["description"]).then(results => getLatLng(results[0]))
+        .then(({lat, lng}) => {
+            // {lat: number, lng: number}
+            setLatLng({lat, lng});
+
+        }).catch((error) => {
+            console.log("error: " + error)
+        }).finally(() => {
+        });
+        console.log(input);
+        // TODO: add date and change ID to props.ingredientID
+        
+    }
+    
+    const handleClick = () => {
+        if (userInput) {
+            addNewLocation(userInput, latLng);
+            handleClose();
+        } else {
+
+        }
+    }
+
     var locationItems = (
         <form className={classes.root} noValidate>
             <ThemeProvider theme={theme}>
 
                 <FormControl fullWidth className={classes.margin}>
-                    <GooglePlacesAutocomplete
-                        onSelect={console.log} placeholder="Store name or address..."
+                    <GooglePlacesAutocomplete id="bootstrap-input"
+                        placeholder="Store name or address..."
                         autocompletionRequest={autocompletionRequest}
+                        onSelect={handleSelectLoc}
                     />
                     <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} 
                     aria-label="ingredient location to be reported" onChange={setInput} id="bootstrap-input" />
@@ -272,7 +342,7 @@ export function NewLocationModal(props) {
                 </FormControl>
 
                 <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" 
-                disableRipple className={classes.margin} onClick={NewIngredientsController}>
+                disableRipple className={classes.margin} onClick={handleClick}>
                     Submit
                 </BootstrapButton>
             </ThemeProvider>
@@ -300,7 +370,7 @@ export function NewLocationModal(props) {
         )
     }
     return (
-        <Modal title={"Report a new " + props.ingredName + " location"} content={locationItems} />
+        <Modal open={open} title={"Report a new " + props.ingredName + " location"} content={locationItems} handleClose={handleClose}/>
     );
 }
 export default Modal;

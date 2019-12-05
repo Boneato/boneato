@@ -19,10 +19,11 @@ export default class DownVote extends Component {
         super(props);
 
         this.state = {
-            locationInfo: props.locationInfo
+            locationInfo: props.locationInfo,
+            disabled: false
         }
 
-        this.votable = props.signedIn != null
+        this.state.disabled = props.signedIn == null
     }
 
     canVote = (user, ingredID, locID) => {
@@ -51,7 +52,7 @@ export default class DownVote extends Component {
 
     render() {
         return (
-            <button disabled={!this.votable} className="button-downvote" onClick={this.handleClick}>
+            <button disabled={this.state.disabled}  className="button-downvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
             </button>
         )

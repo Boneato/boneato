@@ -29,6 +29,7 @@ export default class UpVoteButton extends Component {
     }
 
     canVote = (user, ingredID, locID) => {
+
         var userLocRef = db.firestore().collection("users").doc(user.uid).collection("ingredients")
             .doc(ingredID).collection("locations").doc(locID);
         console.log("inside canvote")
@@ -54,7 +55,7 @@ export default class UpVoteButton extends Component {
 
     render() {
         return (
-            <button className="button-upvote" onClick={this.handleClick}>
+            <button disabled={this.state.disabled} className="button-upvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.upvotes}</b> CONFIRMED
             </button>
         )
