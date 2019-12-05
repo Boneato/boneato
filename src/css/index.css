@@ -189,8 +189,8 @@ code {
   text-decoration: underline;
 }
 
-#spec-ingredient-grid-block {
-  z-index: -1;
+#special-snowflake-grid{
+  margin-top: 0px;
 }
 .locations-container {
   border-top: 1px solid #D6D6D6;

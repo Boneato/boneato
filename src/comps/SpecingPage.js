@@ -102,7 +102,7 @@ export default class SpecingPage extends Component {
                             {suggestLoc}
                         </div>
 
-                        <Grid container spacing={8} justify="flex-start">
+                        <Grid container spacing={8} justify="flex-start" id="special-snowflake-grid">
                             <Grid item xs={12} md={7} id="spec-ingredient-grid-block">
                                 <div className="locations-container" />{searchRes}
                             </Grid>
