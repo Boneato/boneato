@@ -335,10 +335,14 @@ export function NewLocationModal(props) {
                         placeholder="Store name or address..."
                         autocompletionRequest={autocompletionRequest}
                         onSelect={handleSelectLoc}
+                        onChange={(event) => {
+                            console.log(event.target.value)
+                            setInput(event.target.value)
+                        }
+                        }
+                        value={userInput}
                     />
-                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} 
-                    aria-label="ingredient location to be reported" onChange={setInput} id="bootstrap-input" />
-                    {error}
+                    {userInput === "" ? error: ""}
                 </FormControl>
 
                 <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" 
