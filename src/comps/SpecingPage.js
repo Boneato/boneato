@@ -80,11 +80,11 @@ export default class SpecingPage extends Component {
         if (!this.props.signedIn) {
             cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
         } else {
-            
+            suggestLoc = (
+                <span>Know where to buy this? <span id="location-report" onClick={this.handleLoc}>Report a new location</span>.</span>
+            );
         }
-        suggestLoc = (
-            <span>Know where to buy this? <span id="location-report" onClick={this.handleLoc}>Report a new location</span>.</span>
-        );
+        
         return (
             <div className="content-container">
                 <NewLocationModal open={this.state.modalOpen} onClose={this.handleClose} 
