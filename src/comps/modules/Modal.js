@@ -278,7 +278,7 @@ export function NewLocationModal(props) {
     const addNewLocation = (input, latLng) => {
         console.log("INPUT ID " + input["id"])
         console.log("Lat: " + " " + latLng["lat"])
-        db.firestore().collection("ingredients").doc("fdZmHYK4ARcA87HRcDrZ").collection("locations")
+        db.firestore().collection("ingredients").doc(props.ingredientID).collection("locations")
         .doc(input["id"]).set(
             {
                 name: input["structured_formatting"]["main_text"],
@@ -326,6 +326,10 @@ export function NewLocationModal(props) {
         }
     }
 
+    const handleChange = (event) => {
+        console.log("handleChange has been called")
+        console.log(event)
+    }
     var locationItems = (
         <form className={classes.root} noValidate>
             <ThemeProvider theme={theme}>
@@ -335,10 +339,11 @@ export function NewLocationModal(props) {
                         placeholder="Store name or address..."
                         autocompletionRequest={autocompletionRequest}
                         onSelect={handleSelectLoc}
+                        onChange={
+                            handleChange
+                        }
                     />
-                    <BootstrapInput inputProps={{ maxLength: 1000, placeholder: 'Store name or address…' }} 
-                    aria-label="ingredient location to be reported" onChange={setInput} id="bootstrap-input" />
-                    {error}
+                    {userInput === "" ? error: ""}
                 </FormControl>
 
                 <BootstrapButton aria-label="submit new ingredient location" variant="contained" color="primary" 

@@ -128,7 +128,7 @@ export default function ResultsPage(props) {
 					
 				} else {
 					console.log("ingredient doesnt exist in db")
-					//ingredID = storeIngred(ingredientName);
+					ingredID = storeIngred(stateName);
 				}
 				setID(ingredID);
 				setFetch(false);
