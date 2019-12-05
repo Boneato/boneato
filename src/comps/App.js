@@ -32,9 +32,12 @@ export default class App extends Component {
   handleSignIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     // TODO: WHY IS THEN() NOT CALLED?
+    // guess it's the problem of the setState function?
     var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
-      console.log(result);
-      this.setState({user: result.user})
+      // this.setState({user: result.user});
+      localStorage.setItem("userName",result.user.displayName);
+      console.log(this.state.user);
+      console.log(localStorage.getItem("userName"));
     }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;

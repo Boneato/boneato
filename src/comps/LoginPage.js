@@ -20,6 +20,7 @@ export default function LoginPage(props) {
 
     const handleLogIn = (event) => {
         event.preventDefault();
+        console.log(props)
         props.signInCallback();
     }
     return (
