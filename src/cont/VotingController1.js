@@ -9,7 +9,8 @@ export function voteTotal(user, updatefunction, ingredientID, locationID, locati
     // first check if user is logged in before any changes made
     var ingredID = ingredientID;
     var locID = locationID;
-    console.log("in voteTotal");
+    console.log(ingredID);
+    console.log(locID);
 
     // need help figuring out how to update this simultaneously with upvote and downvote
     // ALSO (huge also) this only works if the user is for sure in the firestore
@@ -35,19 +36,36 @@ export function voteTotal(user, updatefunction, ingredientID, locationID, locati
     if (upvote) {
         var newUpvotes = locationInfo.upvotes + 1;
 
-        batch.set(userLocRef, {upvote: true, downvote: false});
-        batch.update(locRef, {
-            upvotes: newUpvotes,
-            dvcounter: 0
-        });
+        
+        
 
-        return batch.commit().then(function () {
+        return userLocRef.get().then(function(doc){  //sees if user has voted on this before
+            if (doc.exists) { // user has voted on this before
+
+                
+
+                console.log("Document data:", doc.data());
+            } else { // user has not voted on this before
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+            batch.set(userLocRef, {upvote: true, downvote: false});
+
+            batch.update(locRef, {
+                upvotes: newUpvotes,
+                dvcounter: 0
+            });
+
+        }).catch(function(error){
+            console.log("Error getting document:", error);
+        }).then(batch.commit().then(function () {
             updatefunction();
             console.log("Document successfully updated!");
         })
             .catch(function (error) {
+                // The document probably doesn't exist.
                 console.error("Error updating document: ", error);
-            });
+            }));
     } else {
         var newDownvotes = locationInfo.downvotes + 1;
         var newDVC = locationInfo.dvcounter + 1;
@@ -69,23 +87,13 @@ export function voteTotal(user, updatefunction, ingredientID, locationID, locati
     }
 }
 
-export function canVote(user, ingredID, locID) {
-    var userLocRef = db.firestore().collection("users").doc(user.uid).collection("ingredients")
-        .doc(ingredID).collection("locations").doc(locID);
-    console.log("inside canvote")
-    console.log(userLocRef)
-
-    userLocRef.get().then(function (doc){
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-            return false;
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-            return true;
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+// takes in user id and location id
+// validates if user can vote
+export function canVote(userID) {
+    //if(loggedIn(userID)){
+    //if the userID hasn't voted for this location yet
+    //  return true;
+    //}
+    return false;
 }
 

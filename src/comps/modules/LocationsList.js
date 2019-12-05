@@ -49,7 +49,7 @@ export default class LocationsList extends Component {
                 let locationID = doc.id;
                 let newData = doc.data();
                 let newAddress = newData.address;
-                let newDate = newData.date.toDate().toString(); // maybe we can format this later if we have tons of time
+                let newDate = newData.time.toDate().toString(); // maybe we can format this later if we have tons of time
                 let newDVotes = newData.downvotes;
                 let newLat = newData.lat;
                 let newLong = newData.long;
