@@ -109,7 +109,7 @@ export default class App extends Component {
                   <LoginPage {...routerProps} signInCallback={this.handleSignIn} />
                 )} />
                 <Route path='/SpecIngPage' render={(routerProps) => (
-                  <SpecingPage {...routerProps} signedIn={signedIn} />
+                  <SpecingPage {...routerProps} signedIn={this.state.user} />
                 )} />
                 <Route path='/results' render={(routerProps) => (
                   <ResultsPage {...routerProps} userInput={this.state.userInput} />

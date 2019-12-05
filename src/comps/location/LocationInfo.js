@@ -44,9 +44,8 @@ export default class LocationInfo extends Component {
 
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12} md={5} lg={4}>
-                        
-                        <UpVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
-                        <DownVoteButton updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <UpVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <DownVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
                     </Grid>
                     <Grid item xs={12} md={7} lg={8}>
                         <span>

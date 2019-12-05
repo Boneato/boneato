@@ -23,15 +23,17 @@ export default class DownVote extends Component {
             locationInfo: props.locationInfo
         }
 
+        this.votable = props.signedIn != null
+        // look up if user has already voted on this and disable
     }
 
     handleClick = () => {
-        voteTotal(this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, false)
+        voteTotal(this.props.signedIn, this.props.updatefunction, this.props.ingredID, this.props.locID, this.state.locationInfo, false)
     }    
 
     render() {
         return (
-            <button className="button-downvote" onClick={this.handleClick}>
+            <button disabled={!this.votable} className="button-downvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.downvotes}</b> DIDN'T FIND
             </button>
         )
