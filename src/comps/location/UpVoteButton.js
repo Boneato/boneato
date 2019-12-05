@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { voteTotal, canVote } from '../../cont/VotingController';
+import { voteTotal } from '../../cont/VotingController';
 import {db} from '../../firestore';
-
-//var voteRight = true;
 
 export default class UpVoteButton extends Component {
 
@@ -51,14 +49,12 @@ export default class UpVoteButton extends Component {
     }
 
     handleClick = () => {
-       // console.log(this.canVote(this.props.signedIn, this.props.ingredID, this.props.locID))
        this.canVote(this.props.signedIn, this.props.ingredID, this.props.locID)
-         //   console.log(this.canVote(this.props.signedIn, this.props.ingredID, this.props.locID))
     }
 
     render() {
         return (
-            <button disabled={this.state.disabled} className="button-upvote" onClick={this.handleClick}>
+            <button className="button-upvote" onClick={this.handleClick}>
                 <b>{this.state.locationInfo.upvotes}</b> CONFIRMED
             </button>
         )
