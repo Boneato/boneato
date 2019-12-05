@@ -279,7 +279,7 @@ export function NewLocationModal(props) {
     const addNewLocation = (input, latLng) => {
         console.log("INPUT ID " + input["id"])
         console.log("Lat: " + " " + latLng["lat"])
-        db.firestore().collection("ingredients").doc("V5MFG9iQMnhIkRcs4PDV").collection("locations")
+        db.firestore().collection("ingredients").doc("tasBRdZmi4IVrO1IZww0").collection("locations")
         .doc(input["id"]).set(
             {
                 name: input["structured_formatting"]["main_text"],

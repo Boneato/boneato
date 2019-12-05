@@ -17,22 +17,21 @@ require('firebase/firestore');
 export default class SpecingPage extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
         this.state = {
-            // below ID is for testing purposes
-            ingredientID : "V5MFG9iQMnhIkRcs4PDV",  //will eventually be props.ingredientID,
-            isEmpty : true,
-            ingredientName : ""
+            ingredientID : this.props.location.state.ingredientID,
+            ingredientName : this.props.location.state.ingredientName,
+            isEmpty : true
         }
-
         this.updatefunction = this.checkLocations.bind(this);
     }
     
-    // updates ingredient name 
-    updateIngredName = () => {
-        db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {
-            this.setState({ingredientName : doc.data().name})
-        }.bind(this))
-    }
+    //updates ingredient name 
+    // updateIngredName = () => {
+    //     db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {
+    //         this.setState({ingredientName : doc.data().name})
+    //     }.bind(this))
+    // }
     
     // sees if there are any known locations for that ingredient
     checkLocations = () => {
@@ -46,45 +45,8 @@ export default class SpecingPage extends Component {
         }.bind(this))
     }
 
-    checkIngredDB = () => {
-        let stored = false;
-        db.firestore().collection("ingredients").where("name", "==", "invalid name")
-        .get().then(function(querySnapshot) {
-            querySnapshot.forEach(function(doc) {
-                // doc.data() is never undefined for query doc snapshots
-                console.log("checkIngredDB called")
-                console.log(doc.id, " => ", doc.data());
-                stored = true;
-            });
-        })
-        .catch(function(error) {
-            console.log("Error getting documents: ", error);
-        });
-        return stored;
-    }
-
-    storeIngred = () => {
-        const ingredID = db.firestore().collection('ingredients').doc().id;
-        db.firestore().collection("ingredients").doc(ingredID).set(
-            {
-                name: this.props.ingredientName,
-                locations: {}
-            }
-        )
-        .then((docRef) => {
-            this.setState({ingredientID: db.firestore})
-            console.log("Document written with ID: ", docRef.id);
-        })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
-    }
 
     componentDidMount(){
-        if(!this.checkIngredDB()) {
-            //this.storeIngred();
-        }
-        this.updateIngredName();
         this.checkLocations();
     }
 
@@ -106,7 +68,6 @@ export default class SpecingPage extends Component {
         return (
             <div className="content-container">
                 <Grid container direction="row" justify="center" spacing={3}>
-                <button onClick={this.checkIngredDB()}>checkIngred</button>
                     <Grid item xs={12}>
                         {cannotVote}
                         <div className="spec-ingredient-label">
