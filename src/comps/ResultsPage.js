@@ -92,6 +92,8 @@ export default function ResultsPage(props) {
 
 	useEffect(() => {
 		const getNutrix = async food => {
+			console.log("getNutrix called")
+			var tempList = [];
 			try {
 				setList([]);
 				setFetch(true);
@@ -107,10 +109,22 @@ export default function ResultsPage(props) {
 						common_restaurant: false
 					}
 				});
-				setList(response.data['branded']);
+				response.data['branded'].forEach((item) => {
+					//console.log("inside for each loop")
+					//console.log(food.toLowerCase());
+					let itemName = item['food_name'].toLowerCase();
+					if (itemName.includes(food.toLowerCase()) && !itemName.includes("/")) {
+						//console.log("food name contains query")
+						tempList.push(item["food_name"])
+						//console.log(tempList);
+					}
+				})
+				setList(tempList);
+				//console.log("templist is:")
+				//console.log(tempList);
 				setFetch(false);
 			} catch (e) {
-				console.log(e);
+				//console.log(e);
 				setList([]);
 				setFetch(false);
 			}
@@ -123,11 +137,11 @@ export default function ResultsPage(props) {
 			checkIngredDB(stateName).then((doc) => {
 				let ingredID = "";
 				if (doc.exists) {
-					console.log("ingredientName exists in DB: " + doc.data().ingredID)
+					//console.log("ingredientName exists in DB: " + doc.data().ingredID)
 					ingredID = doc.data().ingredID;
 					
 				} else {
-					console.log("ingredient doesnt exist in db")
+					//console.log("ingredient doesnt exist in db")
 					ingredID = storeIngred(stateName);
 				}
 				setID(ingredID);
@@ -143,8 +157,8 @@ export default function ResultsPage(props) {
 	if (ingredList.length > 0) {
 		displayList = ingredList.map(function(item, i) {
 			return (
-				<ListItem button id={item['food_name']} onClick={handleClick}>
-					<ListItemText primary={item['food_name']} />
+				<ListItem button id={item} onClick={handleClick}>
+					<ListItemText primary={item} />
 				</ListItem>
 			);
 		});
