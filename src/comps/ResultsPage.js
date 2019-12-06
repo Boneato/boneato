@@ -85,9 +85,11 @@ export default function ResultsPage(props) {
 				});
 				// Checks if the current item exists, by itself, within the query	
 				let singleItemExists = false;
+				let queryExists = false;
 				response.data['branded'].forEach((item) => {
 					//console.log("inside for each loop")
 					//console.log(food.toLowerCase());
+					queryExists = true;
 					let itemName = item['food_name'].toLowerCase();
 					if (itemName === food) {
 						singleItemExists = true;
@@ -102,6 +104,7 @@ export default function ResultsPage(props) {
 					//console.log("inside for each loop")
 					//console.log(food.toLowerCase());
 					let itemName = item['food_name'].toLowerCase();
+					queryExists = true;
 					if (itemName === food) {
 						singleItemExists = true;
 					}
@@ -111,7 +114,7 @@ export default function ResultsPage(props) {
 						//console.log(tempList);
 					}
 				})
-				if (!singleItemExists) {
+				if (!singleItemExists && queryExists) {
 					tempList.push(food);
 				}
 				setList(tempList);
