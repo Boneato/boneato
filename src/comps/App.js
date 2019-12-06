@@ -83,48 +83,49 @@ export default class App extends Component {
     );
   }
 
-  getNutrix = (food) => {
-    console.log("getNutrix called")
-    return axios.get(NutrixURL, {
-      headers: {
-        'x-app-id': '3e44cfbe',
-        'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'
-      },
-      params: {
-        query: food,
-        self: false,
-        common_general: false,
-        common_restaurant: false
-      }
-    });
-  }
-
   grabSearchInput = (input) => {
-    this.setState({loading: true});
     this.setState({userInput: input});
-    let response = this.getNutrix(input);
-    let tempList = [];
-    response.then((data) => {
-      data['branded'].forEach((item) => {
-        //console.log("inside for each loop")
-        //console.log(food.toLowerCase());
-        let itemName = item['food_name'].toLowerCase();
-        if (itemName.includes(input.toLowerCase()) && !itemName.includes("/")) {
-          //console.log("food name contains query")
-          tempList.push(item["food_name"]);
-          //console.log(tempList);
-        }
-      })
-      this.setState({ingredList: tempList});
-      this.setState({loading: false});
-    }).catch((error) => {
-      console.log("searchInput error: " + error)
-    })
-  }
+  }  // getNutrix = (food) => {
+  //   console.log("getNutrix called")
+  //   return axios.get(NutrixURL, {
+  //     headers: {
+  //       'x-app-id': '3e44cfbe',
+  //       'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'
+  //     },
+  //     params: {
+  //       query: food,
+  //       self: false,
+  //       common_general: false,
+  //       common_restaurant: false
+  //     }
+  //   });
+  // }
 
-  componentDidUpdate() {
 
-  }
+  // grabSearchInput = (input) => {
+  //   this.setState({loading: true});
+  //   this.setState({userInput: input});
+  //   let nutrixPromise = this.getNutrix(input);
+  //   let tempList = [];
+  //   nutrixPromise.then((response) => {
+  //     response.data['branded'].forEach((item) => {
+  //       //console.log("inside for each loop")
+  //       //console.log(food.toLowerCase());
+  //       let itemName = item['food_name'].toLowerCase();
+  //       if (itemName.includes(input.toLowerCase()) && !itemName.includes("/")) {
+  //         //console.log("food name contains query")
+  //         tempList.push(item["food_name"]);
+  //         //console.log(tempList);
+  //       }
+  //     })
+  //     this.setState({ingredList: tempList});
+  //     this.setState({loading: false});
+  //   })
+  //   .catch((error) => {
+  //     console.log("searchInput error: " + error)
+  //   })
+  // }
+
   // useEffect(() => {
 	// 	const getNutrix = async food => {
 	// 		console.log("getNutrix called")
@@ -197,10 +198,10 @@ export default class App extends Component {
                 <Route path='/SpecIngPage/:ingredientID' render={(routerProps) => (
                   <SpecingPage {...routerProps} signedIn={this.state.user} />
                 )} />
-                <Route path='/results' render={(routerProps) => (
+                <Route path='/results/:ingredientName' render={(routerProps) => (
                   <ResultsPage {...routerProps} 
                   userInput={this.state.userInput} 
-                  ingredList={this.state.ingredList} />
+                  />
                 )} />
               </Switch>
             </main>

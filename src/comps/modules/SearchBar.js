@@ -80,7 +80,17 @@ export default function SearchBar(props) {
     </div>
   );
   if (goDirect) {
-    search = <div><Redirect to="/results"></Redirect></div>
+    search = (
+    <div>
+      <Redirect to={{
+      pathname: "/results/" + userInput,
+      state: {
+        ingredientName: userInput
+      }
+      }}>
+      </Redirect>
+    </div>
+    );
   }
   return search;
 }
