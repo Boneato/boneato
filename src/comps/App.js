@@ -13,6 +13,8 @@ import { Modal, NewIngredientModal, NewLocationModal } from './modules/Modal';
 import {CircularProgress} from '@material-ui/core';
 import firebase from 'firebase';
 import {GoogleSearch} from '../cont/PlacesController';
+import axios from 'axios';
+const NutrixURL = 'https://trackapi.nutritionix.com/v2/search/instant';
 require("firebase/firestore");
 
 // renders application with all neccesary components
@@ -81,15 +83,96 @@ export default class App extends Component {
     );
   }
 
-  grabSearchInput = (input) => {
-    this.setState({userInput: input});
+  getNutrix = (food) => {
+    console.log("getNutrix called")
+    return axios.get(NutrixURL, {
+      headers: {
+        'x-app-id': '3e44cfbe',
+        'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'
+      },
+      params: {
+        query: food,
+        self: false,
+        common_general: false,
+        common_restaurant: false
+      }
+    });
   }
 
+  grabSearchInput = (input) => {
+    this.setState({loading: true});
+    this.setState({userInput: input});
+    let response = this.getNutrix(input);
+    let tempList = [];
+    response.then((data) => {
+      data['branded'].forEach((item) => {
+        //console.log("inside for each loop")
+        //console.log(food.toLowerCase());
+        let itemName = item['food_name'].toLowerCase();
+        if (itemName.includes(input.toLowerCase()) && !itemName.includes("/")) {
+          //console.log("food name contains query")
+          tempList.push(item["food_name"]);
+          //console.log(tempList);
+        }
+      })
+      this.setState({ingredList: tempList});
+      this.setState({loading: false});
+    }).catch((error) => {
+      console.log("searchInput error: " + error)
+    })
+  }
+
+  componentDidUpdate() {
+
+  }
+  // useEffect(() => {
+	// 	const getNutrix = async food => {
+	// 		console.log("getNutrix called")
+	// 		var tempList = [];
+	// 		try {
+	// 			setList([]);
+	// 			setFetch(true);
+	// 			const response = await axios.get(NutrixURL, {
+	// 				headers: {
+	// 					'x-app-id': '3e44cfbe',
+	// 					'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'
+	// 				},
+	// 				params: {
+	// 					query: food,
+	// 					self: false,
+	// 					common_general: false,
+	// 					common_restaurant: false
+	// 				}
+	// 			});
+	// 			response.data['branded'].forEach((item) => {
+	// 				//console.log("inside for each loop")
+	// 				//console.log(food.toLowerCase());
+	// 				let itemName = item['food_name'].toLowerCase();
+	// 				if (itemName.includes(food.toLowerCase()) && !itemName.includes("/")) {
+	// 					//console.log("food name contains query")
+	// 					tempList.push(item["food_name"])
+	// 					//console.log(tempList);
+	// 				}
+	// 			})
+	// 			setList(tempList);
+	// 			//console.log("templist is:")
+	// 			//console.log(tempList);
+	// 			setFetch(false);
+	// 		} catch (e) {
+	// 			//console.log(e);
+	// 			setList([]);
+	// 			setFetch(false);
+	// 		}
+	// 	};
+	// 	getNutrix(props.userInput);
+  // }, []);
+  
   // TODO: USE REDIRECT WHEN SEARCH IS INITIATED DO NOT USE TO= ON BUTTON PRESS
   render() {
     // if (this.state.loading) {
     //   return <CircularProgress />;
     // } else {
+      console.log("app userinput" + this.state.userInput);
       let signedIn = false;
       let navbar = (
         <Navbar loggedIn={false} handleSignOut={this.handleSignOut}/>
@@ -115,7 +198,9 @@ export default class App extends Component {
                   <SpecingPage {...routerProps} signedIn={this.state.user} />
                 )} />
                 <Route path='/results' render={(routerProps) => (
-                  <ResultsPage {...routerProps} userInput={this.state.userInput} />
+                  <ResultsPage {...routerProps} 
+                  userInput={this.state.userInput} 
+                  ingredList={this.state.ingredList} />
                 )} />
               </Switch>
             </main>

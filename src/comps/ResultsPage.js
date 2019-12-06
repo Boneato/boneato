@@ -2,10 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { List, ListItem, ListItemText } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 import {db} from '../firestore';
 import {Redirect} from 'react-router-dom';
-const NutrixURL = 'https://trackapi.nutritionix.com/v2/search/instant';
 
 // takes in ingredientID and ingredientname and creates ListItem with Link to
 // respective SpecIngPage
@@ -72,7 +70,10 @@ function storeIngred (ingredientName) {
 // }
 
 export default function ResultsPage(props) {
-	const [ingredList, setList] = useState([]);
+	console.log(
+		"props"
+	)
+	console.log(props);
 	const [fetchingData, setFetch] = useState(false);
 	const [goDirect, setDirect] = useState(false);
 	const [ingredID, setID] = useState("");
@@ -89,48 +90,6 @@ export default function ResultsPage(props) {
 		setFetch(true);
 		setDirect(true);
 	}
-
-	useEffect(() => {
-		const getNutrix = async food => {
-			console.log("getNutrix called")
-			var tempList = [];
-			try {
-				setList([]);
-				setFetch(true);
-				const response = await axios.get(NutrixURL, {
-					headers: {
-						'x-app-id': '3e44cfbe',
-						'x-app-key': 'be52ed410ebd23630810aa7ca9807c74'
-					},
-					params: {
-						query: food,
-						self: false,
-						common_general: false,
-						common_restaurant: false
-					}
-				});
-				response.data['branded'].forEach((item) => {
-					//console.log("inside for each loop")
-					//console.log(food.toLowerCase());
-					let itemName = item['food_name'].toLowerCase();
-					if (itemName.includes(food.toLowerCase()) && !itemName.includes("/")) {
-						//console.log("food name contains query")
-						tempList.push(item["food_name"])
-						//console.log(tempList);
-					}
-				})
-				setList(tempList);
-				//console.log("templist is:")
-				//console.log(tempList);
-				setFetch(false);
-			} catch (e) {
-				//console.log(e);
-				setList([]);
-				setFetch(false);
-			}
-		};
-		getNutrix(props.userInput);
-	}, []);
 
 	useEffect(() => {
 		if (stateName) {
@@ -154,8 +113,8 @@ export default function ResultsPage(props) {
 		}
 	}, [goDirect]);
 
-	if (ingredList.length > 0) {
-		displayList = ingredList.map(function(item, i) {
+	if (props.ingredList.length > 0) {
+		displayList = props.ingredList.map(function(item, i) {
 			return (
 				<ListItem button id={item} onClick={handleClick}>
 					<ListItemText primary={item} />
@@ -180,7 +139,7 @@ export default function ResultsPage(props) {
 						"
 					</div>
 					<div className="large-italic">
-						Found {ingredList.length} results for "{props.userInput}
+						Found {props.ingredList.length} results for "{props.userInput}
 						":
 					</div>
 					<List component="nav" aria-label="search results">

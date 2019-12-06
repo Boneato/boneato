@@ -13,6 +13,7 @@ export default class HomePage extends Component {
 	}
 
 	grabSearchInputInter = input => {
+		console.log("homepage" + input)
 		this.props.grabSearchInput(input);
 	};
 

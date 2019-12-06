@@ -49,6 +49,7 @@ export default function SearchBar(props) {
   const [userInput, setInput] = useState("");
   const [goDirect, setDirect] = useState(false);
   const handleClick = (event) => {
+    console.log("click search" + userInput)
     event.preventDefault();
     setAnchorEl(event.currentTarget);
     props.grabSearchInput(userInput);
