@@ -146,7 +146,13 @@ export default function ResultsPage(props) {
 				}
 				setID(ingredID);
 				setFetch(false);
-
+				props.history.push({
+					pathname: '/SpecIngPage/' + ingredID,
+					state: { 
+						ingredientName : stateName,
+						ingredientID: ingredID
+					}
+				})
 			})
 			.catch(function(error) {
 				console.log("Error getting documents: ", error);
@@ -191,18 +197,18 @@ export default function ResultsPage(props) {
 		</div>
 	);
 
-	if (goDirect & !fetchingData) {
-		display = (
-			<Redirect 
-				to={{
-					pathname: "/SpecIngPage/" + ingredID,
-					state: { 
-						ingredientName : stateName,
-						ingredientID: ingredID
-			}}} ></Redirect>
+	// if (goDirect & !fetchingData) {
+	// 	display = (
+	// 		<Redirect 
+	// 			to={{
+	// 				pathname: "/SpecIngPage/" + ingredID,
+	// 				state: { 
+	// 					ingredientName : stateName,
+	// 					ingredientID: ingredID
+	// 		}}} ></Redirect>
 			
-		);
-	}
+	// 	);
+	//}
 	return (
 		<div>
 			{display}
