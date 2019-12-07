@@ -49,6 +49,7 @@ export default function SearchBar(props) {
   const [userInput, setInput] = useState("");
   const [goDirect, setDirect] = useState(false);
   const handleClick = (event) => {
+    console.log("click search" + userInput)
     event.preventDefault();
     setAnchorEl(event.currentTarget);
     props.grabSearchInput(userInput);
@@ -79,7 +80,17 @@ export default function SearchBar(props) {
     </div>
   );
   if (goDirect) {
-    search = <div><Redirect to="/results"></Redirect></div>
+    search = (
+    <div>
+      <Redirect to={{
+      pathname: "/results/" + userInput,
+      state: {
+        ingredientName: userInput
+      }
+      }}>
+      </Redirect>
+    </div>
+    );
   }
   return search;
 }
