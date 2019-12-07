@@ -317,10 +317,10 @@ export function NewLocationModal(props) {
         
     }
     
-    const handleClick = () => {
+    const handleClick = async () => {
         if (userInput) {
-            addNewLocation(userInput, latLng);
-            handleClose();
+            await addNewLocation(userInput, latLng);
+            window.location.reload(true);
         } else {
 
         }

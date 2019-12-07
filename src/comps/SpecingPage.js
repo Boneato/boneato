@@ -89,7 +89,7 @@ export default class SpecingPage extends Component {
             <div className="content-container">
                 <NewLocationModal open={this.state.modalOpen} onClose={this.handleClose} 
                 user={this.props.signedIn} mapUpdated={this.handleMap} ingredientID={this.state.ingredientID}
-                ingredName={this.state.ingredientName}/>
+                ingredName={this.state.ingredientName} />
                 <Grid container direction="row" justify="center" spacing={3} >
                     <Grid item xs={12} >
                         {cannotVote}

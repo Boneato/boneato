@@ -1,0 +1,20 @@
+[debug] [2019-12-07T02:36:30.499Z] ----------------------------------------------------------------------
+[debug] [2019-12-07T02:36:30.502Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\bmwuy\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-12-07T02:36:30.502Z] CLI Version:   7.9.0
+[debug] [2019-12-07T02:36:30.502Z] Platform:      win32
+[debug] [2019-12-07T02:36:30.502Z] Node Version:  v10.13.0
+[debug] [2019-12-07T02:36:30.507Z] Time:          Fri Dec 06 2019 18:36:30 GMT-0800 (Pacific Standard Time)
+[debug] [2019-12-07T02:36:30.507Z] ----------------------------------------------------------------------
+[debug] [2019-12-07T02:36:30.507Z] 
+[debug] [2019-12-07T02:36:30.530Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-12-07T02:36:30.531Z] > authorizing via signed-in user
+[debug] [2019-12-07T02:36:30.531Z] [iam] checking project bonito-collab for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2019-12-07T02:36:30.533Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-12-07T02:36:30.533Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-12-07T02:36:30.716Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-07T02:36:30.725Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/bonito-collab:testIamPermissions  
+
+[debug] [2019-12-07T02:36:30.909Z] <<< HTTP RESPONSE 200
+[debug] [2019-12-07T02:36:30.910Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/bonito-collab  
+ 
