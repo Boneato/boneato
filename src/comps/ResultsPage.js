@@ -144,6 +144,7 @@ export default function ResultsPage(props) {
 				}
 				setID(ingredID);
 				setFetch(false);
+				console.log(props.history);
 				props.history.push({
 					pathname: '/SpecIngPage/' + ingredID,
 					state: { 
