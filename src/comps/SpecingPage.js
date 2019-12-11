@@ -77,7 +77,7 @@ export default class SpecingPage extends Component {
         } else {
             searchRes = <LocationsList signedIn={this.props.signedIn} ingredientID={this.state.ingredientID} />
         }
-        if (!this.props.signedIn) {
+        if (!this.props.signedIn && !this.state.fetchingData) {
             cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
         } else {
             suggestLoc = (
