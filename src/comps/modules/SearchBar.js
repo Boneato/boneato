@@ -48,24 +48,29 @@ export default function SearchBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userInput, setInput] = useState("");
   const [goDirect, setDirect] = useState(false);
-  const [clicked, setClick] = useState(false);
+  const [error, setError] = useState(false);
   const handleClick = (event) => {
     console.log("click search" + userInput)
     event.preventDefault();
     setAnchorEl(event.currentTarget);
     props.grabSearchInput(userInput);
-    setDirect(true);
-    setClick(true);
+    if (userInput !== "") {
+      setDirect(true);
+    } else {
+      setError(true);
+    }
   };
 
   const handleChange = (event) => {
-    setInput(event.target.value)
-    setDirect(false);
-    setClick(false);
+    setInput(event.target.value);
+    setError(false);
+    console.log("handlechange has been called")
   }
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   var search = (
@@ -77,13 +82,20 @@ export default function SearchBar(props) {
           inputProps={{ 'aria-label': 'search bonito' }}
           onChange={handleChange}
         />
+        {error ? 
+          (<div>
+            <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
+            this field cannot be left blank
+          </div>
+          ) : ""
+        }
         <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
           <SearchIcon className={classes.iconSearch} />
         </IconButton>
       </Paper>
     </div>
   );
-  if (goDirect && userInput) {
+  if (goDirect) {
     search = (
     <div>
       <Redirect to={{
@@ -94,26 +106,26 @@ export default function SearchBar(props) {
       }}>
       </Redirect>
     </div>
-    );
-  } else if (clicked) {
-    search = (
-      <div>
-        <Paper component="form" className={classes.root}>
-          <InputBase
-            className={classes.input}
-            placeholder="Bonito"
-            inputProps={{ 'aria-label': 'search bonito' }}
-            onChange={event => setInput(event.target.value)}
-          />
-          <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
-                        This field cannot be left blank.
-          <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
-            <SearchIcon className={classes.iconSearch} />
-          </IconButton>
-        </Paper>
-      </div>
-    );
-  }
+    );}
+  // } else if (error) {
+  //   search = (
+  //     <div>
+  //       <Paper component="form" className={classes.root}>
+  //         <InputBase
+  //           className={classes.input}
+  //           placeholder="Bonito"
+  //           inputProps={{ 'aria-label': 'search bonito' }}
+  //           onChange={event => setInput(event.target.value)}
+  //         />
+  //         <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
+  //                       This field cannot be left blank.
+  //         <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
+  //           <SearchIcon className={classes.iconSearch} />
+  //         </IconButton>
+  //       </Paper>
+  //     </div>
+  //   );
+  // }
   return search;
 }
 
