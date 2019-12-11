@@ -22,7 +22,8 @@ export default class SpecingPage extends Component {
             ingredientID : this.props.location.state.ingredientID,
             ingredientName : this.props.location.state.ingredientName,
             isEmpty : true,
-            modalOpen: false
+            modalOpen: false,
+            fetchingData: true
         }
         this.updatefunction = this.checkLocations.bind(this);
     }
@@ -41,7 +42,8 @@ export default class SpecingPage extends Component {
         locationQuery.then(function (querySnapshot) {
             console.log(querySnapshot.empty)
             this.setState({
-                isEmpty : querySnapshot.empty
+                isEmpty : querySnapshot.empty,
+                fetchingData : false
             })
         }.bind(this))
     }
@@ -70,13 +72,11 @@ export default class SpecingPage extends Component {
         let searchRes = null, i = null;
         let cannotVote = null;
         let suggestLoc = null;
-        if (this.state.isEmpty) { 
+        if (this.state.isEmpty && !this.state.fetchingData) { 
             searchRes = <div className="large-italic">Phooey. There are no known locations yet.</div>;
         } else {
             searchRes = <LocationsList signedIn={this.props.signedIn} ingredientID={this.state.ingredientID} />
         }
-
-        console.log(this.props.signedIn)
         if (!this.props.signedIn) {
             cannotVote = <div className="cannot-vote-alert"> Please <a href="../LoginPage">sign in with Google</a> to share where you found this ingredient.</div>;
         } else {

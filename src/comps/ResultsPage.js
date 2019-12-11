@@ -172,27 +172,37 @@ export default function ResultsPage(props) {
 						":
 					</div>
 					<List component="nav" aria-label="search results">
-						{displayList}
+						{ingredList.length > 0 ? ingredList.map(function(item, i) {
+							return (
+								<ListItem button id={item} onClick={handleClick}>
+									<ListItemText primary={item} />
+								</ListItem>
+							);}) 
+							: 
+							<ListItem button>
+								<ListItemText primary="loading" />
+							</ListItem>
+						}
 					</List>
 				</Grid>
 			</Grid>
 		</div>
 	);
-	if (ingredList.length > 0) {
-		displayList = ingredList.map(function(item, i) {
-			return (
-				<ListItem button id={item} onClick={handleClick}>
-					<ListItemText primary={item} />
-				</ListItem>
-			);
-		});
-	} else if (fetchingData) {
-		displayList = (
-			<ListItem button>
-				<ListItemText primary="loading" />
-			</ListItem>
-		);
-	} else {
+	// if (ingredList.length > 0) {
+	// 	displayList = ingredList.map(function(item, i) {
+	// 		return (
+	// 			<ListItem button id={item} onClick={handleClick}>
+	// 				<ListItemText primary={item} />
+	// 			</ListItem>
+	// 		);
+	// 	});
+	// } else {//(fetchingData) {
+	// 	displayList = (
+	// 		<ListItem button>
+	// 			<ListItemText primary="loading" />
+	// 		</ListItem>
+	// 	);
+	 if (!fetchingData && ingredList.length < 1) {
 		display = (
 			<div className="content-container">
 				<Grid container direction="row" justify="center" spacing={3}>
@@ -210,19 +220,6 @@ export default function ResultsPage(props) {
 			</div>
 		)
 	}
-
-	// if (goDirect & !fetchingData) {
-	// 	display = (
-	// 		<Redirect 
-	// 			to={{
-	// 				pathname: "/SpecIngPage/" + ingredID,
-	// 				state: { 
-	// 					ingredientName : stateName,
-	// 					ingredientID: ingredID
-	// 		}}} ></Redirect>
-			
-	// 	);
-	//}
 	return (
 		<div>
 			{display}
