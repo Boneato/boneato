@@ -38,8 +38,8 @@ export default class App extends Component {
     var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
       // this.setState({user: result.user});
       localStorage.setItem("userName",result.user.displayName);
-      console.log(this.state.user);
-      console.log(localStorage.getItem("userName"));
+      console.log("history")
+      console.log(this.props)
     }).catch(function(error) {
         var errorCode = error.code;
         var errorMessage = error.message;
@@ -210,3 +210,5 @@ export default class App extends Component {
       }
 
 }
+
+export withRouter(App);
