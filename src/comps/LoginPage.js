@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import firebase from 'firebase';
+require("firebase/firestore")
 
 const useStyles = makeStyles(theme => ({
     link: {
@@ -20,8 +22,23 @@ export default function LoginPage(props) {
 
     const handleLogIn = (event) => {
         event.preventDefault();
-        console.log(props)
-        props.signInCallback();
+        var provider = new firebase.auth.GoogleAuthProvider();
+        // TODO: WHY IS THEN() NOT CALLED?
+        // guess it's the problem of the setState function?
+        var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
+          // this.setState({user: result.user});
+          localStorage.setItem("userName",result.user.displayName);
+        }).catch(function(error) {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            // The email of the user's account used.
+            var email = error.email;
+            // The firebase.auth.AuthCredential type that was used.
+            var credential = error.credential;
+        }).finally(() => {
+            props.history.goBack();
+        });
+       // props.signInCallback();
     }
     return (
         <div className="content-container"> 

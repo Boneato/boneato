@@ -5,7 +5,8 @@ import App from './comps/App';
 import * as serviceWorker from './serviceWorker';
 import firebase from 'firebase/app';
 import {BrowserRouter} from 'react-router-dom';
-
+import { createBrowserHistory } from "history";
+const customHistory = createBrowserHistory();
 // var config = {
 //     apiKey: "AIzaSyA18aSKV9qp66x5s0FL6y_xcdjlBeBRVng",
 //     authDomain: "bonito-collab.firebaseapp.com",
@@ -19,7 +20,7 @@ import {BrowserRouter} from 'react-router-dom';
 
 // firebase.initializeApp(config);
 
-ReactDOM.render(<BrowserRouter><App /></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<BrowserRouter history={customHistory} ><App /></BrowserRouter>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

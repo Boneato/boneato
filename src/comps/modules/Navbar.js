@@ -60,7 +60,7 @@ class Navbar extends Component {
     render() {
         const { match, location, history } = this.props;
     
-        return <NavTabs location={location.pathname} loggedIn={this.props.loggedIn} handleSignOut={this.props.handleSignOut} />;
+        return <NavTabs location={location.pathname} history={history} loggedIn={this.props.loggedIn} handleSignOut={this.props.handleSignOut} />;
       }
 }
 
@@ -93,6 +93,11 @@ export function NavTabs(props) {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        console.log(newValue)
+        if (newValue == 3) {
+            console.log("history pushed")
+            props.history.replace(props.location.pathname)
+        }
     };
     // return focus to the button when we transitioned from !open -> open
     const prevOpen = React.useRef(open);
@@ -104,7 +109,6 @@ export function NavTabs(props) {
     }, [open]);
  
     const handleSignOut = (event) => {
-        console.log("signed out")
         event.preventDefault();
         props.handleSignOut();
         handleClose(event);
@@ -117,9 +121,9 @@ export function NavTabs(props) {
             //value={value}
             onChange={handleChange}
             >   
-                <Tab label="Find Ingredients" component={Link} to="/" />
-                <Tab label="About"component={Link} to='/AboutPage' />
-                <Tab label="Login" component={Link} to='/LoginPage' />
+                <Tab value={1} label="Find Ingredients" component={Link} to="/" />
+                <Tab value={2} label="About"component={Link} to='/AboutPage' />
+                <Tab value={3} label="Login" component={Link} to='/LoginPage'/>
             </Tabs>
         </Grid>
     )
@@ -131,7 +135,6 @@ export function NavTabs(props) {
                 <Tabs
                 className="nav-tabs"
                 //value={value}
-                onChange={handleChange}
                 >   
                     <Tab label="Find Ingredients" component={Link} to="/" />
                     <Tab label="About"component={Link} to='/AboutPage' />
@@ -170,7 +173,6 @@ export function NavTabs(props) {
             </Grid>
         );
     }
-    //console.log("pathname : " + window.location.pathname)
     return (
         <div className={classes.root} style={window.location.pathname === "/" ?
         {background: "transparent", boxShadow: "none"} : 

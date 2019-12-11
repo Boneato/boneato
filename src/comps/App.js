@@ -18,7 +18,7 @@ const NutrixURL = 'https://trackapi.nutritionix.com/v2/search/instant';
 require("firebase/firestore");
 
 // renders application with all neccesary components
-export default class App extends Component {
+export class App extends Component {
   constructor(props) {
     super(props);
     //this.signedIn = this.signedIn.bind(this);
@@ -32,22 +32,7 @@ export default class App extends Component {
   }
 
   handleSignIn = () => {
-    var provider = new firebase.auth.GoogleAuthProvider();
-    // TODO: WHY IS THEN() NOT CALLED?
-    // guess it's the problem of the setState function?
-    var userInfo = firebase.auth().signInWithPopup(provider).then(function(result) {
-      // this.setState({user: result.user});
-      localStorage.setItem("userName",result.user.displayName);
-      console.log("history")
-      console.log(this.props)
-    }).catch(function(error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-    });
+   
   }
 
   handleSignOut = () => {
@@ -76,7 +61,8 @@ export default class App extends Component {
     this.authUnsubFunction();
 
     this.setState({errorMessage: null});
-    firebase.auth().signOut().catch(
+    firebase.auth().signOut().then(function() {
+      console.log("sign out successfull")}).catch(
       (error) => {
         this.setState({errorMessage : error.message});
       }
@@ -211,4 +197,4 @@ export default class App extends Component {
 
 }
 
-export withRouter(App);
+export default withRouter(App);

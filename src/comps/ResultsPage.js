@@ -4,7 +4,7 @@ import { List, ListItem, ListItemText } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import {db} from '../firestore';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 const NutrixURL = 'https://trackapi.nutritionix.com/v2/search/instant';
 
 // ingredientName must not exist in db, ingredientName is all lowercase
@@ -43,7 +43,7 @@ function storeIngred (ingredientName) {
 // 	});
 // }
 
-export default function ResultsPage(props) {
+export function ResultsPage(props) {
 	const [ingredList, setList] = useState([]);
 	const [fetchingData, setFetch] = useState(false);
 	const [goDirect, setDirect] = useState(false);
@@ -144,7 +144,6 @@ export default function ResultsPage(props) {
 				}
 				setID(ingredID);
 				setFetch(false);
-				console.log(props.history);
 				props.history.push({
 					pathname: '/SpecIngPage/' + ingredID,
 					state: { 
@@ -231,7 +230,6 @@ export default function ResultsPage(props) {
 // respective SpecIngPage
 function ListItemLink(props) {
 	let link = '/SpecingPage/' + props.ingredientID;
-	console.log("List item for : " + props.ingredientName + " created");
 	const to = {
 		pathname: link,
 		state: {
@@ -253,3 +251,5 @@ function ListItemLink(props) {
 		</li>
 	);
 }
+
+export default withRouter(ResultsPage);
