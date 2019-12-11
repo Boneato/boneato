@@ -1,14 +1,9 @@
-import React, { Component, useEffect } from 'react';
-import NewIngredientsController from '../../cont/NewIngredientsController';
+import React from 'react';
 import {
     Dialog, DialogTitle,
-    TextField,
-    DialogContent, DialogContentText, Tab
+    DialogContent, Tab
 } from '@material-ui/core';
 import checkmark from '../../assets/checkmark.svg';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import { classes } from 'istanbul-lib-coverage';
-
 import {
     fade,
     ThemeProvider,

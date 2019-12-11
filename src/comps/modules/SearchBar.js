@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
-
+import ErrorIcon from '@material-ui/icons/ErrorOutline';
 import deburr from 'lodash/deburr';
 import Autosuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
@@ -48,16 +48,20 @@ export default function SearchBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [userInput, setInput] = useState("");
   const [goDirect, setDirect] = useState(false);
+  const [clicked, setClick] = useState(false);
   const handleClick = (event) => {
     console.log("click search" + userInput)
     event.preventDefault();
     setAnchorEl(event.currentTarget);
     props.grabSearchInput(userInput);
     setDirect(true);
+    setClick(true);
   };
 
   const handleChange = (event) => {
-    
+    setInput(event.target.value)
+    setDirect(false);
+    setClick(false);
   }
   const handleClose = () => {
     setAnchorEl(null);
@@ -71,7 +75,7 @@ export default function SearchBar(props) {
           className={classes.input}
           placeholder="Bonito"
           inputProps={{ 'aria-label': 'search bonito' }}
-          onChange={event => setInput(event.target.value)}
+          onChange={handleChange}
         />
         <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
           <SearchIcon className={classes.iconSearch} />
@@ -79,7 +83,7 @@ export default function SearchBar(props) {
       </Paper>
     </div>
   );
-  if (goDirect) {
+  if (goDirect && userInput) {
     search = (
     <div>
       <Redirect to={{
@@ -90,6 +94,24 @@ export default function SearchBar(props) {
       }}>
       </Redirect>
     </div>
+    );
+  } else if (clicked) {
+    search = (
+      <div>
+        <Paper component="form" className={classes.root}>
+          <InputBase
+            className={classes.input}
+            placeholder="Bonito"
+            inputProps={{ 'aria-label': 'search bonito' }}
+            onChange={event => setInput(event.target.value)}
+          />
+          <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
+                        This field cannot be left blank.
+          <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={handleClick}>
+            <SearchIcon className={classes.iconSearch} />
+          </IconButton>
+        </Paper>
+      </div>
     );
   }
   return search;

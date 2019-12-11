@@ -158,7 +158,12 @@ export default function ResultsPage(props) {
 			})
 		}
 	}, [goDirect]);
-
+	console.log("ingredName is :" + props.location.state.ingredientName)
+	if (props.location.state.ingredientName === "") {
+		displayList = (
+			<div>no results found</div>
+		);
+	}
 	if (ingredList.length > 0) {
 		displayList = ingredList.map(function(item, i) {
 			return (
