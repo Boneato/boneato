@@ -158,28 +158,6 @@ export default function ResultsPage(props) {
 			})
 		}
 	}, [goDirect]);
-	console.log("ingredName is :" + props.location.state.ingredientName)
-	if (props.location.state.ingredientName === "") {
-		displayList = (
-			<div>no results found</div>
-		);
-	}
-	if (ingredList.length > 0) {
-		displayList = ingredList.map(function(item, i) {
-			return (
-				<ListItem button id={item} onClick={handleClick}>
-					<ListItemText primary={item} />
-				</ListItem>
-			);
-		});
-	} else {
-		displayList = (
-			<ListItem button>
-				<ListItemText primary="loading" />
-			</ListItem>
-		);
-	}
-
 	let display = (
 		<div className="content-container">
 			<Grid container direction="row" justify="center" spacing={3}>
@@ -200,6 +178,38 @@ export default function ResultsPage(props) {
 			</Grid>
 		</div>
 	);
+	if (ingredList.length > 0) {
+		displayList = ingredList.map(function(item, i) {
+			return (
+				<ListItem button id={item} onClick={handleClick}>
+					<ListItemText primary={item} />
+				</ListItem>
+			);
+		});
+	} else if (fetchingData) {
+		displayList = (
+			<ListItem button>
+				<ListItemText primary="loading" />
+			</ListItem>
+		);
+	} else {
+		display = (
+			<div className="content-container">
+				<Grid container direction="row" justify="center" spacing={3}>
+					<Grid item xs={12}>
+						<div className="no-results">
+							<p>No results were found for 
+								"{' '}
+								<span className="search-query">{props.location.state.ingredientName}</span>
+								{' '}
+								"
+							</p>
+						</div>
+					</Grid>
+				</Grid>
+			</div>
+		)
+	}
 
 	// if (goDirect & !fetchingData) {
 	// 	display = (
