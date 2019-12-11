@@ -85,7 +85,7 @@ export default function SearchBar(props) {
         {error ? 
           (<div>
             <ErrorIcon style={{ height: '16px', width: '16px', paddingRight: '3px', marginBottom: '-3px' }} />
-            this field cannot be left blank
+            this field cannot be left blank!
           </div>
           ) : ""
         }
