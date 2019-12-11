@@ -25,10 +25,26 @@ export default class LocationInfo extends Component {
         // dv counter
         this.ingredID = props.ingredID
         this.locationInfo = props.locationInfo
+        this.state = {
+            upVotePressed: false,
+            downVotePressed: false
+        }
     }
     componentDidMount() {
+        if (this.props.signedIn) {
+            var userLoc = db.firestore().collection('users').doc(this.props.signedIn.uid).collection('ingredients')
+            .doc(this.props.ingredID).collection('locations').doc(this.props.locID)
+            userLoc.get().then((doc) => {
+                console.log(doc.data());
+            }).catch((e) => {
+                console.log(e);
+            })
+        }
     }
 
+    votePress = () => {
+
+    }
     render() {
 
         if (this.locationInfo.dvcounter >= 5) {
@@ -44,8 +60,12 @@ export default class LocationInfo extends Component {
 
                 <Grid container direction="row" justify="center" spacing={3}>
                     <Grid item xs={12} md={5} lg={4}>
-                        <UpVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
-                        <DownVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo} />
+                        <UpVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} 
+                        locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo}
+                        downVotePress={this.VotePress} />
+                        <DownVoteButton signedIn={this.props.signedIn} updatefunction={this.props.updatefunction} 
+                        locID={this.props.locID} ingredID={this.props.ingredID} locationInfo={this.locationInfo}
+                        upVotePress={this.VotePress} />
                     </Grid>
                     <Grid item xs={12} md={7} lg={8}>
                         <span>

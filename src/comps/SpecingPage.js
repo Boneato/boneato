@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import LocationsList from './modules/LocationsList';
 import LocationsController from '../cont/LocationsController';
 import EmbeddedMap from './modules/EmbeddedMap';
@@ -14,20 +14,47 @@ import {NewLocationModal} from '../comps/modules/Modal';
 require('firebase/firestore');
 
 // renders the SpecingPage for a specific ingredient
-export default class SpecingPage extends Component {
+export class SpecingPage extends Component {
     constructor(props) {
         super(props);
         console.log(props)
-        this.state = {
-            ingredientID : this.props.location.state.ingredientID,
-            ingredientName : this.props.location.state.ingredientName,
-            isEmpty : true,
-            modalOpen: false,
-            fetchingData: true
+        if (this.props.location.state) {
+            this.state = {
+                ingredientID : this.props.location.state.ingredientID,
+                ingredientName : this.props.location.state.ingredientName,
+                isEmpty : true,
+                modalOpen: false,
+                fetchingData: true
+            }
+        } else if (this.props.history.location.pathname) {
+            this.state = {
+                ingredientID : this.props.history.location.pathname.substring(13),
+                ingredientName : "",
+                isEmpty : true,
+                modalOpen: false,
+                fetchingData: true
+            }
+        } else if (this.props.location.pathname) {
+            this.state = {
+                ingredientID : this.props.location.pathname.substring(13),
+                ingredientName : "",
+                isEmpty : true,
+                modalOpen: false,
+                fetchingData: true
+            }
         }
         this.updatefunction = this.checkLocations.bind(this);
     }
     
+    getIngredInfo = (ingredID) => {
+        db.firestore().collection('ingredients').doc(ingredID).get().then((doc) => {
+            this.setState({
+                ingredientName : doc.data().name
+            });
+        }).catch((e) => {
+            console.log(e);
+        })
+    }
     //updates ingredient name 
     // updateIngredName = () => {
     //     db.firestore().collection("ingredients").doc(this.state.ingredientID).onSnapshot(function (doc) {
@@ -62,6 +89,9 @@ export default class SpecingPage extends Component {
 
     componentDidMount(){
         this.checkLocations();
+        if (!this.props.ingredientName) {
+            this.getIngredInfo(this.state.ingredientID);
+        }
     }
 
     componentDidUpdate() {
@@ -126,3 +156,5 @@ export default class SpecingPage extends Component {
         )
     }
 }
+
+export default withRouter(SpecingPage);
