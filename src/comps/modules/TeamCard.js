@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Modal from '../modules/Modal';
-import {Card, CardActionArea, CardContent, CardMedia, Typography} from '@material-ui/core';
+import {Card, CardContent, CardMedia, Typography} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -8,7 +7,7 @@ const useStyles = makeStyles({
     width: '100%',
     boxShadow: 'none',
     textAlign: 'center',
-    borderRadius: '0px'
+    borderRadius: '0px',
   },
   media: {
     height: 250,
@@ -30,28 +29,24 @@ const useStyles = makeStyles({
   }
 });
 
-
-
 export default function TeamCard(props) {
   const {FirstName, LastName, Position, picture}=props;
   const classes = useStyles();
   return (
     <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={picture}
-          title={FirstName + " Photo"}
-        />
-        <CardContent className={classes.content}>
-          <Typography className={classes.name}>
-            {FirstName + " " + LastName}
-          </Typography>
-          <Typography className={classes.role}>
-            {Position}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <CardMedia
+        className={classes.media}
+        image={picture}
+        title={FirstName + " Photo"}
+      />
+      <CardContent className={classes.content}>
+        <Typography className={classes.name}>
+          {FirstName + " " + LastName}
+        </Typography>
+        <Typography className={classes.role}>
+          {Position}
+        </Typography>
+      </CardContent>
     </Card>
   );
 }

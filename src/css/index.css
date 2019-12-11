@@ -178,6 +178,10 @@ code {
   padding-top: 2rem;
 }
 
+.mui-ripple-circle {
+  display: none
+}
+
 
 /* SPECIFIC INGREDIENT PAGE */
 .spec-ingredient-title {
